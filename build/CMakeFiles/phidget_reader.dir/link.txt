@@ -1,0 +1,1 @@
+/usr/bin/c++   -O2 -g -DNDEBUG     -pthread CMakeFiles/phidget_reader.dir/src/phidget_reader.cpp.o  -o ../bin/phidget_reader -rdynamic 
