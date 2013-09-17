@@ -1,0 +1,14 @@
+<package>
+  <description brief="Grijper">
+
+     Grijper
+
+  </description>
+  <author>Stijn</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/Grijper</url>
+
+</package>
+
+
