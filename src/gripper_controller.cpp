@@ -15,5 +15,5 @@ int main(int argc, char **argv){
 }
 
 void gripperCallback(const std_msgs::Int32::ConstPtr& msg){
-	ROS_INFO("received %i", msg->data);
+e	ROS_INFO("received %i", msg->data);
 }
