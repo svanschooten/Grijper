@@ -1,1 +1,0 @@
-/usr/bin/c++   -O2 -g -DNDEBUG     -pthread CMakeFiles/gripper_controller.dir/src/gripper_controller.cpp.o  -o ../bin/gripper_controller -rdynamic 

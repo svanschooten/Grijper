@@ -13,7 +13,7 @@ int main(int argc, char **argv){
 	while(ros::ok()){
 		std_msgs::Int32 sensor_val;
 		sensor_val.data = count; //TODO hier moet sensor data uitgelezen worden.
-		ROS_INFO("%i", sensor_val.data);
+		ROS_INFO("reading: %i", sensor_val.data);
 
 		publisher.publish(sensor_val);
 
