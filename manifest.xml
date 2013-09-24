@@ -4,10 +4,20 @@
      Grijper
 
   </description>
-  <author>Stijn</author>
+  <author>Stijn van Schooten</author>
+  <author>Wybren ten Cate</author>
+  <author>Florens Kreuk</author>
+  <author>Jan Wymenga</author>
+  <author>Joris Coenen</author>
+  <author>Roy Groot</author>
   <license>BSD</license>
   <review status="unreviewed" notes=""/>
-  <url>http://ros.org/wiki/Grijper</url>
+  <url>https://github.com/svanschooten/Grijper</url>
+
+  <depend package="roscpp"/>
+  <depend package="threemxl"/>
+  <depend package="phidget_ik"/>
+  <depend package="rviz"/>
 
 </package>
 

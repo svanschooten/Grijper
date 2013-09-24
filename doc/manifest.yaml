@@ -1,0 +1,18 @@
+authors: Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen,
+  Roy Groot
+brief: Grijper
+bugtracker: ''
+depends:
+- threemxl
+- phidget_ik
+- roscpp
+- rviz
+description: "\n\n     Grijper\n\n  "
+license: BSD
+maintainers: ''
+msgs: []
+package_type: package
+repo_url: ''
+srvs:
+- calc_force
+url: https://github.com/svanschooten/Grijper

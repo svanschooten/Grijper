@@ -1,0 +1,145 @@
+\section{gripper\-\_\-actuator.\-cpp File Reference}
+\label{gripper__actuator_8cpp}\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}}
+{\ttfamily \#include $<$ros/ros.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Float32.\-h$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$threemxl/\-C3mxl\-R\-O\-S.\-h$>$}\\*
+{\ttfamily \#include $<$threemxl/\-C\-Dynamixel\-R\-O\-S.\-h$>$}\\*
+Include dependency graph for gripper\-\_\-actuator.\-cpp\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gripper__actuator_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}(call)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf close} (float)
+\item 
+bool {\bf execute} (Arg\-List)
+\item 
+void {\bf gripper\-Actuate} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&)
+\item 
+void {\bf gripper\-Control} (const std\-\_\-msgs\-::\-String\-::\-Const\-Ptr \&)
+\item 
+int {\bf main} (int argc, char $\ast$$\ast$argv)
+\item 
+bool {\bf open} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ros\-::\-Publisher {\bf publisher}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L@{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}}
+\index{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L@{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L(
+\begin{DoxyParamCaption}
+\item[{}]{call}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a3cdecab00d916e74baf9ca4b8a8fd4f1}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    int ret = call; \(\backslash\)
+    if (ret != DXL\_SUCCESS) \{ \(\backslash\)
+      cout << \textcolor{stringliteral}{"Error:"} << endl << \textcolor{stringliteral}{"  "} << C3mxl::translateErrorCode(ret) << \textcolor{stringliteral}{" (0x"} << hex << ret << dec << \textcolor{stringliteral}{
+      ")"} << endl; \(\backslash\)
+    \} \(\backslash\)
+  \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+Definition at line 20 of file gripper\-\_\-actuator.\-cpp.
+
+
+
+\subsection{Function Documentation}
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!close@{close}}
+\index{close@{close}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool close (
+\begin{DoxyParamCaption}
+\item[{float}]{force}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a60598c74e06026d9314d3362a1629936}
+
+
+Definition at line 58 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!execute@{execute}}
+\index{execute@{execute}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool execute (
+\begin{DoxyParamCaption}
+\item[{Arg\-List}]{args}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a8002ba95eddc1ad1aeb79d6ac8142156}
+
+
+Definition at line 50 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!gripper\-Actuate@{gripper\-Actuate}}
+\index{gripper\-Actuate@{gripper\-Actuate}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{gripper\-Actuate}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Actuate (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a45524816df9f7663ba360599b42a36af}
+
+
+Definition at line 40 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!gripper\-Control@{gripper\-Control}}
+\index{gripper\-Control@{gripper\-Control}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{gripper\-Control}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Control (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-String\-::\-Const\-Ptr \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a101b2140b24b7e4ae8ffa902e5e8b371}
+
+
+Definition at line 45 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!main@{main}}
+\index{main@{main}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 28 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!open@{open}}
+\index{open@{open}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}bool open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_adb20eae91802d6ad6366cdee0220c280}
+
+
+Definition at line 54 of file gripper\-\_\-actuator.\-cpp.
+
+
+
+\subsection{Variable Documentation}
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!publisher@{publisher}}
+\index{publisher@{publisher}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{publisher}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher publisher}\label{gripper__actuator_8cpp_adde9f51ddf0fb5c82c57b4075b6e9400}
+
+
+Definition at line 15 of file gripper\-\_\-actuator.\-cpp.
+

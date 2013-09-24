@@ -8,7 +8,7 @@ int main(int argc, char **argv){
 	
 	ros::init(argc, argv, "rviz_gripper");
 	ros::NodeHandle n;
-	ros::Publisher subscriber = n.subscribe("gripper_values", 1000, rvizUpdater);
+	ros::Publisher subscriber = n.subscribe("gripper_state", 1000, rvizUpdater);
 	ros:spin();
 
 	return 0;

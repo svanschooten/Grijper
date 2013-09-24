@@ -1,9 +1,8 @@
 #include <ros/ros.h>
 #include <std_msgs/Float32.h>
+#include <Grijper/gripper_cmd.h>
 #include <sstream>
 #include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
 #include <threemxl/C3mxlROS.h>
 #include <threemxl/CDynamixelROS.h>
 
@@ -12,11 +11,11 @@ using std::endl;
 using std::hex;
 using std::dec;
 
-void gripperActuate(const std_msgs::Float32::ConstPtr&);
+void gripperControl(const Grijper::gripper_cmd::ConstPtr&);
 ros::Publisher publisher;
 bool execute(ArgList);
 bool open();
-bool close(double);
+bool close(float);
 
 #define DXLC_SAFE_CALL(call) \
   do { \
@@ -30,16 +29,18 @@ int main(int argc, char **argv){
 	
 	ros::init(argc, argv, "gripper_actuator");
 	ros::NodeHandle n;
-	ros::Publisher subscriber = n.subscribe("gripper_force", 1000, gripperActuate);
-	publisher = n.advertise<std_msgs::Float32>("gripper_values", 1000);
+	ros::Publisher controller = n.subscribe("gripper_controll", 1000, gripperControl);
+	gripper_state = n.advertise<std_msgs::Float32>("gripper_state", 1000);
 	ros:spin();
 
 	return 0;
 }
 
-void gripperActuate(const std_msgs::Float32::ConstPtr& msg){
-	float data = msg->data;
-	ROS_INFO("actuating: %f", data);
+void gripperControl(const Grijper::gripper_cmd::ConstPtr& msg){
+	String cmd = msg->cmd.c_str();
+	float force = msg->force;
+	float current = calc_current(force);
+	ROS_INFO("Actuating gripper: %sing %fN -> %fA",cmd, force, current);
 }
 
 bool execute(ArgList args){
@@ -50,6 +51,10 @@ bool open(){
 	return true;
 }
 
-bool close(float force){
+bool close(float current){
 	return true;
+}
+
+float calc_current(float force){
+	return force;
 }
