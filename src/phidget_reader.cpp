@@ -3,6 +3,8 @@
 #include <sstream>
 #include <phidget_ik/phidget_ik.h>
 
+using namespace std;
+
 int sensor_id = 0;
 
 int main(int argc, char **argv){

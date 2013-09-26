@@ -18,6 +18,7 @@
   <depend package="threemxl"/>
   <depend package="phidget_ik"/>
   <depend package="rviz"/>
+  <depend package="std_msgs"/>
 
 </package>
 
