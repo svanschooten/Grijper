@@ -3,12 +3,14 @@
 #include <std_msgs/Float32.h>
 #include <std_msgs/String.h>
 #include <Grijper/command.h>
+#include <Grijper/calc_current.h>
 #include <threemxl/C3mxlROS.h>
 
 using namespace std;
 
 void gripperControl(const Grijper::command::ConstPtr&);
 ros::Publisher gripper_state;
+ros::ServiceClient client;
 bool open();
 bool close();
 float calc_current(float);
@@ -36,6 +38,7 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber controller = n.subscribe("gripper_controll", 1000, gripperControl);
 	gripper_state = n.advertise<std_msgs::Float32>("gripper_state", 1000);
+	client = n.serviceClient<Grijper::calc_current>("calc_current");
 	ros::spin();
 
 	return 0;
@@ -68,5 +71,7 @@ bool close(){
 }
 
 float calc_current(float force){
-	return 0.04;
+	Grijper::calc_current srv;
+	srv.request.force = force;
+	return client.call(srv);
 }
