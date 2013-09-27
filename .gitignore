@@ -1,3 +1,8 @@
 build/*
 build
-Documentation
+bin
+bin/*
+msg_gen
+msg_gen/*
+srv_gen
+srv_gen/*
