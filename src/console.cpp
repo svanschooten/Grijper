@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     }else if(cmd.compare("exit") == 0){
       exit_cmd = true;
     }else{
-      printf("Please use the commands 'open', 'close', 'force <val>' or 'exit'.\n");
+      printf("Please use the commands 'open', 'close', 'force' or 'exit'.\n");
     }
   }
   
