@@ -32,7 +32,6 @@ int main(int argc, char **argv){
 }
 
 void gripperPhidget(const std_msgs::Int32::ConstPtr& msg){
-
 	int sensor_value = msg->data;
 	
 	if(abs(sensor_value - last_sensor_value) > 50){
