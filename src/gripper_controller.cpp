@@ -68,16 +68,23 @@ void gripperCommand(const std_msgs::String::ConstPtr& msg){
 	string cmd = msg->data;
 	Grijper::command ctl;
 	if(cmd.compare("open") == 0){
+		ROS_INFO("Opening gripper");
 		ctl.cmd = "open";
 		ctl.force = force;
 		gripper_open = true;
 		control.publish(ctl);
-	} else  if(cmd.compare("close") == 0){
+	}else if(cmd.compare("relax") == 0){
+		ROS_INFO("Relaxing gripper");
+		ctl.cmd = "relax";
+		ctl.force = 0;
+		control.publish(ctl);
+	}else if(cmd.compare("close") == 0){
+		ROS_INFO("Closing gripper");
 		ctl.cmd = "close";
 		ctl.force = force;
 		gripper_open = false;
 		control.publish(ctl);
-	} else {
+	}else{
 		ROS_INFO("Received invalid command: %s\n", cmd.c_str());
 	}
 }

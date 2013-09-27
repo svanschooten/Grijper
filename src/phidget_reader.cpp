@@ -9,7 +9,6 @@ using namespace std;
 
 int sensor_id = 4;
 int freq = 10;
-int pause_time = 2;
 void pause_phidget(const std_msgs::String::ConstPtr&);
 
 int main(int argc, char **argv){
@@ -17,7 +16,6 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "phidget_reader");
 	ros::NodeHandle n;
 	ros::Publisher publisher = n.advertise<std_msgs::Int32>("phidget_value", 1000);
-	//ros::Subscriber subscriber = n.subscribe("gripper_cmd", 1000, pause_phidget);
 	ros::Rate loop_rate(freq);
 	PhidgetIK phidget_ik;
   
@@ -42,13 +40,4 @@ int main(int argc, char **argv){
 	}
 
 	return 0;
-}
-
-void pause_phidget(const std_msgs::String::ConstPtr& msg){
-	string cmd = msg->data;
-	if(cmd.compare("close") == 0 || cmd.compare("open") == 0){
-		ros::Rate loop_rate(1/pause_time);
-		loop_rate.sleep();
-	}
-	ros::Rate loop_rate(freq);
 }

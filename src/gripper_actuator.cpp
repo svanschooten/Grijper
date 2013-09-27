@@ -13,6 +13,7 @@ ros::Publisher gripper_state;
 ros::ServiceClient client;
 bool open();
 bool close();
+bool relax();
 float calc_current(float);
 float current = 0.04;
 CDxlGeneric *motor_;
@@ -49,16 +50,17 @@ void gripperControl(const Grijper::command::ConstPtr& msg){
 	const char* c_cmd = cmd.c_str();
 	float force = msg->force;
 	//current = calc_current(force);
-	current = 1;	
+	current = force;	
 	ROS_INFO("Actuating gripper: %sing %fN -> %fA",c_cmd, force, current);
 	if(cmd.compare("open") == 0){
 		open();
+	}else if(cmd.compare("relax") == 0){
+		relax();
 	}else if(cmd.compare("close") == 0){
 		close();
 	}else{
 		ROS_INFO("Invalid command supplied");
 	}
-	
 }
 
 bool open(){
@@ -70,6 +72,12 @@ bool open(){
 bool close(){
 	ROS_INFO("Closing gripper");
 	motor_->setCurrent(-1*current);
+	return true;
+}
+
+bool relax(){
+	ROS_INFO("Relaxing gripper");
+	motor_->setCurrent(0);
 	return true;
 }
 

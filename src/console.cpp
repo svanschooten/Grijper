@@ -18,7 +18,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "gripper_console");
   ros::NodeHandle n;
   force_ad = n.advertise<std_msgs::Float32>("gripper_force", 1000);
-  ros::Publisher command_ad = n.advertise<std_msgs::String>("gripper_cmd", 1000);
+  ros::Publisher command_ad = n.advertise<std_msgs::String>("command", 1000);
   init();
  
   while(exit_cmd == false){
@@ -35,6 +35,12 @@ int main(int argc, char **argv)
       std_msgs::String msg;
       msg.data = "close";
       command_ad.publish(msg);
+    }else if(cmd.compare("relax") == 0){
+      std_msgs::String msg;
+      msg.data = "relax";
+      command_ad.publish(msg);
+    }else if(cmd.compare("get_force") == 0){
+      printf("Force is: %f\n", force);
     }else if(cmd.compare("force") == 0){
       printf("Set force to: ");
       cin >> force;
