@@ -1,0 +1,11 @@
+﻿<launch>
+   <arg name="model" />
+   <arg name="gui" default="FALSE" />
+   <param name="use_gui" value="$(arg gui)"/>
+   <param name="robot_description" command="$(find xacro)/xacro.py $(find Grijper/urdf)/hand_v2.urdf.xacro.xml" />
+   <rosparam param="source_list">[jstates]</rosparam>
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"  />
+   <!--node name="publishJoints" pkg="urdf_hand" type="publishJoints" /-->
+   <node name="rviz" pkg="rviz" type="rviz" />
+ </launch>
