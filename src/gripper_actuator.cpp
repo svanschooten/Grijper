@@ -91,5 +91,6 @@ float calc_current(float force){
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){
+	relax();
 	ros::shutdown();
 }
