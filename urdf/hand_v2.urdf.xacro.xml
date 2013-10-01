@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hand">
+	<xacro:property name="base_width" value="0.046" />
+	<xacro:property name="base_height" value="0.05" />
+	<xacro:property name="base_length" value="0.004" />
+	<xacro:property name="fngrmdll_length" value="0.056" />
+	<xacro:property name="fngrmdll_height" value="0.007" />
+	<xacro:property name="fngrmdll_width" value="0.004" />
+	<xacro:property name="fngrtip_length" value="0.044" />
+	<xacro:property name="fngrtip_height" value="0.007" />
+	<xacro:property name="fngrtip_width" value="0.004" />
+	<xacro:property name="basefngr_angle_low" value="0" />
+	<xacro:property name="basefngr_angle_up" value="0.96" />
+	<xacro:property name="mdltip_angle_low" value="-0.57" />
+	<xacro:property name="mdltip_angle_up" value="0.3" />
+	<xacro:property name="velocity_max" value="0.5" />
+	<xacro:property name="joint_effort" value="1000" />
+	<xacro:property name="cyl_rad" value="0.03" />
+	<xacro:property name="cyl_length" value="0.1" />
+
+	<xacro:macro name="finger" params="prefix side mimic_y height2base">
+		<link name="${prefix}_fngrmdll">
+			<visual>
+				<geometry>
+					<box size="${fngrmdll_length} ${fngrmdll_width} ${fngrmdll_height}" />
+				</geometry>
+				<origin xyz="${-1*side*(fngrmdll_length/2)} 0 0" rpy="0 0 0" />
+				<material name="white">
+					<color rgba="1 1 1 1" />
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<box size="${fngrmdll_length} ${fngrmdll_width} ${fngrmdll_height}" />
+				</geometry>
+			</collision>
+		</link>
+
+		<link name="${prefix}_fngrtip">
+			<visual>
+				<geometry>
+					<box size="${fngrtip_length} ${fngrtip_width} ${fngrtip_height}" />
+				</geometry>
+				<origin xyz="${fngrtip_length/-2} 0 0" rpy="0 0 0" />
+				<material name="orange">
+					<color rgba="1 .4 0 1" />
+				</material>
+			</visual>
+			<collision>
+				<geometry>
+					<box size="${fngrtip_length} ${fngrtip_width} ${fngrtip_height}" />
+				</geometry>
+			</collision>
+		</link>
+
+		<joint name="${prefix}_base2mdll" type="revolute">
+			<parent link="base" />
+			<child link="${prefix}_fngrmdll" />
+			<origin xyz="${side*(base_width/2)} 0 ${height2base}" rpy="0 0 ${side*1.57}" />
+			<limit lower="${side*basefngr_angle_low}" upper="${side*basefngr_angle_up}" effort="${joint_effort}" velocity="${velocity_max}" />
+			<xacro:if value="${mimic_y}">
+				<mimic joint="rght_base2mdll" multiplier="-1" />
+			</xacro:if>
+			<axis xyz="0 0 1" />
+		</joint>
+
+		<joint name="${prefix}_mdll2tip" type="revolute">
+			<parent link="${prefix}_fngrmdll" />
+			<child link="${prefix}_fngrtip" />
+			<origin xyz="${-1*side*fngrmdll_length} 0 0" rpy="0 0 ${(-3+side)/2}" />
+			<limit lower="${side*mdltip_angle_low}" upper="${side*mdltip_angle_up}" effort="${joint_effort}" velocity="${velocity_max}" />
+			<xacro:if value="${mimic_y}">
+				<mimic joint="rght_mdll2tip" multiplier="-1" />
+			</xacro:if>
+			<axis xyz="0 0 1" />
+		</joint>
+	
+	</xacro:macro>
+	<xacro:finger prefix="rght" side="-1" mimic_y="false" height2base="0.025" />
+	<xacro:finger prefix="lfttop" side="1" mimic_y="true" height2base="0.0465" />
+	<xacro:finger prefix="lftbtm" side="1" mimic_y="true" height2base="0.0035" />
+
+	<link name="base">
+		<visual>
+			<geometry>
+				<box size="${base_width} ${base_length} ${base_height}" />
+			</geometry>
+			<origin xyz="0 0 0.025" rpy="0 0 0"/>
+			<material name="midnight">
+				<color rgba="0 .2 .4 1" />
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="${base_width} ${base_length} ${base_height}" />
+			</geometry>
+		</collision>
+	</link>
+<!--
+	<link name="cylinder">
+        <visual>
+            <geometry>
+                <cylinder length="${cyl_length}" radius="${cyl_rad}"/>
+            </geometry>
+                <material name="blue">
+                    <color rgba="0 0 .8 1"/>
+            </material>
+            <origin xyz="1 0 0.025" rpy="0 0 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="${cyl_length}" radius="${cyl_rad}"/>
+            </geometry>
+        </collision>
+    </link>
+-->
+</robot>
