@@ -9,15 +9,19 @@ using namespace std;
 
 int sensor_id = 4;
 int freq = 10;
-int pause_time = 2;
-void pause_phidget(const std_msgs::String::ConstPtr&);
+//void pause_phidget(const std_msgs::String::ConstPtr&);
+//float sensorToDistance(int);
+
+//float sensorValues[] = {3, 2.7, 2.35, 0.3};
+//vector<float> sVector(sensorValues, sensorValues + sizeof(sensorValues)/sizeof(float));
+
+//float distances[] = {3.7, 4.0, 5.0, 40.0};
 
 int main(int argc, char **argv){
 	
 	ros::init(argc, argv, "phidget_reader");
 	ros::NodeHandle n;
 	ros::Publisher publisher = n.advertise<std_msgs::Int32>("phidget_value", 1000);
-	ros::Subscriber subscriber = n.subscribe("gripper_cmd", 1000, pause_phidget);
 	ros::Rate loop_rate(freq);
 	PhidgetIK phidget_ik;
   
@@ -30,13 +34,17 @@ int main(int argc, char **argv){
 	}
 
 	while(ros::ok()){
-		int data = phidget_ik.getSensorRawValue(sensor_id);
+		int data = phidget_ik.getSensorValue(sensor_id);
 		std_msgs::Int32 sensor_val;
-		sensor_val.data = data;
-		ROS_INFO("Reading sensor %i, value: %i",sensor_id, data);
 
-		publisher.publish(sensor_val);
+		if(data < 100)
+			ROS_INFO("Ignoring sensor value of %i", data);
+		else{
+			sensor_val.data = data;
+			ROS_INFO("Reading sensor %i, value: %i",sensor_id, data);
 
+			publisher.publish(sensor_val);
+		}
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
@@ -44,11 +52,16 @@ int main(int argc, char **argv){
 	return 0;
 }
 
-void pause_phidget(const std_msgs::String::ConstPtr& msg){
-	string cmd = msg->data;
-	if(cmd.compare("close") == 0 || cmd.compare("open") == 0){
-		ros::Rate loop_rate(1/pause_time);
-		loop_rate.sleep();
-	}
-	ros::Rate loop_rate(freq);
-}
+
+	
+	/*float voltage = (float)sensorValue / 1000.0f * 5.0f;
+
+	ROS_INFO("Voltage: %f", voltage);
+	
+	int i = lower_bound(sVector.begin(), sVector.end(), voltage) - sVector.begin();
+
+	if(sensorValues[i] == voltage)
+		return distances[i];
+	else
+		return ((float)distances[i+1] - distances[i]) / (sensorValues[i + 1] - sensorValues[i]) * (voltage - sensorValues[i]) + distances[i];*/
+

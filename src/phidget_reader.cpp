@@ -9,7 +9,6 @@ using namespace std;
 
 int sensor_id = 4;
 int freq = 10;
-void pause_phidget(const std_msgs::String::ConstPtr&);
 
 int main(int argc, char **argv){
 	
@@ -28,13 +27,17 @@ int main(int argc, char **argv){
 	}
 
 	while(ros::ok()){
-		int data = phidget_ik.getSensorRawValue(sensor_id);
+		int data = phidget_ik.getSensorValue(sensor_id);
 		std_msgs::Int32 sensor_val;
-		sensor_val.data = data;
-		ROS_INFO("Reading sensor %i, value: %i",sensor_id, data);
 
-		publisher.publish(sensor_val);
+		if(data < 100)
+			ROS_INFO("Ignoring sensor value of %i", data);
+		else{
+			sensor_val.data = data;
+			ROS_INFO("Reading sensor %i, value: %i",sensor_id, data);
 
+			publisher.publish(sensor_val);
+		}
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
