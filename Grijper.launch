@@ -4,5 +4,5 @@
 	<node name="reader" pkg="Grijper" type="phidget_reader"/>
 	<node name="rviz_gripper" pkg="Grijper" type="rviz_gripper"/>
 	<node name="rviz_object" pkg="Grijper" type="rviz_object"/>
-	<node name="console" pkg="Grijper" type="gripper_console"/>
+	<node name="console" pkg="Grijper" type="gripper_console" input="screen" output="screen"/>
 </launch>

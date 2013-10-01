@@ -3,6 +3,7 @@
 #include <string>
 #include <std_msgs/Float32.h>
 #include <std_msgs/Int32.h>
+#include <std_msgs/Bool.h>
 #include <std_msgs/String.h>
 #include <Grijper/command.h>
 
@@ -11,6 +12,7 @@ using namespace std;
 void setForce(const std_msgs::Float32::ConstPtr&);
 void gripperPhidget(const std_msgs::Int32::ConstPtr&);
 void gripperCommand(const std_msgs::String::ConstPtr&);
+void shutdown(const std_msgs::Bool::ConstPtr&);
 ros::Publisher control;
 float sensorToDistance(int);
 bool close_gripper(float);
@@ -18,7 +20,7 @@ bool open_gripper(float);
 bool gripper_open = true;
 bool force_open = false;
 float last_sensor_value = 0;
-float force = 0.5;
+float force = 0.35;
 int pause_time = 1500;
 
 int main(int argc, char **argv){
@@ -28,6 +30,7 @@ int main(int argc, char **argv){
 	ros::Subscriber force_sub = n.subscribe("gripper_force", 1, setForce);
 	ros::Subscriber command_sub = n.subscribe("command", 1000, gripperCommand);
 	ros::Subscriber phidget_sub = n.subscribe("phidget_value", 1, gripperPhidget);
+	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
 	control = n.advertise<Grijper::command>("gripper_controll", 1);
 	ros::spin();
 
@@ -109,9 +112,13 @@ float sensorToDistance(int sensorValue){
 }
 
 bool close_gripper(float distance){
-	return distance < 6; //TODO dit nog bewerken afhankelijk van de sensor
+	return distance < 7; //TODO dit nog bewerken afhankelijk van de sensor
 }
 
 bool open_gripper(float distance){
-	return distance > 12;
+	return distance > 10;
+}
+
+void shutdown(const std_msgs::Bool::ConstPtr& b){
+	ros::shutdown();
 }

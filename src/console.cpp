@@ -2,6 +2,7 @@
 #include <string>
 #include <std_msgs/Float32.h>
 #include <std_msgs/String.h>
+#include <std_msgs/Bool.h>
 #include <Grijper/command.h>
 #include <ros/ros.h>
 
@@ -19,6 +20,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   force_ad = n.advertise<std_msgs::Float32>("gripper_force", 1000);
   ros::Publisher command_ad = n.advertise<std_msgs::String>("command", 1000);
+  ros::Publisher shutdown = n.advertise<std_msgs::Bool>("shutdown", 1);
   init();
  
   while(exit_cmd == false){
@@ -44,9 +46,15 @@ int main(int argc, char **argv)
     }else if(cmd.compare("force") == 0){
       printf("Set force to: ");
       cin >> force;
+      std_msgs::Float32 msg;
+      msg.data = force;
+      force_ad.publish(msg);
       printf("Force set to: %f\n", force);
     }else if(cmd.compare("exit") == 0){
       exit_cmd = true;
+      std_msgs::Bool msg;
+      msg.data = true;
+      shutdown.publish(msg);
     }else{
       printf("Please use the commands 'open', 'close', 'relax', 'force', 'get_force' or 'exit'.\n");
     }
