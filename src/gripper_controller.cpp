@@ -12,8 +12,11 @@ void setForce(const std_msgs::Float32::ConstPtr&);
 void gripperPhidget(const std_msgs::Int32::ConstPtr&);
 void gripperCommand(const std_msgs::String::ConstPtr&);
 ros::Publisher control;
-bool close_gripper(int);
+float sensorToDistance(int);
+bool close_gripper(float);
+bool open_gripper(float);
 bool gripper_open = true;
+bool force_open = false;
 float last_sensor_value = 0;
 float force = 0.5;
 int pause_time = 1500;
@@ -35,12 +38,14 @@ void gripperPhidget(const std_msgs::Int32::ConstPtr& msg){
 
 	int sensor_value = msg->data;
 	
-	if(abs(sensor_value - last_sensor_value) > 50){
+	if(abs(sensor_value - last_sensor_value) > 20){
 
 		last_sensor_value = sensor_value;
 
-		ROS_INFO("received sensor value: %i", sensor_value);
-		if(close_gripper(sensor_value) && gripper_open){
+		float distance = sensorToDistance(sensor_value);
+
+		ROS_INFO("received distance: %f", distance);
+		if(close_gripper(distance) && gripper_open && !force_open){
 			ROS_INFO("Closing gripper");
 			Grijper::command msg;
 			msg.cmd = "close";
@@ -48,13 +53,18 @@ void gripperPhidget(const std_msgs::Int32::ConstPtr& msg){
 			gripper_open = false;
 			control.publish(msg);
 		}
-		if(!close_gripper(sensor_value) && !gripper_open){
+		if(open_gripper(distance) && !gripper_open){
 			ROS_INFO("Opening gripper");
 			Grijper::command msg;
 			msg.cmd = "open";
 			msg.force = force;
 			gripper_open = true;
 			control.publish(msg);
+		}
+
+		if(open_gripper(distance) && force_open){
+			ROS_INFO("Resetting force_open");
+			force_open = false;
 		}
 	}
 }
@@ -69,17 +79,20 @@ void gripperCommand(const std_msgs::String::ConstPtr& msg){
 	Grijper::command ctl;
 	if(cmd.compare("open") == 0){
 		ROS_INFO("Opening gripper");
+		force_open = true;
 		ctl.cmd = "open";
 		ctl.force = force;
 		gripper_open = true;
 		control.publish(ctl);
 	}else if(cmd.compare("relax") == 0){
 		ROS_INFO("Relaxing gripper");
+		force_open = false;
 		ctl.cmd = "relax";
 		ctl.force = 0;
 		control.publish(ctl);
 	}else if(cmd.compare("close") == 0){
 		ROS_INFO("Closing gripper");
+		force_open = false;
 		ctl.cmd = "close";
 		ctl.force = force;
 		gripper_open = false;
@@ -89,6 +102,16 @@ void gripperCommand(const std_msgs::String::ConstPtr& msg){
 	}
 }
 
-bool close_gripper(int distance){
-	return distance < 100; //TODO dit nog bewerken afhankelijk van de sensor
+float sensorToDistance(int sensorValue){
+
+	return 2076.0f / (sensorValue - 11.0f);
+
+}
+
+bool close_gripper(float distance){
+	return distance < 6; //TODO dit nog bewerken afhankelijk van de sensor
+}
+
+bool open_gripper(float distance){
+	return distance > 12;
 }
