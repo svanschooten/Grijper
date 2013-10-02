@@ -17,7 +17,7 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber subscriber = n.subscribe("gripper_state", 1000, rvizUpdater);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
-	ros::spin();
+	ros::spinOnce();
 	ros::Publisher joint_pub = n.advertise<sensor_msgs::JointState>("jstates", 1);
 	ros::Rate loop_rate(10);
 	ros::spinOnce();
@@ -74,10 +74,10 @@ int main(int argc, char **argv){
 }
 
 void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
+	motor_stand = msg->data;
 	ROS_INFO("rziv distance: %f", msg->data);
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){
 	ros::shutdown();
-	ROS_INFO("grippere state: %f", msg->data);
 }

@@ -6,7 +6,7 @@
 //#include <rvix> en dan nog wat dingen
 
 void rvizUpdater(const std_msgs::Int32::ConstPtr&);
-void rvizUpdater(const std_msgs::Int32::ConstPtr&);
+//void rvizUpdater(const std_msgs::Int32::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
 
 // declare variables 
@@ -22,7 +22,7 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber subscriber = n.subscribe("phidget_value", 1000, rvizUpdater);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
-	ros::spin();
+	ros::spinOnce();
 	ros::Publisher cylinder_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 	ros::Rate loop_rate(10);
 	ros::spinOnce();
@@ -95,7 +95,7 @@ int main(int argc, char **argv){
 
 void rvizUpdater(const std_msgs::Int32::ConstPtr& msg){
 	dist_int = msg->data;
-	ROS_INFO("rziv distance: %i", msg->data);
+	ROS_INFO("rziv distance: %i", dist_int);
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){
