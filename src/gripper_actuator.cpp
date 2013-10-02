@@ -4,7 +4,6 @@
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
 #include <Grijper/command.h>
-#include <Grijper/calc_current.h>
 #include <threemxl/C3mxlROS.h>
 
 using namespace std;
@@ -41,7 +40,6 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber controller = n.subscribe("gripper_controll", 1000, gripperControl);
 	gripper_state = n.advertise<std_msgs::Float32>("gripper_state", 1000);
-	client = n.serviceClient<Grijper::calc_current>("calc_current");
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
 	ros::spin();
 
@@ -52,7 +50,6 @@ void gripperControl(const Grijper::command::ConstPtr& msg){
 	string cmd = msg->cmd;
 	const char* c_cmd = cmd.c_str();
 	float force = msg->force;
-	//current = calc_current(force);
 	current = force;	
 	ROS_INFO("Actuating gripper: %sing %fN -> %fA",c_cmd, force, current);
 	if(cmd.compare("open") == 0){
@@ -85,9 +82,7 @@ bool relax(){
 }
 
 float calc_current(float force){
-	Grijper::calc_current srv;
-	srv.request.force = force;
-	return client.call(srv);
+	return force;
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){

@@ -74,10 +74,10 @@ int main(int argc, char **argv){
 }
 
 void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
-	ROS_INFO("rziv distance: %f", msg->data);
+	motor_stand = msg->data;
+	ROS_INFO("Rviz motor state: %f", msg->data);
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){
 	ros::shutdown();
-	ROS_INFO("grippere state: %f", msg->data);
 }
