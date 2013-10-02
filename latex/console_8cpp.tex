@@ -1,0 +1,92 @@
+\section{console.\-cpp File Reference}
+\label{console_8cpp}\index{console.\-cpp@{console.\-cpp}}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Float32.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-String.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Bool.\-h$>$}\\*
+{\ttfamily \#include $<$Grijper/command.\-h$>$}\\*
+{\ttfamily \#include $<$ros/ros.\-h$>$}\\*
+Include dependency graph for console.\-cpp\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{console_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf init} ()
+\begin{DoxyCompactList}\small\item\em Initialiser for the system to ensure the default forces are identical throughout the system. \end{DoxyCompactList}\item 
+int {\bf main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em The main method of the console. The console listens to input an passes the commands on to the controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf exit\-\_\-cmd} = false
+\item 
+float {\bf force} = 0.\-5
+\item 
+ros\-::\-Publisher {\bf force\-\_\-ad}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{console.\-cpp@{console.\-cpp}!init@{init}}
+\index{init@{init}!console.cpp@{console.\-cpp}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{console_8cpp_a02fd73d861ef2e4aabb38c0c9ff82947}
+
+
+Initialiser for the system to ensure the default forces are identical throughout the system. 
+
+Initialises the system, or in this case, passes on the given default target force for consistency ensurance. 
+
+Definition at line 86 of file console.\-cpp.
+
+\index{console.\-cpp@{console.\-cpp}!main@{main}}
+\index{main@{main}!console.cpp@{console.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{console_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+The main method of the console. The console listens to input an passes the commands on to the controller. 
+
+The console listens to user input to generate a command. These commands can be 'open', 'close', 'relax', 'force $<$ target force $>$', 'get\-\_\-force' and 'exit' The 'open' command manually opens the gripper. The 'close' command manually closes the gripper. The 'relax' command relaxes the gripper (e.\-g. set the target force to 0). This can only be done manually. The 'force $<$ target force $>$' command sets the target force to the '$<$ target force $>$' parameter. The 'get\-\_\-force' command returns the target force as has been set. The 'exit' command passes on the shutdown command to all listening nodes before shutting down itself. This should be used to control all nodes.
+
+If an invalid command is given it will return \char`\"{}\-Please use the commands 'open', 'close', 'relax', 'force', 'get\-\_\-force' or 'exit'.\char`\"{}.' 
+
+Definition at line 31 of file console.\-cpp.
+
+
+
+\subsection{Variable Documentation}
+\index{console.\-cpp@{console.\-cpp}!exit\-\_\-cmd@{exit\-\_\-cmd}}
+\index{exit\-\_\-cmd@{exit\-\_\-cmd}!console.cpp@{console.\-cpp}}
+\subsubsection[{exit\-\_\-cmd}]{\setlength{\rightskip}{0pt plus 5cm}bool exit\-\_\-cmd = false}\label{console_8cpp_a088d079630f5be4a5d3e0088f73be546}
+Variable indicating whether the shutdown command has been given. 
+
+Definition at line 12 of file console.\-cpp.
+
+\index{console.\-cpp@{console.\-cpp}!force@{force}}
+\index{force@{force}!console.cpp@{console.\-cpp}}
+\subsubsection[{force}]{\setlength{\rightskip}{0pt plus 5cm}float force = 0.\-5}\label{console_8cpp_ad0952eff2667e5af2b307ba4f6d0b06b}
+Force variable standard set to 0.\-5. 
+
+Definition at line 11 of file console.\-cpp.
+
+\index{console.\-cpp@{console.\-cpp}!force\-\_\-ad@{force\-\_\-ad}}
+\index{force\-\_\-ad@{force\-\_\-ad}!console.cpp@{console.\-cpp}}
+\subsubsection[{force\-\_\-ad}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher force\-\_\-ad}\label{console_8cpp_a663ced0a7f6b298b0ca0f30fa3c3cbb5}
+Force message publisher. 
+
+Definition at line 13 of file console.\-cpp.
+

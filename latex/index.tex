@@ -1,0 +1,142 @@
+
+
+\section*{\doxyref{Grijper}{p.}{namespaceGrijper}}
+
+\subsection*{Controlling a robotic hand}
+
+{\bfseries \doxyref{Grijper}{p.}{namespaceGrijper}} is a package containing nodes that are used to control a motorised robotic hand, henceforth called the 'gripper'.
+
+This is done by reading and evaluating a sensor and it's values using the phidget in the phidget\-\_\-reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.
+
+This state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.\-0 and 1.\-0. 0.\-0 indicating the gripper is completely open and 1.\-0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.\section{R\-O\-S Grijper A\-P\-I}\label{index_rosapi}
+Because of the independent and standardised setup of this package, \doxyref{Grijper}{p.}{namespaceGrijper} only consists of communicating nodes that can run independently (though having almost to no functionality without their proper messages).
+
+List of nodes\-:
+\begin{DoxyItemize}
+\item {\bfseries } {\tt gripper\-\_\-console}
+\item {\bfseries } {\tt gripper\-\_\-controller}
+\item {\bfseries } {\tt gripper\-\_\-actuator}
+\item {\bfseries } {\tt phidget\-\_\-reader}
+\item {\bfseries } {\tt rviz\-\_\-gripper}
+\item {\bfseries } {\tt rviz\-\_\-object}
+\end{DoxyItemize}
+
+
+
+\subsection{gripper\-\_\-console}\label{index_gripper_console}
+gripper\-\_\-console makes the system controllable by the user through console input and output.\subsubsection{Commands}\label{index_console_commands}
+
+\begin{DoxyItemize}
+\item {\bfseries 'open'} Opens the gripper.
+\item {\bfseries 'close'} Closes the gripper.
+\item {\bfseries 'relax'} Relaxes the gripper.
+\item {\bfseries 'force} $<$ target force $>$' Sets the target force to '$<$ target force $>$' to be used in future commands.
+\item {\bfseries 'get\-\_\-force'} Returns the current target force.
+\item {\bfseries 'exit'} Sends the shutdown signal to all nodes and shuts down.
+\end{DoxyItemize}\subsubsection{Usage}\label{index_console_usage}
+\begin{DoxyVerb}$ rosrun Grijper gripper_console [standard ROS args]
+\end{DoxyVerb}
+\subsubsection{topics R\-O\-S topics}\label{index_console_topics}
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}gripper\-\_\-force\char`\"{}}\-: [std\-\_\-msgs/\-Float32] The set target force at which the gripper should close.
+\item {\bfseries \char`\"{}command\char`\"{}}\-: [std\-\_\-msgs/\-String] The command to be passed on.
+\item {\bfseries \char`\"{}shutdown\char`\"{}} [std\-\_\-msgs/\-Bool] The shutdown command.
+\end{DoxyItemize}
+
+
+
+\subsection{gripper\-\_\-controller}\label{index_gripper_controller}
+gripper\-\_\-controller listens to the phidget and console, thus deciding and controlling the system. Published commands to the actuator.\subsubsection{Usage}\label{index_controller_usage}
+\begin{DoxyVerb}$ rosrun Grijper gripper_controller [standard ROS args]
+\end{DoxyVerb}
+\subsubsection{topics R\-O\-S topics}\label{index_controller_topics}
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}gripper\-\_\-control\char`\"{}}\-: [Grijper/command] The command to be passed on, contains a 'cmd' string and a 'force' float.
+\end{DoxyItemize}
+
+Subscribes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}gripper\-\_\-force\char`\"{}}\-: [std\-\_\-msgs/\-Float32] The set target force at which the gripper should close.
+\item {\bfseries \char`\"{}command\char`\"{}}\-: [std\-\_\-msgs/\-String] The command to be passed on.
+\item {\bfseries \char`\"{}shutdown\char`\"{}} [std\-\_\-msgs/\-Bool] The shutdown command.
+\item {\bfseries \char`\"{}phidget\-\_\-value\char`\"{}} [std\-\_\-msgs/\-Float32] The calculated distance from the read value.
+\end{DoxyItemize}
+
+
+
+\subsection{gripper\-\_\-actuator}\label{index_gripper_actuator}
+gripper\-\_\-actuator does...\subsubsection{Usage}\label{index_actuator_usage}
+\begin{DoxyVerb}$ rosrun Grijper gripper_actuator [standard ROS args]
+\end{DoxyVerb}
+\subsubsection{R\-O\-S topics}\label{index_actuator_topics}
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+Subscribes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+
+
+\subsection{phidget\-\_\-reader}\label{index_phidget_reader}
+phidget\-\_\-reader does...\subsubsection{Usage}\label{index_reader_usage}
+\begin{DoxyVerb}$ rosrun Grijper phidget_reader [standard ROS args]
+\end{DoxyVerb}
+\subsubsection{R\-O\-S topics}\label{index_reader_topics}
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+Subscribes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+
+
+\subsection{rviz\-\_\-gripper}\label{index_rviz_gripper}
+rviz\-\_\-gripper does...\subsubsection{Usage}\label{index_rviz_gripper_usage}
+\begin{DoxyVerb}$ rosrun Grijper rviz_gripper [standard ROS args]
+\end{DoxyVerb}
+\subsubsection{R\-O\-S topics}\label{index_rviz_gripper_topics}
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+Subscribes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+
+
+\subsection{rviz\-\_\-object}\label{index_rviz_object}
+rviz\-\_\-object does...\subsubsection{Usage}\label{index_rviz_object_usage}
+\begin{DoxyVerb}$ rosrun Grijper rviz_object [standard ROS args]
+\end{DoxyVerb}
+\subsubsection{R\-O\-S topics}\label{index_rviz_object_topics}
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+Subscribes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\end{DoxyItemize}
+
+
+
+\section{Command-\/line tools}\label{index_commandline}
+The \doxyref{Grijper}{p.}{namespaceGrijper} package can also be built by launching the Grijper.\-launch file. It will encapsule the console in the current console, enabling control but hiding all reduntant information from the other nodes.\subsection{Grijper.\-launch}\label{index_script_name}
+Description of what this script/file does.\subsubsection{Usage}\label{index_Usage}
+\begin{DoxyVerb}$ roslaunch Grijper Grijper.launch
+\end{DoxyVerb}
+ 
