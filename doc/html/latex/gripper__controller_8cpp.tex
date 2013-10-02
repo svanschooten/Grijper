@@ -1,69 +1,122 @@
 \section{gripper\-\_\-controller.\-cpp File Reference}
 \label{gripper__controller_8cpp}\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}}
 {\ttfamily \#include $<$ros/ros.\-h$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
 {\ttfamily \#include $<$std\-\_\-msgs/\-Float32.\-h$>$}\\*
-{\ttfamily \#include $<$sstream$>$}\\*
-Include dependency graph for gripper\-\_\-controller.\-cpp\-:
-\nopagebreak
+{\ttfamily \#include $<$std\-\_\-msgs/\-Bool.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-String.\-h$>$}\\*
+{\ttfamily \#include $<$Grijper/command.\-h$>$}\\*
+Include dependency graph for gripper\-\_\-controller.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=288pt]{gripper__controller_8cpp__incl}
+\includegraphics[width=350pt]{gripper__controller_8cpp__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-float {\bf calc\-\_\-force} (int distance)
-\item 
-bool {\bf close\-\_\-gripper} (int)
-\item 
-void {\bf gripper\-Callback} (const std\-\_\-msgs\-::\-Int32\-::\-Const\-Ptr \&)
-\item 
+bool {\bf close\-\_\-gripper} (float {\bf distance})
+\begin{DoxyCompactList}\small\item\em Small evaluation method to see if the gripper should be closed. \end{DoxyCompactList}\item 
+void {\bf gripper\-Command} (const std\-\_\-msgs\-::\-String\-::\-Const\-Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Method for evaluating and executing commands received from the console. \end{DoxyCompactList}\item 
+void {\bf gripper\-Phidget} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Method that evaluates the phidget sensor values and takes appropriate action. \end{DoxyCompactList}\item 
 int {\bf main} (int argc, char $\ast$$\ast$argv)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Main method of the controller node. All incoming messages are analysed and commands are sent from this node. \end{DoxyCompactList}\item 
+bool {\bf open\-\_\-gripper} (float {\bf distance})
+\begin{DoxyCompactList}\small\item\em Small evaluation method to see if the gripper should be opened. \end{DoxyCompactList}\item 
+void {\bf set\-Force} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Method for setting the force on message receiving. \end{DoxyCompactList}\item 
+void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&b)
+\begin{DoxyCompactList}\small\item\em Controll method to shutdown this R\-O\-S node when the command is given. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-bool {\bf gripper\-\_\-open} = false
+ros\-::\-Publisher {\bf control}
 \item 
-ros\-::\-Publisher {\bf publisher}
+float {\bf force} = 0.\-35
+\item 
+bool {\bf force\-\_\-open} = false
+\item 
+bool {\bf gripper\-\_\-open} = true
+\item 
+float {\bf last\-\_\-distance} = 0
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!calc\-\_\-force@{calc\-\_\-force}}
-\index{calc\-\_\-force@{calc\-\_\-force}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
-\subsubsection[{calc\-\_\-force}]{\setlength{\rightskip}{0pt plus 5cm}float calc\-\_\-force (
-\begin{DoxyParamCaption}
-\item[{int}]{distance}
-\end{DoxyParamCaption}
-)}\label{gripper__controller_8cpp_ae7e858a1a53361b90ba340b02ff95d21}
-
-
-Definition at line 35 of file gripper\-\_\-controller.\-cpp.
-
 \index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!close\-\_\-gripper@{close\-\_\-gripper}}
 \index{close\-\_\-gripper@{close\-\_\-gripper}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
 \subsubsection[{close\-\_\-gripper}]{\setlength{\rightskip}{0pt plus 5cm}bool close\-\_\-gripper (
 \begin{DoxyParamCaption}
-\item[{int}]{distance}
+\item[{float}]{distance}
 \end{DoxyParamCaption}
-)}\label{gripper__controller_8cpp_a9e09c72c06ef144f3c02303a4efed00e}
+)}\label{gripper__controller_8cpp_a26f539d26cd8707b144b8a8c6486751d}
 
 
-Definition at line 31 of file gripper\-\_\-controller.\-cpp.
+Small evaluation method to see if the gripper should be closed. 
 
-\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!gripper\-Callback@{gripper\-Callback}}
-\index{gripper\-Callback@{gripper\-Callback}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
-\subsubsection[{gripper\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Callback (
+Compares the distance value to a threshold value to see if the gripper should be closed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & The distance to be evaluated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean whether the gripper should be closed. 
+\end{DoxyReturn}
+
+
+Definition at line 149 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!gripper\-Command@{gripper\-Command}}
+\index{gripper\-Command@{gripper\-Command}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{gripper\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Command (
 \begin{DoxyParamCaption}
-\item[{const std\-\_\-msgs\-::\-Int32\-::\-Const\-Ptr \&}]{msg}
+\item[{const std\-\_\-msgs\-::\-String\-::\-Const\-Ptr \&}]{msg}
 \end{DoxyParamCaption}
-)}\label{gripper__controller_8cpp_a037cf126f5193bf84c7b077fdb2ebb86}
+)}\label{gripper__controller_8cpp_a912529eaef67feaf89ec1c469baddbc0}
 
 
-Definition at line 21 of file gripper\-\_\-controller.\-cpp.
+Method for evaluating and executing commands received from the console. 
+
+This method is called for every console command that is received. The message parameter contains a string describing the command. When a command is received a \doxyref{Grijper\-::command}{p.}{namespaceGrijper_a0366861a04233d7213a655f01bb7068a} is created to give the controller command to the actuator. This command contains a 'cmd' string describing the command and (if applicable) a 'force' float containing the target force.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message containing the command string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 113 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!gripper\-Phidget@{gripper\-Phidget}}
+\index{gripper\-Phidget@{gripper\-Phidget}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{gripper\-Phidget}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Phidget (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{gripper__controller_8cpp_a7ca6c0a0c98d6b50749d4432f9246148}
+
+
+Method that evaluates the phidget sensor values and takes appropriate action. 
+
+This method is called every time the phidget passes on a value, extracting the distance (by using \doxyref{sensor\-To\-Distance(int)}{p.}{phidget__reader_8cpp_a8564fe398b4af80bdf3877410ffcbc67}). Once the distance has been calculated the value is compared to thresholds and a command is given to the actuator.
+
+If the gripper was forced open, and the gripper should close due to proximity of an object, the force\-\_\-open value is reset to false.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message containing the Phidget sensor value. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file gripper\-\_\-controller.\-cpp.
 
 \index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!main@{main}}
 \index{main@{main}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
@@ -75,22 +128,112 @@ Definition at line 21 of file gripper\-\_\-controller.\-cpp.
 )}\label{gripper__controller_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
 
-Definition at line 10 of file gripper\-\_\-controller.\-cpp.
+Main method of the controller node. All incoming messages are analysed and commands are sent from this node. 
 
+This node listens to commands given from the console, but also evaluates the values passed on from the phidget reader. It evaluates the console commands and if needed passes them on to the actuator node. Otherwise is extracts the distance from the sensor value and compares it to the threshold values to open (using \doxyref{open()}{p.}{gripper__actuator_8cpp_adb20eae91802d6ad6366cdee0220c280}) and close (using \doxyref{close()}{p.}{gripper__actuator_8cpp_a46143fd6de3be9ab9951f140d3ae8c2f}) the gripper. If the command is received to alter the target force, that is set and used in future commands to the actuator.
+
+This node also listens to the shutdown command from the console, and executes \doxyref{shutdown()}{p.}{gripper__actuator_8cpp_a6099bcde46c020c0703be2c28a4432d5} 
+
+Definition at line 33 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!open\-\_\-gripper@{open\-\_\-gripper}}
+\index{open\-\_\-gripper@{open\-\_\-gripper}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{open\-\_\-gripper}]{\setlength{\rightskip}{0pt plus 5cm}bool open\-\_\-gripper (
+\begin{DoxyParamCaption}
+\item[{float}]{distance}
+\end{DoxyParamCaption}
+)}\label{gripper__controller_8cpp_ab1772f3f3f41fdbf5f1a875261c527bb}
+
+
+Small evaluation method to see if the gripper should be opened. 
+
+Compares the distance value to a threshold value to see if the gripper should be opened.
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & The distance to be evaluated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Boolean whether the gripper should be opened. 
+\end{DoxyReturn}
+
+
+Definition at line 161 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!set\-Force@{set\-Force}}
+\index{set\-Force@{set\-Force}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{set\-Force}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Force (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{gripper__controller_8cpp_a4ea156d5e6d55c28a9df16d7c8c7cff0}
+
+
+Method for setting the force on message receiving. 
+
+This method is called when the message for setting the force is received. This new value is then set in force and will be used in future commands.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message containing the new target force value. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 98 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void shutdown (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&}]{b}
+\end{DoxyParamCaption}
+)}\label{gripper__controller_8cpp_a6099bcde46c020c0703be2c28a4432d5}
+
+
+Controll method to shutdown this R\-O\-S node when the command is given. 
+
+This method will shutdown this node when the command is given by the console. 
+\begin{DoxyParams}{Parameters}
+{\em b} & The message containing the command. Nothing is done with the command since we know what it will be when this message is received. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Variable Documentation}
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!control@{control}}
+\index{control@{control}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{control}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher control}\label{gripper__controller_8cpp_a86a267a27768ca52a5d7c10b6d29ff6f}
+Controller message publisher. 
+
+Definition at line 15 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!force@{force}}
+\index{force@{force}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{force}]{\setlength{\rightskip}{0pt plus 5cm}float force = 0.\-35}\label{gripper__controller_8cpp_ad0952eff2667e5af2b307ba4f6d0b06b}
+Force variable, is set by default to 0.\-35 and listens to the console. 
+
+Definition at line 21 of file gripper\-\_\-controller.\-cpp.
+
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!force\-\_\-open@{force\-\_\-open}}
+\index{force\-\_\-open@{force\-\_\-open}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{force\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}bool force\-\_\-open = false}\label{gripper__controller_8cpp_a21f853fd13f4d5cc95d556086f1a398e}
+Force open state variable. 
+
+Definition at line 19 of file gripper\-\_\-controller.\-cpp.
+
 \index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!gripper\-\_\-open@{gripper\-\_\-open}}
 \index{gripper\-\_\-open@{gripper\-\_\-open}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
-\subsubsection[{gripper\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}bool gripper\-\_\-open = false}\label{gripper__controller_8cpp_a4ad9bb216d160d5273f0ccf07535d003}
+\subsubsection[{gripper\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}bool gripper\-\_\-open = true}\label{gripper__controller_8cpp_a4ad9bb216d160d5273f0ccf07535d003}
+Gripper state variable. 
 
+Definition at line 18 of file gripper\-\_\-controller.\-cpp.
 
-Definition at line 8 of file gripper\-\_\-controller.\-cpp.
+\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!last\-\_\-distance@{last\-\_\-distance}}
+\index{last\-\_\-distance@{last\-\_\-distance}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
+\subsubsection[{last\-\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}float last\-\_\-distance = 0}\label{gripper__controller_8cpp_a12530d2344e545313c0e9596cce33c92}
+Last sensor value, used for filtering and smoothing. 
 
-\index{gripper\-\_\-controller.\-cpp@{gripper\-\_\-controller.\-cpp}!publisher@{publisher}}
-\index{publisher@{publisher}!gripper_controller.cpp@{gripper\-\_\-controller.\-cpp}}
-\subsubsection[{publisher}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher publisher}\label{gripper__controller_8cpp_adde9f51ddf0fb5c82c57b4075b6e9400}
-
-
-Definition at line 6 of file gripper\-\_\-controller.\-cpp.
+Definition at line 20 of file gripper\-\_\-controller.\-cpp.
 

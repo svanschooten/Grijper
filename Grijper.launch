@@ -7,8 +7,8 @@
 	<node name="controller" pkg="Grijper" type="gripper_controller"/>
 	<node name="actuator" pkg="Grijper" type="gripper_actuator"/>
 	<node name="reader" pkg="Grijper" type="phidget_reader"/>
-	<node name="rviz_gripper" pkg="Grijper" type="rviz_gripper"/>
-	<!--<node name="rviz_object" pkg="Grijper" type="rviz_object"/>-->
+	<!--<node name="rviz_gripper" pkg="Grijper" type="rviz_gripper"/>-->
+	<node name="rviz_object" pkg="Grijper" type="rviz_object"/>
 	<node name="console" pkg="Grijper" type="gripper_console" input="screen" output="screen"/>
    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"  />

@@ -16,6 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -46,7 +48,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>All</span></a></li>
       <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
-      <li><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -55,7 +56,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -66,41 +67,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="contents">
 &#160;<ul>
-<li>calc_force()
-: <a class="el" href="gripper__controller_8cpp.html#ae7e858a1a53361b90ba340b02ff95d21">gripper_controller.cpp</a>
+<li>calc_current()
+: <a class="el" href="gripper__actuator_8cpp.html#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27">gripper_actuator.cpp</a>
 </li>
 <li>close()
-: <a class="el" href="gripper__actuator_8cpp.html#a60598c74e06026d9314d3362a1629936">gripper_actuator.cpp</a>
+: <a class="el" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f">gripper_actuator.cpp</a>
 </li>
 <li>close_gripper()
-: <a class="el" href="gripper__controller_8cpp.html#a9e09c72c06ef144f3c02303a4efed00e">gripper_controller.cpp</a>
+: <a class="el" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d">gripper_controller.cpp</a>
 </li>
-<li>execute()
-: <a class="el" href="gripper__actuator_8cpp.html#a8002ba95eddc1ad1aeb79d6ac8142156">gripper_actuator.cpp</a>
-</li>
-<li>gripperActuate()
-: <a class="el" href="gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af">gripper_actuator.cpp</a>
-</li>
-<li>gripperCallback()
-: <a class="el" href="gripper__controller_8cpp.html#a037cf126f5193bf84c7b077fdb2ebb86">gripper_controller.cpp</a>
+<li>gripperCommand()
+: <a class="el" href="gripper__controller_8cpp.html#a912529eaef67feaf89ec1c469baddbc0">gripper_controller.cpp</a>
 </li>
 <li>gripperControl()
-: <a class="el" href="gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371">gripper_actuator.cpp</a>
+: <a class="el" href="gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596">gripper_actuator.cpp</a>
+</li>
+<li>gripperPhidget()
+: <a class="el" href="gripper__controller_8cpp.html#a7ca6c0a0c98d6b50749d4432f9246148">gripper_controller.cpp</a>
+</li>
+<li>init()
+: <a class="el" href="console_8cpp.html#a02fd73d861ef2e4aabb38c0c9ff82947">console.cpp</a>
 </li>
 <li>main()
-: <a class="el" href="gripper__actuator_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">gripper_actuator.cpp</a>
+: <a class="el" href="console_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">console.cpp</a>
+, <a class="el" href="gripper__actuator_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">gripper_actuator.cpp</a>
 , <a class="el" href="rviz__object_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">rviz_object.cpp</a>
 , <a class="el" href="rviz__gripper_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">rviz_gripper.cpp</a>
 , <a class="el" href="phidget__reader_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">phidget_reader.cpp</a>
 , <a class="el" href="gripper__controller_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">gripper_controller.cpp</a>
 </li>
+<li>mean()
+: <a class="el" href="phidget__reader_8cpp.html#a478ef96a3ad4032e1f91152178c8809e">phidget_reader.cpp</a>
+</li>
 <li>open()
 : <a class="el" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280">gripper_actuator.cpp</a>
 </li>
+<li>open_gripper()
+: <a class="el" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb">gripper_controller.cpp</a>
+</li>
+<li>printbuffer()
+: <a class="el" href="phidget__reader_8cpp.html#a09b9cf5195215cdfaa34111afd03c8a8">phidget_reader.cpp</a>
+</li>
+<li>relax()
+: <a class="el" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436">gripper_actuator.cpp</a>
+</li>
 <li>rvizUpdater()
-: <a class="el" href="rviz__gripper_8cpp.html#a1ce015110fa95736c5c473f56d8740a4">rviz_gripper.cpp</a>
-, <a class="el" href="rviz__object_8cpp.html#a31e2e60662d5ec68828a3372cd4f22b7">rviz_object.cpp</a>
-, <a class="el" href="rviz__gripper_8cpp.html#a31e2e60662d5ec68828a3372cd4f22b7">rviz_gripper.cpp</a>
+: <a class="el" href="rviz__object_8cpp.html#a82df680c1afd396b56d422518e69df6d">rviz_object.cpp</a>
+, <a class="el" href="rviz__gripper_8cpp.html#a82df680c1afd396b56d422518e69df6d">rviz_gripper.cpp</a>
+</li>
+<li>sensorToDistance()
+: <a class="el" href="phidget__reader_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67">phidget_reader.cpp</a>
+</li>
+<li>setForce()
+: <a class="el" href="gripper__controller_8cpp.html#a4ea156d5e6d55c28a9df16d7c8c7cff0">gripper_controller.cpp</a>
+</li>
+<li>shiftBuffer()
+: <a class="el" href="phidget__reader_8cpp.html#ab3f7db7de2a2af54619cd7ac3517b924">phidget_reader.cpp</a>
+</li>
+<li>shutdown()
+: <a class="el" href="phidget__reader_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">phidget_reader.cpp</a>
+, <a class="el" href="gripper__controller_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">gripper_controller.cpp</a>
+, <a class="el" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">gripper_actuator.cpp</a>
+, <a class="el" href="rviz__gripper_8cpp.html#a9eeee6c84a027eabdd7230329be56bec">rviz_gripper.cpp</a>
+, <a class="el" href="rviz__object_8cpp.html#a9eeee6c84a027eabdd7230329be56bec">rviz_object.cpp</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -109,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Tue Sep 24 2013 15:54:29</small>
+<small>autogenerated on Wed Oct 2 2013 15:11:52</small>
 </div>
 </body>
 </html>

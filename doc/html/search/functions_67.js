@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gripperactuate',['gripperActuate',['../gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af',1,'gripper_actuator.cpp']]],
-  ['grippercallback',['gripperCallback',['../gripper__controller_8cpp.html#a037cf126f5193bf84c7b077fdb2ebb86',1,'gripper_controller.cpp']]],
-  ['grippercontrol',['gripperControl',['../gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371',1,'gripper_actuator.cpp']]]
+  ['grippercommand',['gripperCommand',['../gripper__controller_8cpp.html#a912529eaef67feaf89ec1c469baddbc0',1,'gripper_controller.cpp']]],
+  ['grippercontrol',['gripperControl',['../gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596',1,'gripper_actuator.cpp']]],
+  ['gripperphidget',['gripperPhidget',['../gripper__controller_8cpp.html#a7ca6c0a0c98d6b50749d4432f9246148',1,'gripper_controller.cpp']]]
 ];

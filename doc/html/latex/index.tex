@@ -1,5 +1,79 @@
+ \section*{\doxyref{Grijper}{p.}{namespaceGrijper}}
+
+\subsection*{Controlling a robotic hand}
+
+{\bfseries \doxyref{Grijper}{p.}{namespaceGrijper}} is a package containing nodes that are used to control a motorised robotic hand, henceforth called the 'gripper'.
+
+{\ttfamily This} is done by reading and evaluating a sensor and it's values using the phidget in the phidget\-\_\-reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.
+
+{\ttfamily This} state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.\-0 and 1.\-0. 0.\-0 indicating the gripper is completely open and 1.\-0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.\section{R\-O\-S Grijper A\-P\-I}\label{index_rosapi}
+List of nodes\-:
+\begin{DoxyItemize}
+\item {\bfseries }[gripper\-\_\-console]\-: gripper\-\_\-\-\_\-console\-\_\-8cpp.\-html
+\item {\bfseries }[gripper\-\_\-controller]\-: ./gripper\-\_\-\-\_\-controller\-\_\-8cpp.html
+\item {\bfseries }[gripper\-\_\-actuator]\-: ./gripper\-\_\-\-\_\-actuator\-\_\-8cpp.html
+\item {\bfseries }[phidget\-\_\-reader]\-: ./phidget\-\_\-\-\_\-reader\-\_\-8cpp.html
+\item {\bfseries }[rviz\-\_\-gripper]\-: ./rviz\-\_\-\-\_\-gripper\-\_\-8cpp.html
+\item {\bfseries }[rviz\-\_\-object]\-: ./rviz\-\_\-\-\_\-object\-\_\-8cpp.html
+\end{DoxyItemize}
 
 
-{\bfseries Grijper} 
 
---$>$ 
+\subsection{gripper\-\_\-console}\label{index_node_name}
+node\-\_\-name makes the system controllable by the user through console input and output.\subsubsection{Usage}\label{index_Usage}
+\begin{DoxyVerb}$ node_type1 [standard ROS args]
+\end{DoxyVerb}
+
+
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\begin{DoxyVerb}$ node_type1
+\end{DoxyVerb}
+\subsubsection{R\-O\-S topics}\label{index_topics}
+Subscribes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}in\char`\"{}}\-: [std\-\_\-msgs/\-Foo\-Type] description of in
+\end{DoxyItemize}
+
+Publishes to\-:
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Foo\-Type] description of out
+\end{DoxyItemize}\subsubsection{R\-O\-S parameters}\label{index_parameters}
+Reads the following parameters from the parameter server
+
+
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}$\sim$param\-\_\-name\char`\"{}} \-: {\bfseries }[type] description of param\-\_\-name
+\item {\bfseries \char`\"{}$\sim$my\-\_\-param\char`\"{}} \-: {\bfseries }[string] description of my\-\_\-param
+\end{DoxyItemize}
+
+Sets the following parameters on the parameter server
+
+
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}$\sim$param\-\_\-name\char`\"{}} \-: {\bfseries }[type] description of param\-\_\-name
+\end{DoxyItemize}\subsubsection{R\-O\-S services}\label{index_services}
+
+\begin{DoxyItemize}
+\item {\bfseries \char`\"{}foo\-\_\-service\char`\"{}}\-: [std\-\_\-srvs/\-Foo\-Type] description of foo\-\_\-service
+\end{DoxyItemize}\section{Command-\/line tools}\label{index_commandline}
+This section is a catch-\/all for any additional tools that your package provides or uses that may be of use to the reader. For example\-:
+
+
+\begin{DoxyItemize}
+\item tools/scripts (e.\-g. rospack, roscd)
+\item roslaunch .launch files
+\item xmlparam files
+\end{DoxyItemize}\subsection{script\-\_\-name}\label{index_script_name}
+Description of what this script/file does.\subsubsection{Usage}\label{index_Usage}
+\begin{DoxyVerb}$ ./script_name [args]
+\end{DoxyVerb}
+
+
+\begin{DoxyParagraph}{Example}
+
+\end{DoxyParagraph}
+\begin{DoxyVerb}$ ./script_name foo bar
+\end{DoxyVerb}
+ 

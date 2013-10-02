@@ -16,6 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -46,7 +48,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -57,12 +59,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_be77a52a37d1299814455a6bb655fedb.html">Grijper</a></li><li class="navelem"><a class="el" href="dir_5dd3550f8d5b93db4b67d183db32d82f.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -70,78 +71,62 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;ros/ros.h&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;std_msgs/Float32.h&gt;</code><br/>
-<code>#include &lt;sstream&gt;</code><br/>
-<code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;std_msgs/String.h&gt;</code><br/>
+<code>#include &lt;std_msgs/Bool.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="command_8h_source.html">Grijper/command.h</a>&gt;</code><br/>
 <code>#include &lt;threemxl/C3mxlROS.h&gt;</code><br/>
-<code>#include &lt;threemxl/CDynamixelROS.h&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for gripper_actuator.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="gripper__actuator_8cpp__incl.png" border="0" usemap="#gripper__actuator_8cpp" alt=""/></div>
 <map name="gripper__actuator_8cpp" id="gripper__actuator_8cpp">
-</map>
+<area shape="rect" id="node13" href="command_8h.html" title="Grijper/command.h" alt="" coords="608,83,739,112"/></map>
 </div>
 </div>
 <p><a href="gripper__actuator_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a3cdecab00d916e74baf9ca4b8a8fd4f1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a3cdecab00d916e74baf9ca4b8a8fd4f1">DXLC_SAFE_CALL</a>(call)</td></tr>
-<tr class="separator:a3cdecab00d916e74baf9ca4b8a8fd4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a60598c74e06026d9314d3362a1629936"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a60598c74e06026d9314d3362a1629936">close</a> (float)</td></tr>
-<tr class="separator:a60598c74e06026d9314d3362a1629936"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8002ba95eddc1ad1aeb79d6ac8142156"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a8002ba95eddc1ad1aeb79d6ac8142156">execute</a> (ArgList)</td></tr>
-<tr class="separator:a8002ba95eddc1ad1aeb79d6ac8142156"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45524816df9f7663ba360599b42a36af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af">gripperActuate</a> (const std_msgs::Float32::ConstPtr &amp;)</td></tr>
-<tr class="separator:a45524816df9f7663ba360599b42a36af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a101b2140b24b7e4ae8ffa902e5e8b371"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371">gripperControl</a> (const std_msgs::String::ConstPtr &amp;)</td></tr>
-<tr class="separator:a101b2140b24b7e4ae8ffa902e5e8b371"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b3c7d64d58f6a1d4a9f53a6e4a3aa27"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27">calc_current</a> (float <a class="el" href="gripper__controller_8cpp.html#ad0952eff2667e5af2b307ba4f6d0b06b">force</a>)</td></tr>
+<tr class="memdesc:a9b3c7d64d58f6a1d4a9f53a6e4a3aa27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion method to convert a target force into a current.  <a href="#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27">More...</a><br/></td></tr>
+<tr class="separator:a9b3c7d64d58f6a1d4a9f53a6e4a3aa27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46143fd6de3be9ab9951f140d3ae8c2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f">close</a> ()</td></tr>
+<tr class="memdesc:a46143fd6de3be9ab9951f140d3ae8c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Small controlling method for closing the gripper.  <a href="#a46143fd6de3be9ab9951f140d3ae8c2f">More...</a><br/></td></tr>
+<tr class="separator:a46143fd6de3be9ab9951f140d3ae8c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add43683f423b8ad34526564c0760d596"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596">gripperControl</a> (const <a class="el" href="structGrijper_1_1command__.html#a1abbeec38dd1d37c4960ce01a9993aaf">Grijper::command::ConstPtr</a> &amp;msg)</td></tr>
+<tr class="memdesc:add43683f423b8ad34526564c0760d596"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method controls the motor.  <a href="#add43683f423b8ad34526564c0760d596">More...</a><br/></td></tr>
+<tr class="separator:add43683f423b8ad34526564c0760d596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main method of this node. All commands are evaluated here, and motor actuation is controlled from here.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br/></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb20eae91802d6ad6366cdee0220c280"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280">open</a> ()</td></tr>
+<tr class="memdesc:adb20eae91802d6ad6366cdee0220c280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Small controlling method for opening the gripper.  <a href="#adb20eae91802d6ad6366cdee0220c280">More...</a><br/></td></tr>
 <tr class="separator:adb20eae91802d6ad6366cdee0220c280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ee232c68955d5e8c9e507b8ac38436"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436">relax</a> ()</td></tr>
+<tr class="memdesc:a76ee232c68955d5e8c9e507b8ac38436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Small controlling method for relaxing the gripper.  <a href="#a76ee232c68955d5e8c9e507b8ac38436">More...</a><br/></td></tr>
+<tr class="separator:a76ee232c68955d5e8c9e507b8ac38436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6099bcde46c020c0703be2c28a4432d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">shutdown</a> (const std_msgs::Bool::ConstPtr &amp;b)</td></tr>
+<tr class="memdesc:a6099bcde46c020c0703be2c28a4432d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controll method to shutdown this ROS node when the command is given.  <a href="#a6099bcde46c020c0703be2c28a4432d5">More...</a><br/></td></tr>
+<tr class="separator:a6099bcde46c020c0703be2c28a4432d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:adde9f51ddf0fb5c82c57b4075b6e9400"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#adde9f51ddf0fb5c82c57b4075b6e9400">publisher</a></td></tr>
-<tr class="separator:adde9f51ddf0fb5c82c57b4075b6e9400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9653d31acfffa5a40aa709b2065e00b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">current</a> = 0.04</td></tr>
+<tr class="separator:af9653d31acfffa5a40aa709b2065e00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f4419e4ba603a6e5cbe0148e492cad0"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#a9f4419e4ba603a6e5cbe0148e492cad0">gripper_state</a></td></tr>
+<tr class="separator:a9f4419e4ba603a6e5cbe0148e492cad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1874704ed544a18b8fc45cd2abacecc"><td class="memItemLeft" align="right" valign="top">CDxlGeneric *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a></td></tr>
+<tr class="separator:ac1874704ed544a18b8fc45cd2abacecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a3cdecab00d916e74baf9ca4b8a8fd4f1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DXLC_SAFE_CALL</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">call</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> { \</div>
-<div class="line">    int ret = call; \</div>
-<div class="line">    if (ret != DXL_SUCCESS) { \</div>
-<div class="line">      cout &lt;&lt; <span class="stringliteral">&quot;Error:&quot;</span> &lt;&lt; endl &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; C3mxl::translateErrorCode(ret) &lt;&lt; <span class="stringliteral">&quot; (0x&quot;</span> &lt;&lt; hex &lt;&lt; ret &lt;&lt; dec &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; endl; \</div>
-<div class="line">    } \</div>
-<div class="line">  } <span class="keywordflow">while</span> (0)</div>
-</div><!-- fragment -->
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00020">20</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a60598c74e06026d9314d3362a1629936"></a>
+<a class="anchor" id="a9b3c7d64d58f6a1d4a9f53a6e4a3aa27"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool close </td>
+          <td class="memname">float calc_current </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>force</em></td><td>)</td>
@@ -150,61 +135,65 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00058">58</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+<p>Conversion method to convert a target force into a current. </p>
+<p>Converts a target force into a current that can be passed on to the motor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">force</td><td>The target force as a float. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The calculated current. </dd></dl>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00119">119</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8002ba95eddc1ad1aeb79d6ac8142156"></a>
+<a class="anchor" id="a46143fd6de3be9ab9951f140d3ae8c2f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool execute </td>
+          <td class="memname">bool close </td>
           <td>(</td>
-          <td class="paramtype">ArgList&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00050">50</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+<p>Small controlling method for closing the gripper. </p>
+<p>This method closes the gripper with the corresponding force. </p>
+<dl class="section return"><dt>Returns</dt><dd>True </dd></dl>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00096">96</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a45524816df9f7663ba360599b42a36af"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void gripperActuate </td>
-          <td>(</td>
-          <td class="paramtype">const std_msgs::Float32::ConstPtr &amp;&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00040">40</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a101b2140b24b7e4ae8ffa902e5e8b371"></a>
+<a class="anchor" id="add43683f423b8ad34526564c0760d596"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void gripperControl </td>
           <td>(</td>
-          <td class="paramtype">const std_msgs::String::ConstPtr &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structGrijper_1_1command__.html#a1abbeec38dd1d37c4960ce01a9993aaf">Grijper::command::ConstPtr</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00045">45</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+<p>This method controls the motor. </p>
+<p>This method is called every time a command from the controller has been given. This command is evaluated and executed. The msg parameter contains the 'cmd' string describing the command to be executed and also a 'force' float that indicates the target force. This target force is converted to a current, which is passed in to the motor, with a sign and magnitude according to the command.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>The message containing the command and target force. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00063">63</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
 
 </div>
 </div>
@@ -232,6 +221,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Main method of this node. All commands are evaluated here, and motor actuation is controlled from here. </p>
+<p>This method controls the motor powering the gripper. This also meand publishing the gripper state when it has changed.</p>
+<p>This node also listens to the shutdown command given by the controller. </p>
+
 <p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00028">28</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
 
 </div>
@@ -249,22 +242,105 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00054">54</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+<p>Small controlling method for opening the gripper. </p>
+<p>This method opens the gripper with the corresponding force. </p>
+<dl class="section return"><dt>Returns</dt><dd>True </dd></dl>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00085">85</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="adde9f51ddf0fb5c82c57b4075b6e9400"></a>
+<a class="anchor" id="a76ee232c68955d5e8c9e507b8ac38436"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ros::Publisher publisher</td>
+          <td class="memname">bool relax </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00015">15</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+<p>Small controlling method for relaxing the gripper. </p>
+<p>This method relaxed the gripper. </p>
+<dl class="section return"><dt>Returns</dt><dd>True </dd></dl>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00107">107</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6099bcde46c020c0703be2c28a4432d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void shutdown </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::Bool::ConstPtr &amp;&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controll method to shutdown this ROS node when the command is given. </p>
+<p>This method will shutdown this node when the command is given by the console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>The message containing the command. Nothing is done with the command since we know what it will be when this message is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00128">128</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="af9653d31acfffa5a40aa709b2065e00b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float current = 0.04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Target current variable, default is set to 0.04. </p>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00018">18</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f4419e4ba603a6e5cbe0148e492cad0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ros::Publisher gripper_state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gripper state publisher. </p>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00012">12</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac1874704ed544a18b8fc45cd2abacecc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CDxlGeneric* motor_</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Threemxl generic motor controller pointer. </p>
+
+<p>Definition at line <a class="el" href="gripper__actuator_8cpp_source.html#l00019">19</a> of file <a class="el" href="gripper__actuator_8cpp_source.html">gripper_actuator.cpp</a>.</p>
 
 </div>
 </div>
@@ -274,7 +350,7 @@ Variables</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Tue Sep 24 2013 15:54:29</small>
+<small>autogenerated on Wed Oct 2 2013 15:11:52</small>
 </div>
 </body>
 </html>

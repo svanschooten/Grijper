@@ -1,14 +1,93 @@
 /**
 \mainpage
 \htmlinclude manifest.html
-
-\b Grijper 
-
-<!-- 
-Provide an overview of your package.
--->
-
--->
+# Grijper #
+## Controlling a robotic hand ##
 
 
+\b Grijper is a package containing nodes that are used to control a motorised robotic hand, henceforth called the 'gripper'.
+
+\p This is done by reading and evaluating a sensor and it's values using the phidget in the phidget_reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.
+
+\p This state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.0 and 1.0. 0.0 indicating the gripper is completely open and 1.0 indicates the gripper has been closed.
+Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.
+
+\section rosapi ROS Grijper API
+
+List of nodes:
+- \b [gripper_console]: gripper__console_8cpp.html
+- \b [gripper_controller]: ./gripper__controller_8cpp.html
+- \b [gripper_actuator]: ./gripper__actuator_8cpp.html
+- \b [phidget_reader]: ./phidget__reader_8cpp.html
+- \b [rviz_gripper]: ./rviz__gripper_8cpp.html
+- \b [rviz_object]: ./rviz__object_8cpp.html
+
+
+<hr>
+
+\subsection node_name gripper_console
+
+node_name makes the system controllable by the user through console input and output.
+
+\subsubsection Usage
+\verbatim
+$ node_type1 [standard ROS args]
+\endverbatim
+
+\par Example
+
+\verbatim
+$ node_type1
+\endverbatim
+
+
+\subsubsection topics ROS topics
+
+Subscribes to:
+- \b "in": [std_msgs/FooType] description of in
+
+Publishes to:
+- \b "out": [std_msgs/FooType] description of out
+
+\subsubsection parameters ROS parameters
+
+Reads the following parameters from the parameter server
+
+- \b "~param_name" : \b [type] description of param_name
+- \b "~my_param" : \b [string] description of my_param
+
+Sets the following parameters on the parameter server
+
+- \b "~param_name" : \b [type] description of param_name
+
+
+\subsubsection services ROS services
+- \b "foo_service": [std_srvs/FooType] description of foo_service
+
+
+<!-- END: copy for each node -->
+
+\section commandline Command-line tools
+
+This section is a catch-all for any additional tools that your package
+provides or uses that may be of use to the reader. For example:
+
+- tools/scripts (e.g. rospack, roscd)
+- roslaunch .launch files
+- xmlparam files
+
+\subsection script_name script_name
+
+Description of what this script/file does.
+
+\subsubsection Usage
+\verbatim
+$ ./script_name [args]
+\endverbatim
+
+\par Example
+
+\verbatim
+$ ./script_name foo bar
+\endverbatim
 */

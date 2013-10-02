@@ -1,14 +1,15 @@
 \section{rviz\-\_\-object.\-cpp File Reference}
 \label{rviz__object_8cpp}\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}}
-{\ttfamily \#include \char`\"{}ros/ros.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}std\-\_\-msgs/\-Int32.\-h\char`\"{}}\\*
-{\ttfamily \#include $<$sstream$>$}\\*
-Include dependency graph for rviz\-\_\-object.\-cpp\-:
-\nopagebreak
+{\ttfamily \#include $<$ros/ros.\-h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Float32.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Bool.\-h$>$}\\*
+{\ttfamily \#include $<$visualization\-\_\-msgs/\-Marker.\-h$>$}\\*
+Include dependency graph for rviz\-\_\-object.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=278pt]{rviz__object_8cpp__incl}
+\includegraphics[width=350pt]{rviz__object_8cpp__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -16,9 +17,14 @@ Include dependency graph for rviz\-\_\-object.\-cpp\-:
 \item 
 int {\bf main} (int argc, char $\ast$$\ast$argv)
 \item 
-void {\bf rviz\-Updater} ()
+void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&)
 \item 
-void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Int32\-::\-Const\-Ptr \&msg)
+void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+float {\bf distance}
 \end{DoxyCompactItemize}
 
 
@@ -33,23 +39,29 @@ void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Int32\-::\-Const\-Ptr \&msg)
 )}\label{rviz__object_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
 
-Definition at line 7 of file rviz\-\_\-object.\-cpp.
+Definition at line 14 of file rviz\-\_\-object.\-cpp.
 
 \index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!rviz\-Updater@{rviz\-Updater}}
 \index{rviz\-Updater@{rviz\-Updater}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
 \subsubsection[{rviz\-Updater}]{\setlength{\rightskip}{0pt plus 5cm}void rviz\-Updater (
 \begin{DoxyParamCaption}
-{}
+\item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
 \end{DoxyParamCaption}
-)}\label{rviz__object_8cpp_a1ce015110fa95736c5c473f56d8740a4}
-\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!rviz\-Updater@{rviz\-Updater}}
-\index{rviz\-Updater@{rviz\-Updater}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
-\subsubsection[{rviz\-Updater}]{\setlength{\rightskip}{0pt plus 5cm}void rviz\-Updater (
+)}\label{rviz__object_8cpp_a82df680c1afd396b56d422518e69df6d}
+\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void shutdown (
 \begin{DoxyParamCaption}
-\item[{const std\-\_\-msgs\-::\-Int32\-::\-Const\-Ptr \&}]{msg}
+\item[{const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&}]{b}
 \end{DoxyParamCaption}
-)}\label{rviz__object_8cpp_a31e2e60662d5ec68828a3372cd4f22b7}
+)}\label{rviz__object_8cpp_a9eeee6c84a027eabdd7230329be56bec}
 
 
-Definition at line 17 of file rviz\-\_\-object.\-cpp.
+\subsection{Variable Documentation}
+\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!distance@{distance}}
+\index{distance@{distance}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
+\subsubsection[{distance}]{\setlength{\rightskip}{0pt plus 5cm}float distance}\label{rviz__object_8cpp_a06f14a9abd47b91465f895d5259cdc1b}
+
+
+Definition at line 12 of file rviz\-\_\-object.\-cpp.
 

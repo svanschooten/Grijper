@@ -1,20 +1,19 @@
 #include <ros/ros.h>
 #include <string>
-#include <std_msgs/Int32.h>
+#include <std_msgs/Float32.h>
 #include <std_msgs/Bool.h>
 #include <visualization_msgs/Marker.h>
 //#include <rvix> en dan nog wat dingen
 
-void rvizUpdater(const std_msgs::Int32::ConstPtr&);
-//void rvizUpdater(const std_msgs::Int32::ConstPtr&);
+
+void rvizUpdater(const std_msgs::Float32::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
 
 // declare variables 
-int dist_int;
+float distance;
 
 int main(int argc, char **argv){
 	
-	double dist;
 	bool added = false;
 	double diameter = 0.06, height=0.1;;
 
@@ -44,10 +43,8 @@ int main(int argc, char **argv){
 		marker.type = visualization_msgs::Marker::CYLINDER;
 		// add marker
 
-    	if(dist_int)
+    	if(distance)
     	{
-    		// distance 2 double
-			dist = dist_int/100;
 
 			// add marker if there is no marker
     		if(added==false){
@@ -57,7 +54,7 @@ int main(int argc, char **argv){
     		
 			//marker position
 			marker.pose.position.x = 0;
-			marker.pose.position.y = -dist;
+			marker.pose.position.y = -distance/100;
 			marker.pose.position.z = height/2-0.02;
 			// marker orientation
 			marker.pose.orientation.x = 0.0;
@@ -93,9 +90,10 @@ int main(int argc, char **argv){
 	return 0;
 }
 
-void rvizUpdater(const std_msgs::Int32::ConstPtr& msg){
-	dist_int = msg->data;
-	ROS_INFO("rziv distance: %i", dist_int);
+
+void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
+	distance = msg->data;
+	ROS_INFO("rziv distance: %f", msg->data);
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){

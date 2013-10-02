@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rvizupdater',['rvizUpdater',['../rviz__gripper_8cpp.html#a1ce015110fa95736c5c473f56d8740a4',1,'rvizUpdater():&#160;rviz_gripper.cpp'],['../rviz__gripper_8cpp.html#a31e2e60662d5ec68828a3372cd4f22b7',1,'rvizUpdater(const std_msgs::Int32::ConstPtr &amp;msg):&#160;rviz_gripper.cpp'],['../rviz__object_8cpp.html#a1ce015110fa95736c5c473f56d8740a4',1,'rvizUpdater():&#160;rviz_object.cpp'],['../rviz__object_8cpp.html#a31e2e60662d5ec68828a3372cd4f22b7',1,'rvizUpdater(const std_msgs::Int32::ConstPtr &amp;msg):&#160;rviz_object.cpp']]]
+  ['relax',['relax',['../gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436',1,'gripper_actuator.cpp']]],
+  ['rvizupdater',['rvizUpdater',['../rviz__gripper_8cpp.html#a82df680c1afd396b56d422518e69df6d',1,'rvizUpdater(const std_msgs::Float32::ConstPtr &amp;):&#160;rviz_gripper.cpp'],['../rviz__object_8cpp.html#a82df680c1afd396b56d422518e69df6d',1,'rvizUpdater(const std_msgs::Float32::ConstPtr &amp;):&#160;rviz_object.cpp']]]
 ];

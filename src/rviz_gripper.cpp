@@ -62,7 +62,7 @@ int main(int argc, char **argv){
 		// send joint state
 		joint_pub.publish(joint_state);
 
-		ROS_INFO("mt_angle: [%f]", mt_angle);
+		//ROS_INFO("mt_angle: [%f]", mt_angle);
 
 		//std::cout<<bmdll;
 		ros::spinOnce();

@@ -1,114 +1,110 @@
 \section{gripper\-\_\-actuator.\-cpp File Reference}
 \label{gripper__actuator_8cpp}\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}}
 {\ttfamily \#include $<$ros/ros.\-h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
 {\ttfamily \#include $<$std\-\_\-msgs/\-Float32.\-h$>$}\\*
-{\ttfamily \#include $<$sstream$>$}\\*
-{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-String.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Bool.\-h$>$}\\*
+{\ttfamily \#include $<$Grijper/command.\-h$>$}\\*
 {\ttfamily \#include $<$threemxl/\-C3mxl\-R\-O\-S.\-h$>$}\\*
-{\ttfamily \#include $<$threemxl/\-C\-Dynamixel\-R\-O\-S.\-h$>$}\\*
-Include dependency graph for gripper\-\_\-actuator.\-cpp\-:
-\nopagebreak
+Include dependency graph for gripper\-\_\-actuator.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{gripper__actuator_8cpp__incl}
 \end{center}
 \end{figure}
-\subsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define {\bf D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}(call)
-\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool {\bf close} (float)
-\item 
-bool {\bf execute} (Arg\-List)
-\item 
-void {\bf gripper\-Actuate} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&)
-\item 
-void {\bf gripper\-Control} (const std\-\_\-msgs\-::\-String\-::\-Const\-Ptr \&)
-\item 
+float {\bf calc\-\_\-current} (float {\bf force})
+\begin{DoxyCompactList}\small\item\em Conversion method to convert a target force into a current. \end{DoxyCompactList}\item 
+bool {\bf close} ()
+\begin{DoxyCompactList}\small\item\em Small controlling method for closing the gripper. \end{DoxyCompactList}\item 
+void {\bf gripper\-Control} (const {\bf Grijper\-::command\-::\-Const\-Ptr} \&msg)
+\begin{DoxyCompactList}\small\item\em This method controls the motor. \end{DoxyCompactList}\item 
 int {\bf main} (int argc, char $\ast$$\ast$argv)
-\item 
+\begin{DoxyCompactList}\small\item\em Main method of this node. All commands are evaluated here, and motor actuation is controlled from here. \end{DoxyCompactList}\item 
 bool {\bf open} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Small controlling method for opening the gripper. \end{DoxyCompactList}\item 
+bool {\bf relax} ()
+\begin{DoxyCompactList}\small\item\em Small controlling method for relaxing the gripper. \end{DoxyCompactList}\item 
+void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&b)
+\begin{DoxyCompactList}\small\item\em Controll method to shutdown this R\-O\-S node when the command is given. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-ros\-::\-Publisher {\bf publisher}
+float {\bf current} = 0.\-04
+\item 
+ros\-::\-Publisher {\bf gripper\-\_\-state}
+\item 
+C\-Dxl\-Generic $\ast$ {\bf motor\-\_\-}
 \end{DoxyCompactItemize}
 
 
-\subsection{Macro Definition Documentation}
-\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L@{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}}
-\index{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L@{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
-\subsubsection[{D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-X\-L\-C\-\_\-\-S\-A\-F\-E\-\_\-\-C\-A\-L\-L(
-\begin{DoxyParamCaption}
-\item[{}]{call}
-\end{DoxyParamCaption}
-)}\label{gripper__actuator_8cpp_a3cdecab00d916e74baf9ca4b8a8fd4f1}
-{\bfseries Value\-:}
-\begin{DoxyCode}
-\textcolor{keywordflow}{do} \{ \(\backslash\)
-    int ret = call; \(\backslash\)
-    if (ret != DXL\_SUCCESS) \{ \(\backslash\)
-      cout << \textcolor{stringliteral}{"Error:"} << endl << \textcolor{stringliteral}{"  "} << C3mxl::translateErrorCode(ret) << \textcolor{stringliteral}{" (0x"} << hex << ret << dec << \textcolor{stringliteral}{
-      ")"} << endl; \(\backslash\)
-    \} \(\backslash\)
-  \} \textcolor{keywordflow}{while} (0)
-\end{DoxyCode}
-
-
-Definition at line 20 of file gripper\-\_\-actuator.\-cpp.
-
-
-
 \subsection{Function Documentation}
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!calc\-\_\-current@{calc\-\_\-current}}
+\index{calc\-\_\-current@{calc\-\_\-current}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{calc\-\_\-current}]{\setlength{\rightskip}{0pt plus 5cm}float calc\-\_\-current (
+\begin{DoxyParamCaption}
+\item[{float}]{force}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a9b3c7d64d58f6a1d4a9f53a6e4a3aa27}
+
+
+Conversion method to convert a target force into a current. 
+
+Converts a target force into a current that can be passed on to the motor. 
+\begin{DoxyParams}{Parameters}
+{\em force} & The target force as a float. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated current. 
+\end{DoxyReturn}
+
+
+Definition at line 119 of file gripper\-\_\-actuator.\-cpp.
+
 \index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!close@{close}}
 \index{close@{close}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
 \subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}bool close (
 \begin{DoxyParamCaption}
-\item[{float}]{force}
+{}
 \end{DoxyParamCaption}
-)}\label{gripper__actuator_8cpp_a60598c74e06026d9314d3362a1629936}
+)}\label{gripper__actuator_8cpp_a46143fd6de3be9ab9951f140d3ae8c2f}
 
 
-Definition at line 58 of file gripper\-\_\-actuator.\-cpp.
+Small controlling method for closing the gripper. 
 
-\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!execute@{execute}}
-\index{execute@{execute}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
-\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool execute (
-\begin{DoxyParamCaption}
-\item[{Arg\-List}]{args}
-\end{DoxyParamCaption}
-)}\label{gripper__actuator_8cpp_a8002ba95eddc1ad1aeb79d6ac8142156}
+This method closes the gripper with the corresponding force. \begin{DoxyReturn}{Returns}
+True 
+\end{DoxyReturn}
 
 
-Definition at line 50 of file gripper\-\_\-actuator.\-cpp.
-
-\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!gripper\-Actuate@{gripper\-Actuate}}
-\index{gripper\-Actuate@{gripper\-Actuate}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
-\subsubsection[{gripper\-Actuate}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Actuate (
-\begin{DoxyParamCaption}
-\item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
-\end{DoxyParamCaption}
-)}\label{gripper__actuator_8cpp_a45524816df9f7663ba360599b42a36af}
-
-
-Definition at line 40 of file gripper\-\_\-actuator.\-cpp.
+Definition at line 96 of file gripper\-\_\-actuator.\-cpp.
 
 \index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!gripper\-Control@{gripper\-Control}}
 \index{gripper\-Control@{gripper\-Control}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
 \subsubsection[{gripper\-Control}]{\setlength{\rightskip}{0pt plus 5cm}void gripper\-Control (
 \begin{DoxyParamCaption}
-\item[{const std\-\_\-msgs\-::\-String\-::\-Const\-Ptr \&}]{msg}
+\item[{const {\bf Grijper\-::command\-::\-Const\-Ptr} \&}]{msg}
 \end{DoxyParamCaption}
-)}\label{gripper__actuator_8cpp_a101b2140b24b7e4ae8ffa902e5e8b371}
+)}\label{gripper__actuator_8cpp_add43683f423b8ad34526564c0760d596}
 
 
-Definition at line 45 of file gripper\-\_\-actuator.\-cpp.
+This method controls the motor. 
+
+This method is called every time a command from the controller has been given. This command is evaluated and executed. The msg parameter contains the 'cmd' string describing the command to be executed and also a 'force' float that indicates the target force. This target force is converted to a current, which is passed in to the motor, with a sign and magnitude according to the command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The message containing the command and target force. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file gripper\-\_\-actuator.\-cpp.
 
 \index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!main@{main}}
 \index{main@{main}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
@@ -119,6 +115,12 @@ Definition at line 45 of file gripper\-\_\-actuator.\-cpp.
 \end{DoxyParamCaption}
 )}\label{gripper__actuator_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
+
+Main method of this node. All commands are evaluated here, and motor actuation is controlled from here. 
+
+This method controls the motor powering the gripper. This also meand publishing the gripper state when it has changed.
+
+This node also listens to the shutdown command given by the controller. 
 
 Definition at line 28 of file gripper\-\_\-actuator.\-cpp.
 
@@ -131,15 +133,74 @@ Definition at line 28 of file gripper\-\_\-actuator.\-cpp.
 )}\label{gripper__actuator_8cpp_adb20eae91802d6ad6366cdee0220c280}
 
 
-Definition at line 54 of file gripper\-\_\-actuator.\-cpp.
+Small controlling method for opening the gripper. 
+
+This method opens the gripper with the corresponding force. \begin{DoxyReturn}{Returns}
+True 
+\end{DoxyReturn}
+
+
+Definition at line 85 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!relax@{relax}}
+\index{relax@{relax}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{relax}]{\setlength{\rightskip}{0pt plus 5cm}bool relax (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a76ee232c68955d5e8c9e507b8ac38436}
+
+
+Small controlling method for relaxing the gripper. 
+
+This method relaxed the gripper. \begin{DoxyReturn}{Returns}
+True 
+\end{DoxyReturn}
+
+
+Definition at line 107 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void shutdown (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&}]{b}
+\end{DoxyParamCaption}
+)}\label{gripper__actuator_8cpp_a6099bcde46c020c0703be2c28a4432d5}
+
+
+Controll method to shutdown this R\-O\-S node when the command is given. 
+
+This method will shutdown this node when the command is given by the console. 
+\begin{DoxyParams}{Parameters}
+{\em b} & The message containing the command. Nothing is done with the command since we know what it will be when this message is received. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 128 of file gripper\-\_\-actuator.\-cpp.
 
 
 
 \subsection{Variable Documentation}
-\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!publisher@{publisher}}
-\index{publisher@{publisher}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
-\subsubsection[{publisher}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher publisher}\label{gripper__actuator_8cpp_adde9f51ddf0fb5c82c57b4075b6e9400}
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!current@{current}}
+\index{current@{current}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}float current = 0.\-04}\label{gripper__actuator_8cpp_af9653d31acfffa5a40aa709b2065e00b}
+Target current variable, default is set to 0.\-04. 
 
+Definition at line 18 of file gripper\-\_\-actuator.\-cpp.
 
-Definition at line 15 of file gripper\-\_\-actuator.\-cpp.
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!gripper\-\_\-state@{gripper\-\_\-state}}
+\index{gripper\-\_\-state@{gripper\-\_\-state}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{gripper\-\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher gripper\-\_\-state}\label{gripper__actuator_8cpp_a9f4419e4ba603a6e5cbe0148e492cad0}
+Gripper state publisher. 
+
+Definition at line 12 of file gripper\-\_\-actuator.\-cpp.
+
+\index{gripper\-\_\-actuator.\-cpp@{gripper\-\_\-actuator.\-cpp}!motor\-\_\-@{motor\-\_\-}}
+\index{motor\-\_\-@{motor\-\_\-}!gripper_actuator.cpp@{gripper\-\_\-actuator.\-cpp}}
+\subsubsection[{motor\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}C\-Dxl\-Generic$\ast$ motor\-\_\-}\label{gripper__actuator_8cpp_ac1874704ed544a18b8fc45cd2abacecc}
+Threemxl generic motor controller pointer. 
+
+Definition at line 19 of file gripper\-\_\-actuator.\-cpp.
 
