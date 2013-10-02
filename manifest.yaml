@@ -1,0 +1,19 @@
+authors: Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga,Joris Coenen,
+  Roy Groot
+brief: Collection of nodes controlling a gripper
+bugtracker: ''
+depends:
+- threemxl
+- phidget_ik
+- roscpp
+- rviz
+description: "\n     A ROS based set of nodes to controll a rebotic hand with a infrared\
+  \ distance sensor.\n  "
+license: BSD
+maintainers: ''
+msgs:
+- command
+package_type: package
+repo_url: ''
+srvs: []
+url: http://svanschooten.github.io/Grijper/

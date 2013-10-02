@@ -8,7 +8,20 @@
 
 This is done by reading and evaluating a sensor and it's values using the phidget in the phidget\-\_\-reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.
 
-This state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.\-0 and 1.\-0. 0.\-0 indicating the gripper is completely open and 1.\-0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.\section{R\-O\-S Grijper A\-P\-I}\label{index_rosapi}
+This state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.\-0 and 1.\-0. 0.\-0 indicating the gripper is completely open and 1.\-0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.
+
+
+
+\section{Command-\/line tools}\label{index_commandline}
+The \doxyref{Grijper}{p.}{namespaceGrijper} package can also be built by launching the Grijper.\-launch file. It will encapsule the console in the current console, enabling control but hiding all reduntant information from the other nodes.\subsection{Grijper.\-launch}\label{index_script_name}
+Description of what this script/file does.\subsubsection{Usage}\label{index_Usage}
+\begin{DoxyVerb}$ roslaunch Grijper Grijper.launch
+\end{DoxyVerb}
+
+
+
+
+\section{R\-O\-S Grijper A\-P\-I}\label{index_rosapi}
 Because of the independent and standardised setup of this package, \doxyref{Grijper}{p.}{namespaceGrijper} only consists of communicating nodes that can run independently (though having almost to no functionality without their proper messages).
 
 List of nodes\-:
@@ -129,14 +142,5 @@ Publishes to\-:
 
 Subscribes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy. 
 \end{DoxyItemize}
-
-
-
-\section{Command-\/line tools}\label{index_commandline}
-The \doxyref{Grijper}{p.}{namespaceGrijper} package can also be built by launching the Grijper.\-launch file. It will encapsule the console in the current console, enabling control but hiding all reduntant information from the other nodes.\subsection{Grijper.\-launch}\label{index_script_name}
-Description of what this script/file does.\subsubsection{Usage}\label{index_Usage}
-\begin{DoxyVerb}$ roslaunch Grijper Grijper.launch
-\end{DoxyVerb}
- 
