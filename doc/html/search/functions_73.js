@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sensortodistance',['sensorToDistance',['../gripper__controller_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67',1,'gripper_controller.cpp']]],
+  ['sensortodistance',['sensorToDistance',['../phidget__reader_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67',1,'phidget_reader.cpp']]],
   ['serialize',['serialize',['../classGrijper_1_1msg_1_1__command_1_1command.html#a7aeb3bcc3d5cb153a59a4ebc88c2cdd3',1,'Grijper::msg::_command::command']]],
   ['serialize_5fnumpy',['serialize_numpy',['../classGrijper_1_1msg_1_1__command_1_1command.html#a9d47016fa4d46f72570abc6005d09959',1,'Grijper::msg::_command::command']]],
   ['setforce',['setForce',['../gripper__controller_8cpp.html#a4ea156d5e6d55c28a9df16d7c8c7cff0',1,'gripper_controller.cpp']]],

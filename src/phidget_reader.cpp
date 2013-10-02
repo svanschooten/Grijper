@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <math.h>
-#include <std_msgs/Int32.h>
+#include <std_msgs/Float32.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Bool.h>
 #include <string>
@@ -13,6 +13,7 @@ void shiftBuffer(int);
 int mean();
 void printbuffer();
 void shutdown(const std_msgs::Bool::ConstPtr&);
+float sensorToDistance(int);
 
 const int sensor_id = 4; /*!< The sensor ID. */
 const int freq = 250; /*!< The frequency at which the sensor should be read and the value passed on. */
@@ -32,7 +33,7 @@ int main(int argc, char **argv){
 	
 	ros::init(argc, argv, "phidget_reader");
 	ros::NodeHandle n;
-	ros::Publisher publisher = n.advertise<std_msgs::Int32>("phidget_value", 1000);
+	ros::Publisher publisher = n.advertise<std_msgs::Float32>("phidget_value", 1000);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
 	ros::Rate loop_rate(freq);
 	PhidgetIK phidget_ik;
@@ -52,15 +53,16 @@ int main(int argc, char **argv){
 
 	while(ros::ok()){
 		int data = phidget_ik.getSensorValue(sensor_id);
-		std_msgs::Int32 sensor_val;
+		std_msgs::Float32 sensor_val;
 		shiftBuffer(data);
 		data = mean();
 
 		if(data < 100 || data > 700){
 			//printf("Ignoring sensor value of %i\n", data);
 		}else{
-			sensor_val.data = data;
-			printf("Reading sensor %i, value: %i\n",sensor_id, data);
+			float distance = sensorToDistance(data);
+			sensor_val.data = distance;
+			printf("Reading sensor %i, value: %i, distance:%f\n",sensor_id, data, distance);
 			//printbuffer();
 
 			publisher.publish(sensor_val);
@@ -112,6 +114,20 @@ void printbuffer(){
 		printf("%i,", buffer[i]);
 	}
 	cout << "]\n";
+}
+
+/*! \brief simple calculation method to extract a distance from the sensor value.
+
+This method converts the sersorvalue to a distance.
+
+\param sensorValue The value of the sensor.
+\returm The calculated distance.
+
+*/
+float sensorToDistance(int sensorValue){
+
+	return 2076.0f / (sensorValue - 11.0f);
+
 }
 
 /*! \brief Controll method to shutdown this ROS node when the command is given.

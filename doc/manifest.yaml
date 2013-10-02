@@ -8,8 +8,8 @@ depends:
 - std_msgs
 - roscpp
 - rviz
-description: "\n\n     A ROS based set of nodes to controll a gripper with a infrared\
-  \ distance sensor.\n\n  "
+description: "\n\n     A ROS based set of nodes to controll a rebotic hand with a\
+  \ infrared distance sensor.\n\n  "
 license: BSD
 maintainers: ''
 msgs:

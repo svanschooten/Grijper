@@ -1,50 +1,33 @@
 /**
 \mainpage
 \htmlinclude manifest.html
-
-\b my_package is ... In addition to providing an overview of your package,
-this is the section where the specification and design/architecture 
-should be detailed. While the original specification may be done on the
-wiki, it should be transferred here once your package starts to take shape.
-You can then link to this documentation page from the Wiki.
+# Grijper #
+## Controlling a robotic hand ##
 
 
-\section codeapi Code API
+\b Grijper is a package containing nodes that are used to control a motorised robotic hand, henceforth called the 'gripper'.
 
-Provide links to specific auto-generated API documentation within your
-package that is of particular interest to a reader. Doxygen will
-document pretty much every part of your code, so do your best here to
-point the reader to the actual API.
+\p This is done by reading and evaluating a sensor and it's values using the phidget in the phidget_reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.
 
-If your codebase is fairly large or has different sets of APIs, you
-should use the doxygen 'group' tag to keep these APIs together. For
-example, the roscpp documentation has 'libros' and 'botherder' groups
-so that those can be viewed separately. The rospy documentation
-similarly has a 'client-api' group that pulls together APIs for a
-Client API page.
+\p This state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.0 and 1.0. 0.0 indicating the gripper is completely open and 1.0 indicates the gripper has been closed.
+Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.
 
-
-\section rosapi ROS API
-
-Every ROS name in your code must be documented. Names are very
-important in ROS because they are the API to nodes and services. They
-are also capable of being remapped on the command-line, so it is VERY
-IMPORTANT THAT YOU LIST NAMES AS THEY APPEAR IN THE CODE. It is also
-important that you write your code so that the names can be easily
-remapped.
+\section rosapi ROS Grijper API
 
 List of nodes:
-- \b node_name1
-- \b node_name2
+- \b [gripper_console]: gripper__console_8cpp.html
+- \b [gripper_controller]: ./gripper__controller_8cpp.html
+- \b [gripper_actuator]: ./gripper__actuator_8cpp.html
+- \b [phidget_reader]: ./phidget__reader_8cpp.html
+- \b [rviz_gripper]: ./rviz__gripper_8cpp.html
+- \b [rviz_object]: ./rviz__object_8cpp.html
 
-
-<!-- START: copy for each node -->
 
 <hr>
 
-\subsection node_name node_name
+\subsection node_name gripper_console
 
-node_name does (provide a basic description of your node)
+node_name makes the system controllable by the user through console input and output.
 
 \subsubsection Usage
 \verbatim

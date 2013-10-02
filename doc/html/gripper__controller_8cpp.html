@@ -74,7 +74,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;cmath&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;std_msgs/Float32.h&gt;</code><br/>
-<code>#include &lt;std_msgs/Int32.h&gt;</code><br/>
 <code>#include &lt;std_msgs/Bool.h&gt;</code><br/>
 <code>#include &lt;std_msgs/String.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="command_8h_source.html">Grijper/command.h</a>&gt;</code><br/>
@@ -83,31 +82,28 @@ Include dependency graph for gripper_controller.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="gripper__controller_8cpp__incl.png" border="0" usemap="#gripper__controller_8cpp" alt=""/></div>
 <map name="gripper__controller_8cpp" id="gripper__controller_8cpp">
-<area shape="rect" id="node17" href="command_8h.html" title="Grijper/command.h" alt="" coords="837,83,968,112"/></map>
+<area shape="rect" id="node15" href="command_8h.html" title="Grijper/command.h" alt="" coords="691,83,821,112"/></map>
 </div>
 </div>
 <p><a href="gripper__controller_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a26f539d26cd8707b144b8a8c6486751d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d">close_gripper</a> (float distance)</td></tr>
+<tr class="memitem:a26f539d26cd8707b144b8a8c6486751d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d">close_gripper</a> (float <a class="el" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a>)</td></tr>
 <tr class="memdesc:a26f539d26cd8707b144b8a8c6486751d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Small evaluation method to see if the gripper should be closed.  <a href="#a26f539d26cd8707b144b8a8c6486751d">More...</a><br/></td></tr>
 <tr class="separator:a26f539d26cd8707b144b8a8c6486751d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a912529eaef67feaf89ec1c469baddbc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a912529eaef67feaf89ec1c469baddbc0">gripperCommand</a> (const std_msgs::String::ConstPtr &amp;msg)</td></tr>
 <tr class="memdesc:a912529eaef67feaf89ec1c469baddbc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for evaluating and executing commands received from the console.  <a href="#a912529eaef67feaf89ec1c469baddbc0">More...</a><br/></td></tr>
 <tr class="separator:a912529eaef67feaf89ec1c469baddbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1458733bacda5bac06b06d4088d3569e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a1458733bacda5bac06b06d4088d3569e">gripperPhidget</a> (const std_msgs::Int32::ConstPtr &amp;msg)</td></tr>
-<tr class="memdesc:a1458733bacda5bac06b06d4088d3569e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that evaluates the phidget sensor values and takes appropriate action.  <a href="#a1458733bacda5bac06b06d4088d3569e">More...</a><br/></td></tr>
-<tr class="separator:a1458733bacda5bac06b06d4088d3569e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca6c0a0c98d6b50749d4432f9246148"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a7ca6c0a0c98d6b50749d4432f9246148">gripperPhidget</a> (const std_msgs::Float32::ConstPtr &amp;msg)</td></tr>
+<tr class="memdesc:a7ca6c0a0c98d6b50749d4432f9246148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that evaluates the phidget sensor values and takes appropriate action.  <a href="#a7ca6c0a0c98d6b50749d4432f9246148">More...</a><br/></td></tr>
+<tr class="separator:a7ca6c0a0c98d6b50749d4432f9246148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main method of the controller node. All incoming messages are analysed and commands are sent from this node.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br/></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1772f3f3f41fdbf5f1a875261c527bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb">open_gripper</a> (float distance)</td></tr>
+<tr class="memitem:ab1772f3f3f41fdbf5f1a875261c527bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb">open_gripper</a> (float <a class="el" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a>)</td></tr>
 <tr class="memdesc:ab1772f3f3f41fdbf5f1a875261c527bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Small evaluation method to see if the gripper should be opened.  <a href="#ab1772f3f3f41fdbf5f1a875261c527bb">More...</a><br/></td></tr>
 <tr class="separator:ab1772f3f3f41fdbf5f1a875261c527bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8564fe398b4af80bdf3877410ffcbc67"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67">sensorToDistance</a> (int sensorValue)</td></tr>
-<tr class="memdesc:a8564fe398b4af80bdf3877410ffcbc67"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple calculation method to extract a distance from the sensor value.  <a href="#a8564fe398b4af80bdf3877410ffcbc67">More...</a><br/></td></tr>
-<tr class="separator:a8564fe398b4af80bdf3877410ffcbc67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ea156d5e6d55c28a9df16d7c8c7cff0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a4ea156d5e6d55c28a9df16d7c8c7cff0">setForce</a> (const std_msgs::Float32::ConstPtr &amp;msg)</td></tr>
 <tr class="memdesc:a4ea156d5e6d55c28a9df16d7c8c7cff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for setting the force on message receiving.  <a href="#a4ea156d5e6d55c28a9df16d7c8c7cff0">More...</a><br/></td></tr>
 <tr class="separator:a4ea156d5e6d55c28a9df16d7c8c7cff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,8 +121,8 @@ Variables</h2></td></tr>
 <tr class="separator:a21f853fd13f4d5cc95d556086f1a398e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ad9bb216d160d5273f0ccf07535d003"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a4ad9bb216d160d5273f0ccf07535d003">gripper_open</a> = true</td></tr>
 <tr class="separator:a4ad9bb216d160d5273f0ccf07535d003"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e36490bb6bb2d7dfd039c310a352645"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a5e36490bb6bb2d7dfd039c310a352645">last_sensor_value</a> = 0</td></tr>
-<tr class="separator:a5e36490bb6bb2d7dfd039c310a352645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12530d2344e545313c0e9596cce33c92"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gripper__controller_8cpp.html#a12530d2344e545313c0e9596cce33c92">last_distance</a> = 0</td></tr>
+<tr class="separator:a12530d2344e545313c0e9596cce33c92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a26f539d26cd8707b144b8a8c6486751d"></a>
@@ -153,7 +149,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Boolean whether the gripper should be closed. </dd></dl>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00167">167</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00149">149</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -180,18 +176,18 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00117">117</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00113">113</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1458733bacda5bac06b06d4088d3569e"></a>
+<a class="anchor" id="a7ca6c0a0c98d6b50749d4432f9246148"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void gripperPhidget </td>
           <td>(</td>
-          <td class="paramtype">const std_msgs::Int32::ConstPtr &amp;&#160;</td>
+          <td class="paramtype">const std_msgs::Float32::ConstPtr &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -199,7 +195,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Method that evaluates the phidget sensor values and takes appropriate action. </p>
-<p>This method is called every time the phidget passes on a value, extracting the distance (by using <a class="el" href="gripper__controller_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67" title="simple calculation method to extract a distance from the sensor value.">sensorToDistance(int)</a>). Once the distance has been calculated the value is compared to thresholds and a command is given to the actuator.</p>
+<p>This method is called every time the phidget passes on a value, extracting the distance (by using <a class="el" href="phidget__reader_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67" title="simple calculation method to extract a distance from the sensor value.">sensorToDistance(int)</a>). Once the distance has been calculated the value is compared to thresholds and a command is given to the actuator.</p>
 <p>If the gripper was forced open, and the gripper should close due to proximity of an object, the force_open value is reset to false.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -208,7 +204,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00059">59</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00057">57</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -240,7 +236,7 @@ Variables</h2></td></tr>
 <p>This node listens to commands given from the console, but also evaluates the values passed on from the phidget reader. It evaluates the console commands and if needed passes them on to the actuator node. Otherwise is extracts the distance from the sensor value and compares it to the threshold values to open (using <a class="el" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280" title="Small controlling method for opening the gripper.">open()</a>) and close (using <a class="el" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f" title="Small controlling method for closing the gripper.">close()</a>) the gripper. If the command is received to alter the target force, that is set and used in future commands to the actuator.</p>
 <p>This node also listens to the shutdown command from the console, and executes <a class="el" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5" title="Controll method to shutdown this ROS node when the command is given.">shutdown()</a> </p>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00035">35</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00033">33</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -268,34 +264,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Boolean whether the gripper should be opened. </dd></dl>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00179">179</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8564fe398b4af80bdf3877410ffcbc67"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float sensorToDistance </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>sensorValue</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>simple calculation method to extract a distance from the sensor value. </p>
-<p>This method converts the sersorvalue to a distance.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sensorValue</td><td>The value of the sensor.  The calculated distance. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00153">153</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00161">161</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +291,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00102">102</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00098">98</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -363,7 +332,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Controller message publisher. </p>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00016">16</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00015">15</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -378,7 +347,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Force variable, is set by default to 0.35 and listens to the console. </p>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00023">23</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00021">21</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -393,7 +362,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Force open state variable. </p>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00021">21</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00019">19</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -408,22 +377,22 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Gripper state variable. </p>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00020">20</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00018">18</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5e36490bb6bb2d7dfd039c310a352645"></a>
+<a class="anchor" id="a12530d2344e545313c0e9596cce33c92"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float last_sensor_value = 0</td>
+          <td class="memname">float last_distance = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Last sensor value, used for filtering and smoothing. </p>
 
-<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00022">22</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="gripper__controller_8cpp_source.html#l00020">20</a> of file <a class="el" href="gripper__controller_8cpp_source.html">gripper_controller.cpp</a>.</p>
 
 </div>
 </div>
@@ -433,7 +402,7 @@ Variables</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Wed Oct 2 2013 12:30:12</small>
+<small>autogenerated on Wed Oct 2 2013 15:11:52</small>
 </div>
 </body>
 </html>

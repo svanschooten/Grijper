@@ -1,7 +1,7 @@
 <package>
   <description brief="Collection of nodes controlling a gripper">
 
-     A ROS based set of nodes to controll a gripper with a infrared distance sensor.
+     A ROS based set of nodes to controll a rebotic hand with a infrared distance sensor.
 
   </description>
   <author>Stijn van Schooten</author>

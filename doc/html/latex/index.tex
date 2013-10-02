@@ -1,21 +1,26 @@
+ \section*{\doxyref{Grijper}{p.}{namespaceGrijper}}
 
+\subsection*{Controlling a robotic hand}
 
-{\bfseries my\-\_\-package} is ... In addition to providing an overview of your package, this is the section where the specification and design/architecture should be detailed. While the original specification may be done on the wiki, it should be transferred here once your package starts to take shape. You can then link to this documentation page from the Wiki.\section{Code A\-P\-I}\label{index_codeapi}
-Provide links to specific auto-\/generated A\-P\-I documentation within your package that is of particular interest to a reader. Doxygen will document pretty much every part of your code, so do your best here to point the reader to the actual A\-P\-I.
+{\bfseries \doxyref{Grijper}{p.}{namespaceGrijper}} is a package containing nodes that are used to control a motorised robotic hand, henceforth called the 'gripper'.
 
-If your codebase is fairly large or has different sets of A\-P\-Is, you should use the doxygen 'group' tag to keep these A\-P\-Is together. For example, the roscpp documentation has 'libros' and 'botherder' groups so that those can be viewed separately. The rospy documentation similarly has a 'client-\/api' group that pulls together A\-P\-Is for a Client A\-P\-I page.\section{R\-O\-S A\-P\-I}\label{index_rosapi}
-Every R\-O\-S name in your code must be documented. Names are very important in R\-O\-S because they are the A\-P\-I to nodes and services. They are also capable of being remapped on the command-\/line, so it is V\-E\-R\-Y I\-M\-P\-O\-R\-T\-A\-N\-T T\-H\-A\-T Y\-O\-U L\-I\-S\-T N\-A\-M\-E\-S A\-S T\-H\-E\-Y A\-P\-P\-E\-A\-R I\-N T\-H\-E C\-O\-D\-E. It is also important that you write your code so that the names can be easily remapped.
+{\ttfamily This} is done by reading and evaluating a sensor and it's values using the phidget in the phidget\-\_\-reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.
 
+{\ttfamily This} state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.\-0 and 1.\-0. 0.\-0 indicating the gripper is completely open and 1.\-0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.\section{R\-O\-S Grijper A\-P\-I}\label{index_rosapi}
 List of nodes\-:
 \begin{DoxyItemize}
-\item {\bfseries node\-\_\-name1} 
-\item {\bfseries node\-\_\-name2} 
+\item {\bfseries }[gripper\-\_\-console]\-: gripper\-\_\-\-\_\-console\-\_\-8cpp.\-html
+\item {\bfseries }[gripper\-\_\-controller]\-: ./gripper\-\_\-\-\_\-controller\-\_\-8cpp.html
+\item {\bfseries }[gripper\-\_\-actuator]\-: ./gripper\-\_\-\-\_\-actuator\-\_\-8cpp.html
+\item {\bfseries }[phidget\-\_\-reader]\-: ./phidget\-\_\-\-\_\-reader\-\_\-8cpp.html
+\item {\bfseries }[rviz\-\_\-gripper]\-: ./rviz\-\_\-\-\_\-gripper\-\_\-8cpp.html
+\item {\bfseries }[rviz\-\_\-object]\-: ./rviz\-\_\-\-\_\-object\-\_\-8cpp.html
 \end{DoxyItemize}
 
 
 
-\subsection{node\-\_\-name}\label{index_node_name}
-node\-\_\-name does (provide a basic description of your node)\subsubsection{Usage}\label{index_Usage}
+\subsection{gripper\-\_\-console}\label{index_node_name}
+node\-\_\-name makes the system controllable by the user through console input and output.\subsubsection{Usage}\label{index_Usage}
 \begin{DoxyVerb}$ node_type1 [standard ROS args]
 \end{DoxyVerb}
 

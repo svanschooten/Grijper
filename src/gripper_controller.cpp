@@ -2,7 +2,6 @@
 #include <cmath>
 #include <string>
 #include <std_msgs/Float32.h>
-#include <std_msgs/Int32.h>
 #include <std_msgs/Bool.h>
 #include <std_msgs/String.h>
 #include <Grijper/command.h>
@@ -10,16 +9,15 @@
 using namespace std;
 
 void setForce(const std_msgs::Float32::ConstPtr&);
-void gripperPhidget(const std_msgs::Int32::ConstPtr&);
+void gripperPhidget(const std_msgs::Float32::ConstPtr&);
 void gripperCommand(const std_msgs::String::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
 ros::Publisher control;  /*!< Controller message publisher. */
-float sensorToDistance(int);
 bool close_gripper(float);
 bool open_gripper(float);
 bool gripper_open = true;  /*!< Gripper state variable. */
 bool force_open = false;  /*!< Force open state variable. */
-float last_sensor_value = 0;  /*!< Last sensor value, used for filtering and smoothing. */
+float last_distance = 0;  /*!< Last sensor value, used for filtering and smoothing. */
 float force = 0.35;  /*!< Force variable, is set by default to 0.35 and listens to the console. */
 
 /*! \brief Main method of the controller node. All incoming messages are analysed and commands are sent from this node.
@@ -56,15 +54,13 @@ If the gripper was forced open, and the gripper should close due to proximity of
 \param msg The message containing the Phidget sensor value.
 
 */
-void gripperPhidget(const std_msgs::Int32::ConstPtr& msg){
+void gripperPhidget(const std_msgs::Float32::ConstPtr& msg){
 
-	int sensor_value = msg->data;
+	float distance = msg->data;
 	
-	if(abs(sensor_value - last_sensor_value) > 20){
+	if(abs(distance - last_distance) > 0.5){
 
-		last_sensor_value = sensor_value;
-
-		float distance = sensorToDistance(sensor_value);
+		last_distance = distance;
 
 		ROS_INFO("received distance: %f", distance);
 		if(close_gripper(distance) && gripper_open && !force_open){
@@ -140,20 +136,6 @@ void gripperCommand(const std_msgs::String::ConstPtr& msg){
 	}else{
 		ROS_INFO("Received invalid command: %s\n", cmd.c_str());
 	}
-}
-
-/*! \brief simple calculation method to extract a distance from the sensor value.
-
-This method converts the sersorvalue to a distance.
-
-\param sensorValue The value of the sensor.
-\returm The calculated distance.
-
-*/
-float sensorToDistance(int sensorValue){
-
-	return 2076.0f / (sensorValue - 11.0f);
-
 }
 
 /*! \brief Small evaluation method to see if the gripper should be closed.

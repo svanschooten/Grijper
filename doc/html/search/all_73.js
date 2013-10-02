@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sensor_5fid',['sensor_id',['../phidget__reader_8cpp.html#acdd8c9ca04f3c952e0a17260cfa8f2eb',1,'phidget_reader.cpp']]],
-  ['sensortodistance',['sensorToDistance',['../gripper__controller_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67',1,'gripper_controller.cpp']]],
+  ['sensortodistance',['sensorToDistance',['../phidget__reader_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67',1,'phidget_reader.cpp']]],
   ['serialize',['serialize',['../classGrijper_1_1msg_1_1__command_1_1command.html#a7aeb3bcc3d5cb153a59a4ebc88c2cdd3',1,'Grijper::msg::_command::command']]],
   ['serialize_5fnumpy',['serialize_numpy',['../classGrijper_1_1msg_1_1__command_1_1command.html#a9d47016fa4d46f72570abc6005d09959',1,'Grijper::msg::_command::command']]],
   ['serializer_3c_20_3a_3agrijper_3a_3acommand_5f_3c_20containerallocator_20_3e_20_3e',['Serializer&lt; ::Grijper::command_&lt; ContainerAllocator &gt; &gt;',['../structros_1_1serialization_1_1Serializer_3_01_1_1Grijper_1_1command___3_01ContainerAllocator_01_4_01_4.html',1,'ros::serialization']]],

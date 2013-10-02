@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;ros/ros.h&gt;</code><br/>
 <code>#include &lt;math.h&gt;</code><br/>
-<code>#include &lt;std_msgs/Int32.h&gt;</code><br/>
+<code>#include &lt;std_msgs/Float32.h&gt;</code><br/>
 <code>#include &lt;std_msgs/String.h&gt;</code><br/>
 <code>#include &lt;std_msgs/Bool.h&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
@@ -83,7 +83,7 @@ Include dependency graph for phidget_reader.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="phidget__reader_8cpp__incl.png" border="0" usemap="#phidget__reader_8cpp" alt=""/></div>
 <map name="phidget__reader_8cpp" id="phidget__reader_8cpp">
-<area shape="rect" id="node17" href="command_8h.html" title="Grijper/command.h" alt="" coords="896,83,1027,112"/></map>
+<area shape="rect" id="node17" href="command_8h.html" title="Grijper/command.h" alt="" coords="909,83,1040,112"/></map>
 </div>
 </div>
 <p><a href="phidget__reader_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -99,6 +99,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a09b9cf5195215cdfaa34111afd03c8a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="phidget__reader_8cpp.html#a09b9cf5195215cdfaa34111afd03c8a8">printbuffer</a> ()</td></tr>
 <tr class="memdesc:a09b9cf5195215cdfaa34111afd03c8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A small control method to print the buffer.  <a href="#a09b9cf5195215cdfaa34111afd03c8a8">More...</a><br/></td></tr>
 <tr class="separator:a09b9cf5195215cdfaa34111afd03c8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8564fe398b4af80bdf3877410ffcbc67"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="phidget__reader_8cpp.html#a8564fe398b4af80bdf3877410ffcbc67">sensorToDistance</a> (int sensorValue)</td></tr>
+<tr class="memdesc:a8564fe398b4af80bdf3877410ffcbc67"><td class="mdescLeft">&#160;</td><td class="mdescRight">simple calculation method to extract a distance from the sensor value.  <a href="#a8564fe398b4af80bdf3877410ffcbc67">More...</a><br/></td></tr>
+<tr class="separator:a8564fe398b4af80bdf3877410ffcbc67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3f7db7de2a2af54619cd7ac3517b924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="phidget__reader_8cpp.html#ab3f7db7de2a2af54619cd7ac3517b924">shiftBuffer</a> (int data)</td></tr>
 <tr class="memdesc:ab3f7db7de2a2af54619cd7ac3517b924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for shifting the buffer and inserting the newest sensor value.  <a href="#ab3f7db7de2a2af54619cd7ac3517b924">More...</a><br/></td></tr>
 <tr class="separator:ab3f7db7de2a2af54619cd7ac3517b924"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,7 +149,7 @@ Variables</h2></td></tr>
 <p>Here the phidget is read at a fixed interval, given by freq. These values are stored in the buffer and sliding mean smoothing is applied. This ensures a less spikey signal for the controller and impulses are filtered out. This also means that the system has a longer response time, but by increasing the frequency this is nullified. The buffer acts as a queue, shifting the values every time before calculating a mean value to pass on to the controller. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="phidget__reader_8cpp.html#ab3f7db7de2a2af54619cd7ac3517b924" title="Method for shifting the buffer and inserting the newest sensor value.">shiftBuffer(int)</a>, <a class="el" href="phidget__reader_8cpp.html#a478ef96a3ad4032e1f91152178c8809e" title="Method for calulating the mean of the buffer to pass on to the controller.">mean()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00031">31</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00032">32</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -168,7 +171,7 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The calculated mean. </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="phidget__reader_8cpp.html#ab3f7db7de2a2af54619cd7ac3517b924" title="Method for shifting the buffer and inserting the newest sensor value.">shiftBuffer(int)</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00095">95</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00097">97</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,7 +192,34 @@ Variables</h2></td></tr>
 <p>Prints the buffer for each iteration so the calculated mean value can be evaluated. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="phidget__reader_8cpp.html#a478ef96a3ad4032e1f91152178c8809e" title="Method for calulating the mean of the buffer to pass on to the controller.">mean()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00109">109</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00111">111</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8564fe398b4af80bdf3877410ffcbc67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float sensorToDistance </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sensorValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>simple calculation method to extract a distance from the sensor value. </p>
+<p>This method converts the sersorvalue to a distance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sensorValue</td><td>The value of the sensor.  The calculated distance. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00127">127</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -217,7 +247,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="phidget__reader_8cpp.html#a478ef96a3ad4032e1f91152178c8809e" title="Method for calulating the mean of the buffer to pass on to the controller.">mean()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00082">82</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00084">84</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -258,7 +288,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>The buffer used for smoothing. </p>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00020">20</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00021">21</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -273,7 +303,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Value buffer size for signal smoothing. </p>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00019">19</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00020">20</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -288,7 +318,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>The frequency at which the sensor should be read and the value passed on. </p>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00018">18</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00019">19</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -303,7 +333,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>The sensor ID. </p>
 
-<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00017">17</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="phidget__reader_8cpp_source.html#l00018">18</a> of file <a class="el" href="phidget__reader_8cpp_source.html">phidget_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,7 +343,7 @@ Variables</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Wed Oct 2 2013 12:30:12</small>
+<small>autogenerated on Wed Oct 2 2013 15:11:52</small>
 </div>
 </body>
 </html>
