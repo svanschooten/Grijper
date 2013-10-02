@@ -16,6 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -41,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -56,10 +58,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><div class="manifest" style="padding: 5px; background-color: #eee; border: 1px solid #333; float: right; width: 25%;">
-<h3>Grijper: Grijper</h3>
+<h3>Grijper: Collection of nodes controlling a gripper</h3>
 <p class=description><em>
 
-     Grijper
+     A ROS based set of nodes to controll a gripper with a infrared distance sensor.
 
   </em></p>
 <p>
@@ -69,15 +71,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </p>
 
 </div>
-<p><b>Grijper</b> </p>
-<p>&ndash;&gt; </p>
-</div></div><!-- contents -->
+<p><b>my_package</b> is ... In addition to providing an overview of your package, this is the section where the specification and design/architecture should be detailed. While the original specification may be done on the wiki, it should be transferred here once your package starts to take shape. You can then link to this documentation page from the Wiki.</p>
+<h1><a class="anchor" id="codeapi"></a>
+Code API</h1>
+<p>Provide links to specific auto-generated API documentation within your package that is of particular interest to a reader. Doxygen will document pretty much every part of your code, so do your best here to point the reader to the actual API.</p>
+<p>If your codebase is fairly large or has different sets of APIs, you should use the doxygen 'group' tag to keep these APIs together. For example, the roscpp documentation has 'libros' and 'botherder' groups so that those can be viewed separately. The rospy documentation similarly has a 'client-api' group that pulls together APIs for a Client API page.</p>
+<h1><a class="anchor" id="rosapi"></a>
+ROS API</h1>
+<p>Every ROS name in your code must be documented. Names are very important in ROS because they are the API to nodes and services. They are also capable of being remapped on the command-line, so it is VERY IMPORTANT THAT YOU LIST NAMES AS THEY APPEAR IN THE CODE. It is also important that you write your code so that the names can be easily remapped.</p>
+<p>List of nodes:</p>
+<ul>
+<li><b>node_name1</b> </li>
+<li><b>node_name2</b> </li>
+</ul>
+<hr/>
+<h2><a class="anchor" id="node_name"></a>
+node_name</h2>
+<p>node_name does (provide a basic description of your node)</p>
+<h3><a class="anchor" id="Usage"></a>
+Usage</h3>
+<pre class="fragment">$ node_type1 [standard ROS args]
+</pre><dl class="section user"><dt>Example</dt><dd></dd></dl>
+<pre class="fragment">$ node_type1
+</pre><h3><a class="anchor" id="topics"></a>
+ROS topics</h3>
+<p>Subscribes to:</p>
+<ul>
+<li><b>"in"</b>: [std_msgs/FooType] description of in</li>
+</ul>
+<p>Publishes to:</p>
+<ul>
+<li><b>"out"</b>: [std_msgs/FooType] description of out</li>
+</ul>
+<h3><a class="anchor" id="parameters"></a>
+ROS parameters</h3>
+<p>Reads the following parameters from the parameter server</p>
+<ul>
+<li><b>"~param_name"</b> : <b></b>[type] description of param_name</li>
+<li><b>"~my_param"</b> : <b></b>[string] description of my_param</li>
+</ul>
+<p>Sets the following parameters on the parameter server</p>
+<ul>
+<li><b>"~param_name"</b> : <b></b>[type] description of param_name</li>
+</ul>
+<h3><a class="anchor" id="services"></a>
+ROS services</h3>
+<ul>
+<li><b>"foo_service"</b>: [std_srvs/FooType] description of foo_service</li>
+</ul>
+<h1><a class="anchor" id="commandline"></a>
+Command-line tools</h1>
+<p>This section is a catch-all for any additional tools that your package provides or uses that may be of use to the reader. For example:</p>
+<ul>
+<li>tools/scripts (e.g. rospack, roscd)</li>
+<li>roslaunch .launch files</li>
+<li>xmlparam files</li>
+</ul>
+<h2><a class="anchor" id="script_name"></a>
+script_name</h2>
+<p>Description of what this script/file does.</p>
+<h3><a class="anchor" id="Usage"></a>
+Usage</h3>
+<pre class="fragment">$ ./script_name [args]
+</pre><dl class="section user"><dt>Example</dt><dd></dd></dl>
+<pre class="fragment">$ ./script_name foo bar
+</pre> </div></div><!-- contents -->
 
 <br clear="all" />
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Tue Sep 24 2013 15:54:29</small>
+<small>autogenerated on Wed Oct 2 2013 12:30:12</small>
 </div>
 </body>
 </html>

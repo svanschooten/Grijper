@@ -1,11 +1,14 @@
 \section{phidget\-\_\-reader.\-cpp File Reference}
 \label{phidget__reader_8cpp}\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}}
 {\ttfamily \#include $<$ros/ros.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
 {\ttfamily \#include $<$std\-\_\-msgs/\-Int32.\-h$>$}\\*
-{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-String.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Bool.\-h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
 {\ttfamily \#include $<$phidget\-\_\-ik/phidget\-\_\-ik.\-h$>$}\\*
-Include dependency graph for phidget\-\_\-reader.\-cpp\-:
-\nopagebreak
+{\ttfamily \#include $<$Grijper/command.\-h$>$}\\*
+Include dependency graph for phidget\-\_\-reader.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,11 +19,25 @@ Include dependency graph for phidget\-\_\-reader.\-cpp\-:
 \begin{DoxyCompactItemize}
 \item 
 int {\bf main} (int argc, char $\ast$$\ast$argv)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Main method reading the phidget at a specified frequency and smoothing the signal before passing it on. \end{DoxyCompactList}\item 
+int {\bf mean} ()
+\begin{DoxyCompactList}\small\item\em Method for calulating the mean of the buffer to pass on to the controller. \end{DoxyCompactList}\item 
+void {\bf printbuffer} ()
+\begin{DoxyCompactList}\small\item\em A small control method to print the buffer. \end{DoxyCompactList}\item 
+void {\bf shift\-Buffer} (int data)
+\begin{DoxyCompactList}\small\item\em Method for shifting the buffer and inserting the newest sensor value. \end{DoxyCompactList}\item 
+void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&b)
+\begin{DoxyCompactList}\small\item\em Controll method to shutdown this R\-O\-S node when the command is given. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-int {\bf sensor\-\_\-id} = 0
+int {\bf buffer} [{\bf buffer\-\_\-size}]
+\item 
+const int {\bf buffer\-\_\-size} = 25
+\item 
+const int {\bf freq} = 250
+\item 
+const int {\bf sensor\-\_\-id} = 4
 \end{DoxyCompactItemize}
 
 
@@ -35,15 +52,121 @@ int {\bf sensor\-\_\-id} = 0
 )}\label{phidget__reader_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
 
-Definition at line 8 of file phidget\-\_\-reader.\-cpp.
+Main method reading the phidget at a specified frequency and smoothing the signal before passing it on. 
 
+Here the phidget is read at a fixed interval, given by freq. These values are stored in the buffer and sliding mean smoothing is applied. This ensures a less spikey signal for the controller and impulses are filtered out. This also means that the system has a longer response time, but by increasing the frequency this is nullified. The buffer acts as a queue, shifting the values every time before calculating a mean value to pass on to the controller. \begin{DoxySeeAlso}{See Also}
+\doxyref{shift\-Buffer(int)}{p.}{phidget__reader_8cpp_ab3f7db7de2a2af54619cd7ac3517b924}, \doxyref{mean()}{p.}{phidget__reader_8cpp_a478ef96a3ad4032e1f91152178c8809e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 31 of file phidget\-\_\-reader.\-cpp.
+
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!mean@{mean}}
+\index{mean@{mean}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}int mean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{phidget__reader_8cpp_a478ef96a3ad4032e1f91152178c8809e}
+
+
+Method for calulating the mean of the buffer to pass on to the controller. 
+
+This method calculated the mean of the values in the buffer. \begin{DoxyReturn}{Returns}
+The calculated mean. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{shift\-Buffer(int)}{p.}{phidget__reader_8cpp_ab3f7db7de2a2af54619cd7ac3517b924} 
+\end{DoxySeeAlso}
+
+
+Definition at line 95 of file phidget\-\_\-reader.\-cpp.
+
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!printbuffer@{printbuffer}}
+\index{printbuffer@{printbuffer}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{printbuffer}]{\setlength{\rightskip}{0pt plus 5cm}void printbuffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{phidget__reader_8cpp_a09b9cf5195215cdfaa34111afd03c8a8}
+
+
+A small control method to print the buffer. 
+
+Prints the buffer for each iteration so the calculated mean value can be evaluated. \begin{DoxySeeAlso}{See Also}
+\doxyref{mean()}{p.}{phidget__reader_8cpp_a478ef96a3ad4032e1f91152178c8809e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 109 of file phidget\-\_\-reader.\-cpp.
+
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!shift\-Buffer@{shift\-Buffer}}
+\index{shift\-Buffer@{shift\-Buffer}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{shift\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void shift\-Buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{data}
+\end{DoxyParamCaption}
+)}\label{phidget__reader_8cpp_ab3f7db7de2a2af54619cd7ac3517b924}
+
+
+Method for shifting the buffer and inserting the newest sensor value. 
+
+This method shifts all the data elements in the buffer to make place for the new sensor data. The buffer is initialised as an array filled with '1', so the first buffer\-\_\-size values will be invalid. 
+\begin{DoxyParams}{Parameters}
+{\em data} & The new sensor value to be shifted into the buffer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\doxyref{mean()}{p.}{phidget__reader_8cpp_a478ef96a3ad4032e1f91152178c8809e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 82 of file phidget\-\_\-reader.\-cpp.
+
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void shutdown (
+\begin{DoxyParamCaption}
+\item[{const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&}]{b}
+\end{DoxyParamCaption}
+)}\label{phidget__reader_8cpp_a6099bcde46c020c0703be2c28a4432d5}
+
+
+Controll method to shutdown this R\-O\-S node when the command is given. 
+
+This method will shutdown this node when the command is given by the console. 
+\begin{DoxyParams}{Parameters}
+{\em b} & The message containing the command. Nothing is done with the command since we know what it will be when this message is received. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Variable Documentation}
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!buffer@{buffer}}
+\index{buffer@{buffer}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{buffer}]{\setlength{\rightskip}{0pt plus 5cm}int buffer[{\bf buffer\-\_\-size}]}\label{phidget__reader_8cpp_a87f0aec3ac049be255616effe0efdc43}
+The buffer used for smoothing. 
+
+Definition at line 20 of file phidget\-\_\-reader.\-cpp.
+
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!buffer\-\_\-size@{buffer\-\_\-size}}
+\index{buffer\-\_\-size@{buffer\-\_\-size}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{buffer\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}const int buffer\-\_\-size = 25}\label{phidget__reader_8cpp_a9bd822a4ae927624f7827c898422d1db}
+Value buffer size for signal smoothing. 
+
+Definition at line 19 of file phidget\-\_\-reader.\-cpp.
+
+\index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!freq@{freq}}
+\index{freq@{freq}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
+\subsubsection[{freq}]{\setlength{\rightskip}{0pt plus 5cm}const int freq = 250}\label{phidget__reader_8cpp_a323a9f2cf2eeae7e0acd9fe48da80fff}
+The frequency at which the sensor should be read and the value passed on. 
+
+Definition at line 18 of file phidget\-\_\-reader.\-cpp.
+
 \index{phidget\-\_\-reader.\-cpp@{phidget\-\_\-reader.\-cpp}!sensor\-\_\-id@{sensor\-\_\-id}}
 \index{sensor\-\_\-id@{sensor\-\_\-id}!phidget_reader.cpp@{phidget\-\_\-reader.\-cpp}}
-\subsubsection[{sensor\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int sensor\-\_\-id = 0}\label{phidget__reader_8cpp_a1b83cf3bbc9916bc2a4d0e75ba23b9d3}
+\subsubsection[{sensor\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}const int sensor\-\_\-id = 4}\label{phidget__reader_8cpp_acdd8c9ca04f3c952e0a17260cfa8f2eb}
+The sensor I\-D. 
 
-
-Definition at line 6 of file phidget\-\_\-reader.\-cpp.
+Definition at line 17 of file phidget\-\_\-reader.\-cpp.
 

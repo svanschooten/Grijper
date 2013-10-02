@@ -14,11 +14,20 @@ int mean();
 void printbuffer();
 void shutdown(const std_msgs::Bool::ConstPtr&);
 
-const int sensor_id = 4;
-const int freq = 250;
-const int buffer_size = 25;
-int buffer[buffer_size];
+const int sensor_id = 4; /*!< The sensor ID. */
+const int freq = 250; /*!< The frequency at which the sensor should be read and the value passed on. */
+const int buffer_size = 25; /*!< Value buffer size for signal smoothing. */
+int buffer[buffer_size];  /*!< The buffer used for smoothing. */
 
+
+/*! \brief Main method reading the phidget at a specified frequency and smoothing the signal before passing it on.
+
+Here the phidget is read at a fixed interval, given by freq. These values are stored in the buffer and sliding mean smoothing is applied.
+This ensures a less spikey signal for the controller and impulses are filtered out.
+This also means that the system has a longer response time, but by increasing the frequency this is nullified.
+The buffer acts as a queue, shifting the values every time before calculating a mean value to pass on to the controller.
+\sa shiftBuffer(int), mean()
+*/
 int main(int argc, char **argv){
 	
 	ros::init(argc, argv, "phidget_reader");
@@ -63,6 +72,13 @@ int main(int argc, char **argv){
 	return 0;
 }
 
+/*! \brief Method for shifting the buffer and inserting the newest sensor value.
+
+This method shifts all the data elements in the buffer to make place for the new sensor data.
+The buffer is initialised as an array filled with '1', so the first buffer_size values will be invalid.
+\param data The new sensor value to be shifted into the buffer.
+\sa mean()
+*/
 void shiftBuffer(int data){
 	for(int i = 0; i < buffer_size - 1; i++){
 		buffer[i] = buffer[i+1];
@@ -70,6 +86,12 @@ void shiftBuffer(int data){
 	buffer[buffer_size - 1] = data;
 }
 
+/*! \brief Method for calulating the mean of the buffer to pass on to the controller
+
+This method calculated the mean of the values in the buffer.
+\return The calculated mean.
+\sa shiftBuffer(int)
+*/
 int mean(){
 	int size = 0;
 	for(int i = 0; i < buffer_size; i
@@ -79,6 +101,11 @@ int mean(){
 	return(ceil(size/buffer_size));
 }
 
+/*! \brief A small control method to print the buffer.
+
+Prints the buffer for each iteration so the calculated mean value can be evaluated.
+\sa mean()
+*/
 void printbuffer(){
 	cout << " - [";
 	for(int i = 0; i < buffer_size; i++){
@@ -87,6 +114,11 @@ void printbuffer(){
 	cout << "]\n";
 }
 
+/*! \brief Controll method to shutdown this ROS node when the command is given.
+
+This method will shutdown this node when the command is given by the console.
+\param b The message containing the command. Nothing is done with the command since we know what it will be when this message is received.
+*/
 void shutdown(const std_msgs::Bool::ConstPtr& b){
 	ros::shutdown();
 }

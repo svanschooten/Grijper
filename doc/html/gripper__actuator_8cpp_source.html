@@ -16,6 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -46,7 +48,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -57,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_be77a52a37d1299814455a6bb655fedb.html">Grijper</a></li><li class="navelem"><a class="el" href="dir_5dd3550f8d5b93db4b67d183db32d82f.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -66,72 +68,100 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="gripper__actuator_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;ros/ros.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;std_msgs/Float32.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;threemxl/C3mxlROS.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;threemxl/CDynamixelROS.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> std::cout;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> std::endl;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> std::hex;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> std::dec;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af">gripperActuate</a>(<span class="keyword">const</span> std_msgs::Float32::ConstPtr&amp;);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371">gripperControl</a>(<span class="keyword">const</span> std_msgs::String::ConstPtr&amp;);</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#adde9f51ddf0fb5c82c57b4075b6e9400">   15</a></span>&#160;ros::Publisher <a class="code" href="gripper__actuator_8cpp.html#adde9f51ddf0fb5c82c57b4075b6e9400">publisher</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a8002ba95eddc1ad1aeb79d6ac8142156">execute</a>(ArgList);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280">open</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a60598c74e06026d9314d3362a1629936">close</a>(<span class="keywordtype">float</span>);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a3cdecab00d916e74baf9ca4b8a8fd4f1">   20</a></span>&#160;<span class="preprocessor">#define DXLC_SAFE_CALL(call) \</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">  do { \</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">    int ret = call; \</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">    if (ret != DXL_SUCCESS) { \</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">      cout &lt;&lt; &quot;Error:&quot; &lt;&lt; endl &lt;&lt; &quot;  &quot; &lt;&lt; C3mxl::translateErrorCode(ret) &lt;&lt; &quot; (0x&quot; &lt;&lt; hex &lt;&lt; ret &lt;&lt; dec &lt;&lt; &quot;)&quot; &lt;&lt; endl; \</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">    } \</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">  } while (0)</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">   28</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="gripper__actuator_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv){</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;std_msgs/Float32.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;std_msgs/String.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;std_msgs/Bool.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="command_8h.html">Grijper/command.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;threemxl/C3mxlROS.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596" title="This method controls the motor.">gripperControl</a>(<span class="keyword">const</span> <a class="code" href="structGrijper_1_1command__.html#a1abbeec38dd1d37c4960ce01a9993aaf">Grijper::command::ConstPtr</a>&amp;);</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a9f4419e4ba603a6e5cbe0148e492cad0">   12</a></span>&#160;ros::Publisher <a class="code" href="gripper__actuator_8cpp.html#a9f4419e4ba603a6e5cbe0148e492cad0">gripper_state</a>; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5" title="Controll method to shutdown this ROS node when the command is given.">shutdown</a>(<span class="keyword">const</span> std_msgs::Bool::ConstPtr&amp;);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280" title="Small controlling method for opening the gripper.">open</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f" title="Small controlling method for closing the gripper.">close</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436" title="Small controlling method for relaxing the gripper.">relax</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">float</span> <a class="code" href="gripper__actuator_8cpp.html#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27" title="Conversion method to convert a target force into a current.">calc_current</a>(<span class="keywordtype">float</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">   18</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">current</a> = 0.04;  </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">   19</a></span>&#160;CDxlGeneric *<a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>;  </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">   28</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="console_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="The main method of the console. The console listens to input an passes the commands on to the control...">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv){</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        ros::init(argc, argv, <span class="stringliteral">&quot;gripper_actuator&quot;</span>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        ros::NodeHandle n;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        ros::Publisher force_subscriber = n.subscribe(<span class="stringliteral">&quot;gripper_force&quot;</span>, 1000, <a class="code" href="gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af">gripperActuate</a>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        ros::Publisher controller = n.subscribe(<span class="stringliteral">&quot;gripper_control&quot;</span>, 1000, <a class="code" href="gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371">gripperControl</a>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#adde9f51ddf0fb5c82c57b4075b6e9400">publisher</a> = n.advertise&lt;std_msgs::Float32&gt;(<span class="stringliteral">&quot;gripper_values&quot;</span>, 1000);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        ros:spin();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#a45524816df9f7663ba360599b42a36af">gripperActuate</a>(<span class="keyword">const</span> std_msgs::Float32::ConstPtr&amp; msg){</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">float</span> data = msg-&gt;data;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="console_8cpp.html#a02fd73d861ef2e4aabb38c0c9ff82947" title="Initialiser for the system to ensure the default forces are identical throughout the system...">ros::init</a>(argc, argv, <span class="stringliteral">&quot;gripper_actuator&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        CDxlConfig *config = <span class="keyword">new</span> CDxlConfig();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;Using direct connection&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a> = <span class="keyword">new</span> C3mxl();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        LxSerial serial_port_;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        serial_port_.port_open(<span class="stringliteral">&quot;/dev/ttyUSB0&quot;</span>, LxSerial::RS485_FTDI);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        serial_port_.set_speed(LxSerial::S921600);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;setSerialPort(&amp;serial_port_);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;setConfig(config-&gt;setID(109));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;init(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;set3MxlMode(CURRENT_MODE);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">delete</span> config;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#a101b2140b24b7e4ae8ffa902e5e8b371">gripperControl</a>(<span class="keyword">const</span> std_msgs::String::ConstPtr&amp; msg){</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        String data = msg-&gt;data.c_str();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;actuating: %f&quot;</span>, data);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a8002ba95eddc1ad1aeb79d6ac8142156">   50</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a8002ba95eddc1ad1aeb79d6ac8142156">execute</a>(ArgList args){</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        ros::NodeHandle n;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ros::Subscriber controller = n.subscribe(<span class="stringliteral">&quot;gripper_controll&quot;</span>, 1000, <a class="code" href="gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596" title="This method controls the motor.">gripperControl</a>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#a9f4419e4ba603a6e5cbe0148e492cad0">gripper_state</a> = n.advertise&lt;std_msgs::Float32&gt;(<span class="stringliteral">&quot;gripper_state&quot;</span>, 1000);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        ros::Subscriber sd = n.subscribe(<span class="stringliteral">&quot;shutdown&quot;</span>, 1, <a class="code" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5" title="Controll method to shutdown this ROS node when the command is given.">shutdown</a>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        ros::spin();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280">   54</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280">open</a>(){</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a60598c74e06026d9314d3362a1629936">   58</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a60598c74e06026d9314d3362a1629936">close</a>(<span class="keywordtype">float</span> force){</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596">   63</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#add43683f423b8ad34526564c0760d596" title="This method controls the motor.">gripperControl</a>(<span class="keyword">const</span> <a class="code" href="structGrijper_1_1command__.html#a1abbeec38dd1d37c4960ce01a9993aaf">Grijper::command::ConstPtr</a>&amp; msg){</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">string</span> cmd = msg-&gt;cmd;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* c_cmd = cmd.c_str();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">float</span> <a class="code" href="console_8cpp.html#ad0952eff2667e5af2b307ba4f6d0b06b">force</a> = msg-&gt;force;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">current</a> = <a class="code" href="gripper__actuator_8cpp.html#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27" title="Conversion method to convert a target force into a current.">calc_current</a>(force);  </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;Actuating gripper: %sing %fN -&gt; %fA&quot;</span>,c_cmd, force, <a class="code" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">current</a>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span>(cmd.compare(<span class="stringliteral">&quot;open&quot;</span>) == 0){</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280" title="Small controlling method for opening the gripper.">open</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(cmd.compare(<span class="stringliteral">&quot;relax&quot;</span>) == 0){</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <a class="code" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436" title="Small controlling method for relaxing the gripper.">relax</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(cmd.compare(<span class="stringliteral">&quot;close&quot;</span>) == 0){</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <a class="code" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f" title="Small controlling method for closing the gripper.">close</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                ROS_INFO(<span class="stringliteral">&quot;Invalid command supplied&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280">   85</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#adb20eae91802d6ad6366cdee0220c280" title="Small controlling method for opening the gripper.">open</a>(){</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;Opening gripper&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;setCurrent(<a class="code" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">current</a>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f">   96</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a46143fd6de3be9ab9951f140d3ae8c2f" title="Small controlling method for closing the gripper.">close</a>(){</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;Closing gripper&quot;</span>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;setCurrent(-1*<a class="code" href="gripper__actuator_8cpp.html#af9653d31acfffa5a40aa709b2065e00b">current</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436">  107</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436" title="Small controlling method for relaxing the gripper.">relax</a>(){</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;Relaxing gripper&quot;</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc">motor_</a>-&gt;setCurrent(0);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27">  119</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="gripper__actuator_8cpp.html#a9b3c7d64d58f6a1d4a9f53a6e4a3aa27" title="Conversion method to convert a target force into a current.">calc_current</a>(<span class="keywordtype">float</span> <a class="code" href="console_8cpp.html#ad0952eff2667e5af2b307ba4f6d0b06b">force</a>){</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="console_8cpp.html#ad0952eff2667e5af2b307ba4f6d0b06b">force</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">  128</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5" title="Controll method to shutdown this ROS node when the command is given.">shutdown</a>(<span class="keyword">const</span> std_msgs::Bool::ConstPtr&amp; b){</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#a76ee232c68955d5e8c9e507b8ac38436" title="Small controlling method for relaxing the gripper.">relax</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="gripper__actuator_8cpp.html#a6099bcde46c020c0703be2c28a4432d5" title="Controll method to shutdown this ROS node when the command is given.">ros::shutdown</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 
 <br clear="all" />
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Tue Sep 24 2013 15:54:29</small>
+<small>autogenerated on Wed Oct 2 2013 12:30:12</small>
 </div>
 </body>
 </html>

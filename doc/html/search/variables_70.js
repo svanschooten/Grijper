@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['publisher',['publisher',['../gripper__actuator_8cpp.html#adde9f51ddf0fb5c82c57b4075b6e9400',1,'publisher():&#160;gripper_actuator.cpp'],['../gripper__controller_8cpp.html#adde9f51ddf0fb5c82c57b4075b6e9400',1,'publisher():&#160;gripper_controller.cpp']]]
+  ['python3',['python3',['../namespaceGrijper_1_1msg_1_1__command.html#a5dc7b703c730a5bcfb1f04a41b184498',1,'Grijper::msg::_command']]]
 ];

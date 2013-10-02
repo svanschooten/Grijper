@@ -16,6 +16,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -46,7 +48,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -57,25 +59,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_be77a52a37d1299814455a6bb655fedb.html">Grijper</a></li><li class="navelem"><a class="el" href="dir_5dd3550f8d5b93db4b67d183db32d82f.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">rviz_object.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;ros/ros.h&quot;</code><br/>
-<code>#include &quot;std_msgs/Int32.h&quot;</code><br/>
-<code>#include &lt;sstream&gt;</code><br/>
+<div class="textblock"><code>#include &lt;ros/ros.h&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;std_msgs/Int32.h&gt;</code><br/>
+<code>#include &lt;std_msgs/Bool.h&gt;</code><br/>
+<code>#include &lt;visualization_msgs/Marker.h&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for rviz_object.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="rviz__object_8cpp__incl.png" border="0" usemap="#rviz__object_8cpp" alt=""/></div>
-<map name="rviz__object_8cpp" id="rviz__object_8cpp">
-</map>
 </div>
 </div>
 <p><a href="rviz__object_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -84,10 +87,15 @@ Include dependency graph for rviz_object.cpp:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ce015110fa95736c5c473f56d8740a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a1ce015110fa95736c5c473f56d8740a4">rvizUpdater</a> ()</td></tr>
-<tr class="separator:a1ce015110fa95736c5c473f56d8740a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31e2e60662d5ec68828a3372cd4f22b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a31e2e60662d5ec68828a3372cd4f22b7">rvizUpdater</a> (const std_msgs::Int32::ConstPtr &amp;msg)</td></tr>
-<tr class="separator:a31e2e60662d5ec68828a3372cd4f22b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bbd86f31fda8151dd8981cc77d4c21b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a9bbd86f31fda8151dd8981cc77d4c21b">rvizUpdater</a> (const std_msgs::Int32::ConstPtr &amp;)</td></tr>
+<tr class="separator:a9bbd86f31fda8151dd8981cc77d4c21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eeee6c84a027eabdd7230329be56bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a9eeee6c84a027eabdd7230329be56bec">shutdown</a> (const std_msgs::Bool::ConstPtr &amp;)</td></tr>
+<tr class="separator:a9eeee6c84a027eabdd7230329be56bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4425b358da5de7e919aa971b57de5504"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a4425b358da5de7e919aa971b57de5504">dist_int</a></td></tr>
+<tr class="separator:a4425b358da5de7e919aa971b57de5504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
@@ -114,26 +122,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00007">7</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00015">15</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1ce015110fa95736c5c473f56d8740a4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void rvizUpdater </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a31e2e60662d5ec68828a3372cd4f22b7"></a>
+<a class="anchor" id="a9bbd86f31fda8151dd8981cc77d4c21b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -147,7 +140,38 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00017">17</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00096">96</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9eeee6c84a027eabdd7230329be56bec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void shutdown </td>
+          <td>(</td>
+          <td class="paramtype">const std_msgs::Bool::ConstPtr &amp;&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a4425b358da5de7e919aa971b57de5504"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dist_int</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00013">13</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
 
 </div>
 </div>
@@ -157,7 +181,7 @@ Functions</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Tue Sep 24 2013 15:54:29</small>
+<small>autogenerated on Wed Oct 2 2013 12:30:12</small>
 </div>
 </body>
 </html>

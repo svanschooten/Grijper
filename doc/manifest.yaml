@@ -1,18 +1,20 @@
 authors: Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen,
   Roy Groot
-brief: Grijper
+brief: Collection of nodes controlling a gripper
 bugtracker: ''
 depends:
 - threemxl
 - phidget_ik
+- std_msgs
 - roscpp
 - rviz
-description: "\n\n     Grijper\n\n  "
+description: "\n\n     A ROS based set of nodes to controll a gripper with a infrared\
+  \ distance sensor.\n\n  "
 license: BSD
 maintainers: ''
-msgs: []
+msgs:
+- command
 package_type: package
 repo_url: ''
-srvs:
-- calc_force
+srvs: []
 url: https://github.com/svanschooten/Grijper
