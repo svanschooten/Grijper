@@ -147,7 +147,7 @@ Compares the distance value to a threshold value to see if the gripper should be
 
 */
 bool close_gripper(float distance){
-	return distance < 7; //TODO dit nog bewerken afhankelijk van de sensor.
+	return distance < 7 && distance != 0; //TODO dit nog bewerken afhankelijk van de sensor.
 }
 
 /*! \brief Small evaluation method to see if the gripper should be opened.
