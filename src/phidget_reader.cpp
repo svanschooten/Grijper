@@ -121,7 +121,7 @@ void printbuffer(){
 This method converts the sersorvalue to a distance.
 
 \param sensorValue The value of the sensor.
-\returm The calculated distance.
+\return The calculated distance.
 
 */
 float sensorToDistance(int sensorValue){

@@ -17,11 +17,11 @@ void init();
 /*! \brief The main method of the console. The console listens to input an passes the commands on to the controller
 
 The console listens to user input to generate a command.
-These commands can be 'open', 'close', 'relax', 'force <target force>', 'get_force' and 'exit'
+These commands can be 'open', 'close', 'relax', 'force < target force >', 'get_force' and 'exit'
 The 'open' command manually opens the gripper.
 The 'close' command manually closes the gripper.
 The 'relax' command relaxes the gripper (e.g. set the target force to 0). This can only be done manually.
-The 'force <target force>' command sets the target force to the '<target force>' parameter.
+The 'force < target force >' command sets the target force to the '< target force >' parameter.
 The 'get_force' command returns the target force as has been set.
 The 'exit' command passes on the shutdown command to all listening nodes before shutting down itself. This should be used to control all nodes.
 
