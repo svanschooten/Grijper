@@ -99,7 +99,7 @@ Subscribes to:
 
 \subsection gripper_actuator gripper_actuator
 
-gripper_actuator does...
+gripper_actuator listens to the controller and sends commands to the threemxl to acutuate the gripper and then publishes the state of the gripper
 
 \subsubsection actuator_usage Usage
 \verbatim
@@ -109,17 +109,18 @@ $ rosrun Grijper gripper_actuator [standard ROS args]
 \subsubsection actuator_topics ROS topics
 
 Publishes to:
-- \b "out": [std_msgs/Float32] dummy.
+- \b "gripper_state" [std_msgs/Float32] The state of the gripper 0 opens, 1 closes, 0.5 relax.
 
 Subscribes to:
-- \b "int": [std_msgs/Float32] dummy.
+- \b "gripper_control": [Grijper/command] The command to be passed on, contains a 'cmd' string and a 'force' float.
+- \b "shutdown" [std_msgs/Bool] The shutdown command.
 
 [back to top ](#toppage)
 <hr>
 
 \subsection phidget_reader phidget_reader
 
-phidget_reader does...
+phidget_reader reads the raw value of the sensor and calculates the distance to the object out of this value
 
 \subsubsection reader_usage Usage
 \verbatim
@@ -129,10 +130,10 @@ $ rosrun Grijper phidget_reader [standard ROS args]
 \subsubsection reader_topics ROS topics
 
 Publishes to:
-- \b "out": [std_msgs/Float32] dummy.
+- \b "phidget_value": [std_msgs/Float32] The calculated distance from the read value.
 
 Subscribes to:
-- \b "int": [std_msgs/Float32] dummy.
+- \b "shutdown" [std_msgs/Bool] The shutdown command.
 
 [back to top ](#toppage)
 <hr>
