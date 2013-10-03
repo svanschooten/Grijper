@@ -139,7 +139,7 @@ Subscribes to:
 
 \subsection rviz_gripper rviz_gripper
 
-rviz_gripper does...
+rviz_gripper does publishes the state of the joints of the gripper to rviz
 
 \subsubsection rviz_gripper_usage Usage
 \verbatim
@@ -149,17 +149,18 @@ $ rosrun Grijper rviz_gripper [standard ROS args]
 \subsubsection rviz_gripper_topics ROS topics
 
 Publishes to:
-- \b "out": [std_msgs/Float32] dummy.
+- \b "jstates": [sensor_msgs::JointState] The calculated states of the joints.
 
 Subscribes to:
-- \b "int": [std_msgs/Float32] dummy.
+- \b "gripper_state" [std_msgs/Float32] The state of the gripper 0 opens, 1 closes, 0.5 relax.
+- \b "shutdown" [std_msgs/Bool] The shutdown command.
 
 [back to top ](#toppage)
 <hr>
 
 \subsection rviz_object rviz_object
 
-rviz_object does...
+rviz_object listens to the distance of an object and sends a marker message to rviz to show an object at the measured distance
 
 \subsubsection rviz_object_usage Usage
 \verbatim
@@ -169,10 +170,11 @@ $ rosrun Grijper rviz_object [standard ROS args]
 \subsubsection rviz_object_topics ROS topics
 
 Publishes to:
-- \b "out": [std_msgs/Float32] dummy.
+- \b "visualization_marker": [std_msgs/Float32] A marker object send to rviz with the measured coordinates.
 
 Subscribes to:
-- \b "int": [std_msgs/Float32] dummy.
+- \b "phidget_value": [std_msgs/Float32] The calculated distance from the read value.
+- \b "shutdown" [std_msgs/Bool] The shutdown command.
 
 [back to top ](#toppage)
 */
