@@ -38,7 +38,7 @@ int main(int argc, char **argv){
 	ros::Subscriber command_sub = n.subscribe("command", 1000, gripperCommand);
 	ros::Subscriber phidget_sub = n.subscribe("phidget_value", 1, gripperPhidget);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
-	control = n.advertise<Grijper::command>("gripper_controll", 1);
+	control = n.advertise<Grijper::command>("gripper_control", 1);
 	ros::spin();
 
 	return 0;
@@ -147,7 +147,7 @@ Compares the distance value to a threshold value to see if the gripper should be
 
 */
 bool close_gripper(float distance){
-	return distance < 7; //TODO dit nog bewerken afhankelijk van de sensor.
+	return distance < 7 && distance != 0; //TODO dit nog bewerken afhankelijk van de sensor.
 }
 
 /*! \brief Small evaluation method to see if the gripper should be opened.

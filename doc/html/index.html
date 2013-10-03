@@ -57,12 +57,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Grijper Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#commandline">Command-line tools</a><ul><li class="level2"><a href="#script_name">Grijper.launch</a><ul><li class="level3"><a href="#Usage"></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><a href="#rosapi">ROS Grijper API</a><ul><li class="level2"><a href="#gripper_console">gripper_console</a><ul><li class="level3"><a href="#console_commands">Commands</a></li>
+<li class="level3"><a href="#console_usage">Usage</a></li>
+<li class="level3"><a href="#console_topics">topics ROS topics</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#gripper_controller">gripper_controller</a><ul><li class="level3"><a href="#controller_usage">Usage</a></li>
+<li class="level3"><a href="#controller_topics">topics ROS topics</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#gripper_actuator">gripper_actuator</a><ul><li class="level3"><a href="#actuator_usage">Usage</a></li>
+<li class="level3"><a href="#actuator_topics">ROS topics</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#phidget_reader">phidget_reader</a><ul><li class="level3"><a href="#reader_usage">Usage</a></li>
+<li class="level3"><a href="#reader_topics">ROS topics</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#rviz_gripper">rviz_gripper</a><ul><li class="level3"><a href="#rviz_gripper_usage">Usage</a></li>
+<li class="level3"><a href="#rviz_gripper_topics">ROS topics</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#rviz_object">rviz_object</a><ul><li class="level3"><a href="#rviz_object_usage">Usage</a></li>
+<li class="level3"><a href="#rviz_object_topics">ROS topics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><a href="#toppage">Grijper</a></li>
+</ul>
+</div>
 <div class="textblock"><div class="manifest" style="padding: 5px; background-color: #eee; border: 1px solid #333; float: right; width: 25%;">
 <h3>Grijper: Collection of nodes controlling a gripper</h3>
 <p class=description><em>
-
      A ROS based set of nodes to controll a rebotic hand with a infrared distance sensor.
-
   </em></p>
 <p>
 <ul>
@@ -71,80 +105,164 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </p>
 
 </div>
- <h1><a class="el" href="namespaceGrijper.html">Grijper</a></h1>
+<h1><a class="anchor" id="toppage"></a>
+Grijper</h1>
 <h2>Controlling a robotic hand</h2>
+<p><a href="https://github.com/svanschooten/Grijper">https://github.com/svanschooten/Grijper</a></p>
 <p><b><a class="el" href="namespaceGrijper.html">Grijper</a></b> is a package containing nodes that are used to control a motorised robotic hand, henceforth called the 'gripper'.</p>
-<p><code>This</code> is done by reading and evaluating a sensor and it's values using the phidget in the phidget_reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.</p>
-<p><code>This</code> state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.0 and 1.0. 0.0 indicating the gripper is completely open and 1.0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.</p>
-<h1><a class="anchor" id="rosapi"></a>
-ROS Grijper API</h1>
-<p>List of nodes:</p>
-<ul>
-<li><b></b>[gripper_console]: gripper__console_8cpp.html</li>
-<li><b></b>[gripper_controller]: ./gripper__controller_8cpp.html</li>
-<li><b></b>[gripper_actuator]: ./gripper__actuator_8cpp.html</li>
-<li><b></b>[phidget_reader]: ./phidget__reader_8cpp.html</li>
-<li><b></b>[rviz_gripper]: ./rviz__gripper_8cpp.html</li>
-<li><b></b>[rviz_object]: ./rviz__object_8cpp.html</li>
-</ul>
+<p>This is done by reading and evaluating a sensor and it's values using the phidget in the phidget_reader node. These are compared to set threshold values to decide if the gripper should be opened or closed. This is done in the controller. Commands are then sent to the actuator which controlls the motor powering the gripper. This actuator node then publishes the motor state.</p>
+<p>This state is picked up by an rviz node that visualises and controls the gripper model in rviz. The state is given as a float between 0.0 and 1.0. 0.0 indicating the gripper is completely open and 1.0 indicates the gripper has been closed. Another rviz node listens to the phidget sensor values and visualises a cyllinder mimicking the position of the oject relative to the gripper.</p>
 <hr/>
-<h2><a class="anchor" id="node_name"></a>
-gripper_console</h2>
-<p>node_name makes the system controllable by the user through console input and output.</p>
-<h3><a class="anchor" id="Usage"></a>
-Usage</h3>
-<pre class="fragment">$ node_type1 [standard ROS args]
-</pre><dl class="section user"><dt>Example</dt><dd></dd></dl>
-<pre class="fragment">$ node_type1
-</pre><h3><a class="anchor" id="topics"></a>
-ROS topics</h3>
-<p>Subscribes to:</p>
-<ul>
-<li><b>"in"</b>: [std_msgs/FooType] description of in</li>
-</ul>
-<p>Publishes to:</p>
-<ul>
-<li><b>"out"</b>: [std_msgs/FooType] description of out</li>
-</ul>
-<h3><a class="anchor" id="parameters"></a>
-ROS parameters</h3>
-<p>Reads the following parameters from the parameter server</p>
-<ul>
-<li><b>"~param_name"</b> : <b></b>[type] description of param_name</li>
-<li><b>"~my_param"</b> : <b></b>[string] description of my_param</li>
-</ul>
-<p>Sets the following parameters on the parameter server</p>
-<ul>
-<li><b>"~param_name"</b> : <b></b>[type] description of param_name</li>
-</ul>
-<h3><a class="anchor" id="services"></a>
-ROS services</h3>
-<ul>
-<li><b>"foo_service"</b>: [std_srvs/FooType] description of foo_service</li>
-</ul>
 <h1><a class="anchor" id="commandline"></a>
 Command-line tools</h1>
-<p>This section is a catch-all for any additional tools that your package provides or uses that may be of use to the reader. For example:</p>
-<ul>
-<li>tools/scripts (e.g. rospack, roscd)</li>
-<li>roslaunch .launch files</li>
-<li>xmlparam files</li>
-</ul>
+<p>The <a class="el" href="namespaceGrijper.html">Grijper</a> package can also be built by launching the Grijper.launch file. It will encapsule the console in the current console, enabling control but hiding all reduntant information from the other nodes.</p>
 <h2><a class="anchor" id="script_name"></a>
-script_name</h2>
+Grijper.launch</h2>
 <p>Description of what this script/file does.</p>
 <h3><a class="anchor" id="Usage"></a>
 Usage</h3>
-<pre class="fragment">$ ./script_name [args]
-</pre><dl class="section user"><dt>Example</dt><dd></dd></dl>
-<pre class="fragment">$ ./script_name foo bar
-</pre> </div></div><!-- contents -->
+<pre class="fragment">$ roslaunch Grijper Grijper.launch
+</pre><p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h1><a class="anchor" id="rosapi"></a>
+ROS Grijper API</h1>
+<p>Because of the independent and standardised setup of this package, <a class="el" href="namespaceGrijper.html">Grijper</a> only consists of communicating nodes that can run independently (though having almost to no functionality without their proper messages).</p>
+<p>List of nodes:</p>
+<ul>
+<li><b></b> <a href="./console_8cpp.html">gripper_console</a></li>
+<li><b></b> <a href="./gripper__controller_8cpp.html">gripper_controller</a></li>
+<li><b></b> <a href="./gripper__actuator_8cpp.html">gripper_actuator</a></li>
+<li><b></b> <a href="./phidget__reader_8cpp.html">phidget_reader</a></li>
+<li><b></b> <a href="./rviz__gripper_8cpp.html">rviz_gripper</a></li>
+<li><b></b> <a href="./rviz__object_8cpp.html">rviz_object</a></li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h2><a class="anchor" id="gripper_console"></a>
+gripper_console</h2>
+<p>gripper_console makes the system controllable by the user through console input and output.</p>
+<h3><a class="anchor" id="console_commands"></a>
+Commands</h3>
+<ul>
+<li><b>'open'</b> Opens the gripper.</li>
+<li><b>'close'</b> Closes the gripper.</li>
+<li><b>'relax'</b> Relaxes the gripper.</li>
+<li><b>'force</b> &lt; target force &gt;' Sets the target force to '&lt; target force &gt;' to be used in future commands.</li>
+<li><b>'get_force'</b> Returns the current target force.</li>
+<li><b>'exit'</b> Sends the shutdown signal to all nodes and shuts down.</li>
+</ul>
+<h3><a class="anchor" id="console_usage"></a>
+Usage</h3>
+<pre class="fragment">$ rosrun Grijper gripper_console [standard ROS args]
+</pre><h3><a class="anchor" id="console_topics"></a>
+topics ROS topics</h3>
+<p>Publishes to:</p>
+<ul>
+<li><b>"gripper_force"</b>: [std_msgs/Float32] The set target force at which the gripper should close.</li>
+<li><b>"command"</b>: [std_msgs/String] The command to be passed on.</li>
+<li><b>"shutdown"</b> [std_msgs/Bool] The shutdown command.</li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h2><a class="anchor" id="gripper_controller"></a>
+gripper_controller</h2>
+<p>gripper_controller listens to the phidget and console, thus deciding and controlling the system. Published commands to the actuator.</p>
+<h3><a class="anchor" id="controller_usage"></a>
+Usage</h3>
+<pre class="fragment">$ rosrun Grijper gripper_controller [standard ROS args]
+</pre><h3><a class="anchor" id="controller_topics"></a>
+topics ROS topics</h3>
+<p>Publishes to:</p>
+<ul>
+<li><b>"gripper_control"</b>: [Grijper/command] The command to be passed on, contains a 'cmd' string and a 'force' float.</li>
+</ul>
+<p>Subscribes to:</p>
+<ul>
+<li><b>"gripper_force"</b>: [std_msgs/Float32] The set target force at which the gripper should close.</li>
+<li><b>"command"</b>: [std_msgs/String] The command to be passed on.</li>
+<li><b>"shutdown"</b> [std_msgs/Bool] The shutdown command.</li>
+<li><b>"phidget_value"</b> [std_msgs/Float32] The calculated distance from the read value.</li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h2><a class="anchor" id="gripper_actuator"></a>
+gripper_actuator</h2>
+<p>gripper_actuator does...</p>
+<h3><a class="anchor" id="actuator_usage"></a>
+Usage</h3>
+<pre class="fragment">$ rosrun Grijper gripper_actuator [standard ROS args]
+</pre><h3><a class="anchor" id="actuator_topics"></a>
+ROS topics</h3>
+<p>Publishes to:</p>
+<ul>
+<li><b>"out"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p>Subscribes to:</p>
+<ul>
+<li><b>"int"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h2><a class="anchor" id="phidget_reader"></a>
+phidget_reader</h2>
+<p>phidget_reader does...</p>
+<h3><a class="anchor" id="reader_usage"></a>
+Usage</h3>
+<pre class="fragment">$ rosrun Grijper phidget_reader [standard ROS args]
+</pre><h3><a class="anchor" id="reader_topics"></a>
+ROS topics</h3>
+<p>Publishes to:</p>
+<ul>
+<li><b>"out"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p>Subscribes to:</p>
+<ul>
+<li><b>"int"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h2><a class="anchor" id="rviz_gripper"></a>
+rviz_gripper</h2>
+<p>rviz_gripper does...</p>
+<h3><a class="anchor" id="rviz_gripper_usage"></a>
+Usage</h3>
+<pre class="fragment">$ rosrun Grijper rviz_gripper [standard ROS args]
+</pre><h3><a class="anchor" id="rviz_gripper_topics"></a>
+ROS topics</h3>
+<p>Publishes to:</p>
+<ul>
+<li><b>"out"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p>Subscribes to:</p>
+<ul>
+<li><b>"int"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+<hr/>
+<h2><a class="anchor" id="rviz_object"></a>
+rviz_object</h2>
+<p>rviz_object does...</p>
+<h3><a class="anchor" id="rviz_object_usage"></a>
+Usage</h3>
+<pre class="fragment">$ rosrun Grijper rviz_object [standard ROS args]
+</pre><h3><a class="anchor" id="rviz_object_topics"></a>
+ROS topics</h3>
+<p>Publishes to:</p>
+<ul>
+<li><b>"out"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p>Subscribes to:</p>
+<ul>
+<li><b>"int"</b>: [std_msgs/Float32] dummy.</li>
+</ul>
+<p><a href="#toppage">back to top</a> </p>
+</div></div><!-- contents -->
 
 <br clear="all" />
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
-Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga, Joris Coenen, Roy Groot</br />
-<small>autogenerated on Wed Oct 2 2013 15:11:52</small>
+Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga,Joris Coenen, Roy Groot</br />
+<small>autogenerated on Wed Oct 2 2013 17:24:50</small>
 </div>
 </body>
 </html>

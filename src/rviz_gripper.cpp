@@ -9,7 +9,7 @@ using namespace std;
 
 void rvizUpdater(const std_msgs::Float32::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
-float motor_stand;
+float opens;
 
 int main(int argc, char **argv){
 	
@@ -17,22 +17,21 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber subscriber = n.subscribe("gripper_state", 1000, rvizUpdater);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
-	ros::spin();
+	ros::spinOnce();
 	ros::Publisher joint_pub = n.advertise<sensor_msgs::JointState>("jstates", 1);
-	ros::Rate loop_rate(10);
+	ros::Rate loop_rate(100);
 	ros::spinOnce();
 
 	// declare const
 	const double bmdll_max = 0.85;
 	const double mdlltp_max = 0.80;
 	// declare variables
-	double bmdll= 0;
-	double mdlltp = 0;
-	double bm_angle = -0.96, mt_angle = -0.3, angle_tot, step_size, cf = 1;
+	const double bmdll_start = -0.96;
+	const double mdlltp_start = -0.3;
+	double bm_angle, mt_angle, step_size = 0.01, cf = 1, motor_stand = 0;
 
 	// calculate step_size and total angle
-	angle_tot = bmdll_max + mdlltp_max*cf;
-	step_size = 1/angle_tot;
+	double angle_step = 1/(bmdll_max + mdlltp_max*cf);
 
 	// message declarations
 	sensor_msgs::JointState joint_state;
@@ -40,29 +39,36 @@ int main(int argc, char **argv){
 	while (ros::ok())
 	{
 
-		if(motor_stand <= bmdll_max*step_size)
-		{
-			bmdll = motor_stand/step_size;
-			bm_angle = -0.96+bmdll;
-		}else{
-			mdlltp = (motor_stand/step_size - bmdll_max)/cf;
-			mt_angle = -0.3+mdlltp;
+		if((opens == 0 || motor_stand == 1)&&(motor_stand+step_size<1 && motor_stand-step_size>0)){
+			if(opens == 0){
+				//gripper closes
+				motor_stand = motor_stand - step_size;
+			}else{
+				// gripper opens
+				motor_stand = motor_stand + step_size;
+			}
+			if(motor_stand*angle_step < bmdll_max){
+				mt_angle = mdlltp_start;
+				bm_angle = motor_stand*angle_step;
+			}else{
+				bm_angle = bmdll_start+bmdll_max;
+				mt_angle = (motor_stand*angle_step)-bmdll_max;
+			}
+			joint_state.header.stamp = ros::Time::now();
+			joint_state.name.resize(2);
+			joint_state.position.resize(2);
+
+			joint_state.name[0]="rght_base2mdll";
+			joint_state.position[0] = bm_angle;
+
+			joint_state.name[1]="rght_mdll2tip";
+			joint_state.position[1] = mt_angle;
+
+			// send joint state
+			joint_pub.publish(joint_state);
 		}
 
-		joint_state.header.stamp = ros::Time::now();
-		joint_state.name.resize(2);
-		joint_state.position.resize(2);
-
-		joint_state.name[0]="rght_base2mdll";
-		joint_state.position[0] = bm_angle;
-
-		joint_state.name[1]="rght_mdll2tip";
-		joint_state.position[1] = mt_angle;
-
-		// send joint state
-		joint_pub.publish(joint_state);
-
-		ROS_INFO("mt_angle: [%f]", mt_angle);
+		//ROS_INFO("mt_angle: [%f]", mt_angle);
 
 		//std::cout<<bmdll;
 		ros::spinOnce();
@@ -74,8 +80,8 @@ int main(int argc, char **argv){
 }
 
 void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
-	motor_stand = msg->data;
-	ROS_INFO("Rviz motor state: %f", msg->data);
+	opens = msg->data;
+	ROS_INFO("open or close: %f", msg->data);
 }
 
 void shutdown(const std_msgs::Bool::ConstPtr& b){

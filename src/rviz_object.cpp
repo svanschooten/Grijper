@@ -5,6 +5,7 @@
 #include <visualization_msgs/Marker.h>
 //#include <rvix> en dan nog wat dingen
 
+
 void rvizUpdater(const std_msgs::Float32::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
 
@@ -13,7 +14,6 @@ float distance;
 
 int main(int argc, char **argv){
 	
-	double dist;
 	bool added = false;
 	double diameter = 0.06, height=0.1;;
 
@@ -21,7 +21,7 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber subscriber = n.subscribe("phidget_value", 1000, rvizUpdater);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
-	ros::spin();
+	ros::spinOnce();
 	ros::Publisher cylinder_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 	ros::Rate loop_rate(10);
 	ros::spinOnce();
@@ -45,8 +45,6 @@ int main(int argc, char **argv){
 
     	if(distance)
     	{
-    		// distance 2 double
-			dist = distance/100;
 
 			// add marker if there is no marker
     		if(added==false){
@@ -56,7 +54,7 @@ int main(int argc, char **argv){
     		
 			//marker position
 			marker.pose.position.x = 0;
-			marker.pose.position.y = -dist;
+			marker.pose.position.y = -distance/100;
 			marker.pose.position.z = height/2-0.02;
 			// marker orientation
 			marker.pose.orientation.x = 0.0;
@@ -91,6 +89,7 @@ int main(int argc, char **argv){
 	
 	return 0;
 }
+
 
 void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
 	distance = msg->data;

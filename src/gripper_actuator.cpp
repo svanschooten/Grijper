@@ -44,7 +44,7 @@ int main(int argc, char **argv){
 	delete config;
 
 	ros::NodeHandle n;
-	ros::Subscriber controller = n.subscribe("gripper_controll", 1000, gripperControl);
+	ros::Subscriber controller = n.subscribe("gripper_control", 1000, gripperControl);
 	gripper_state = n.advertise<std_msgs::Float32>("gripper_state", 1000);
 	motor_current = n.advertise<std_msgs::Float32>("motor_current", 1);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
@@ -92,6 +92,9 @@ This method opens the gripper with the corresponding force.
 bool open(){
 	ROS_INFO("Opening gripper");
 	motor_->setCurrent(current);
+	std_msgs::Float32 msg;
+	msg.data = 0.0;
+	gripper_state.publish(msg);
 	return true;
 }
 
@@ -103,6 +106,9 @@ This method closes the gripper with the corresponding force.
 bool close(){
 	ROS_INFO("Closing gripper");
 	motor_->setCurrent(-1*current);
+	std_msgs::Float32 msg;
+	msg.data = 1.0;
+	gripper_state.publish(msg);
 	return true;
 }
 
@@ -114,6 +120,9 @@ This method relaxed the gripper.
 bool relax(){
 	ROS_INFO("Relaxing gripper");
 	motor_->setCurrent(0);
+	std_msgs::Float32 msg;
+	msg.data = 0.5;
+	gripper_state.publish(msg);
 	return true;
 }
 

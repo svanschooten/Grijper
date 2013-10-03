@@ -57,10 +57,15 @@ int main(int argc, char **argv){
 		shiftBuffer(data);
 		data = mean();
 
-		if(data < 100 || data > 700){
-			//printf("Ignoring sensor value of %i\n", data);
+		if(data > 700){
+			printf("Ignoring sensor value of %i\n", data);
 		}else{
-			float distance = sensorToDistance(data);
+			float distance;
+			if(data < 100){
+				distance = 0;
+			} else {
+				distance = sensorToDistance(data);
+			}
 			sensor_val.data = distance;
 			printf("Reading sensor %i, value: %i, distance:%f\n",sensor_id, data, distance);
 			//printbuffer();
@@ -121,7 +126,7 @@ void printbuffer(){
 This method converts the sersorvalue to a distance.
 
 \param sensorValue The value of the sensor.
-\returm The calculated distance.
+\return The calculated distance.
 
 */
 float sensorToDistance(int sensorValue){

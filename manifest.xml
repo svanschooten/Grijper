@@ -1,24 +1,15 @@
 <package>
   <description brief="Collection of nodes controlling a gripper">
-
      A ROS based set of nodes to controll a rebotic hand with a infrared distance sensor.
-
   </description>
-  <author>Stijn van Schooten</author>
-  <author>Wybren ten Cate</author>
-  <author>Florens Kreuk</author>
-  <author>Jan Wymenga</author>
-  <author>Joris Coenen</author>
-  <author>Roy Groot</author>
+  <author>Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga,Joris Coenen, Roy Groot</author>
   <license>BSD</license>
-  <review status="unreviewed" notes=""/>
-  <url>https://github.com/svanschooten/Grijper</url>
+  <url>http://svanschooten.github.io/Grijper/</url>
 
   <depend package="roscpp"/>
   <depend package="threemxl"/>
   <depend package="phidget_ik"/>
   <depend package="rviz"/>
-  <depend package="std_msgs"/>
 
   <export>
     <rosdoc config="rosdoc.yaml" />
