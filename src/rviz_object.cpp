@@ -8,7 +8,7 @@
 
 void rvizUpdater(const std_msgs::Float32::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
-ros::Publisher cylinder_pub;
+ros::Publisher cylinder_pub; /*!< cylinder publisher. */
 
 //const int freq = 250; /*!< The frequency at which the subscriber reads the . */
 bool added = false; /*!< Cylinder added value */
@@ -59,6 +59,7 @@ void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
 	if(distance == 0){
 		if(added == true){
 			marker.action = visualization_msgs::Marker::DELETE;
+			added = false;
 			cylinder_pub.publish(marker);
 		}
 	}else{
@@ -67,27 +68,24 @@ void rvizUpdater(const std_msgs::Float32::ConstPtr& msg){
 			added = true;
 		}
     
-		//marker position
 		marker.pose.position.x = 0;
 		marker.pose.position.y = -distance/100;
 		marker.pose.position.z = height/2-0.02;
-		// marker orientation
+		
 		marker.pose.orientation.x = 0.0;
 		marker.pose.orientation.y = 0.0;
 		marker.pose.orientation.z = 0.0;
 		marker.pose.orientation.w = 1.0;
 
-		// scale shape
 		marker.scale.x = diameter;
 		marker.scale.y = diameter;
 		marker.scale.z = height;
-		// color
+		
 		marker.color.r = 0.0f;
 		marker.color.g = 1.0f;
 		marker.color.b = 0.0f;
 		marker.color.a = 1.0;
 
-		// lifetime
 		marker.lifetime = ros::Duration();
 
 		cylinder_pub.publish(marker);

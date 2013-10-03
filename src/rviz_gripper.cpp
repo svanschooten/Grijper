@@ -15,19 +15,19 @@ const int freq = 250; /*!< The frequency at which gripper in rviz is updated. */
 /*! \brief Main method reads if the state of the gripper is changing and simulates this in RVIZ.
 
 This node listens to the gripper_state published by gripper_actuator. 
-motor_stand variable has a value between 1 and 0. 1 means completly open 0 means completly closed.
+motor_state variable has a value between 1 and 0. 1 means completly open 0 means completly closed.
 bmdll_max angle that the joint between middle and base can make.
 mlltp_max angle that the joint between middle and finger tip can make.
 bmdll_start start angle of the joint between middle and base
-mlltp_start start angle of the joint between middle and tip
+mdlltp_start start angle of the joint between middle and tip
 bm_angle current angle between base and middle
 mt_angle current angle between middle and tip
-step_size the change of motor_stand per loop
+step_size the change of motor_state per loop
 cf corection facter the factor the raid at which the tip moves faster then the middle part
 angle_step the inverse of the total angle that can be made by the two joints
 
-The motor_stand is only changed if the gripper opens or closes and the motor state is between 1 and 0
-The new motor_stand is converted to angles for the both joints.
+The motor_state is only changed if the gripper opens or closes and the motor state is between 1 and 0
+The new motor_state is converted to angles for the both joints.
 The new angles will be published in the jstates topic
 
 \sa shiftBuffer(int), mean()
@@ -44,36 +44,31 @@ int main(int argc, char **argv){
 	ros::Rate loop_rate(freq);
 	ros::spinOnce();
 
-	// declare const
 	const double bmdll_max = 0.85;
 	const double mdlltp_max = 0.80;
-	// declare variables
 	const double bmdll_start = -0.96;
 	const double mdlltp_start = -0.3;
-	double bm_angle, mt_angle, step_size = 0.004, cf = 1.5, motor_stand = 0;
-
-	// calculate step_size and total angle
+	double bm_angle, mt_angle, step_size = 0.004, cf = 1.5, motor_state = 0;
 	double angle_step = 1/(bmdll_max + mdlltp_max*cf);
 
-	// message declarations
 	sensor_msgs::JointState joint_state;
 
 	while (ros::ok())
 	{	
-		if((opens == 1 && motor_stand < (1-step_size)) || (opens == 0 && motor_stand > step_size)){
+		if((opens == 1 && motor_state < (1-step_size)) || (opens == 0 && motor_state > step_size)){
 			if(opens == 0){
-					motor_stand = motor_stand - step_size;
+					motor_state = motor_state - step_size;
 				
 			}else{
-					motor_stand = motor_stand + step_size;
+					motor_state = motor_state + step_size;
 				
 			}
-			if((motor_stand/angle_step) < bmdll_max){
+			if((motor_state/angle_step) < bmdll_max){
 				mt_angle = mdlltp_start;
-				bm_angle = motor_stand/angle_step+bmdll_start;
+				bm_angle = motor_state/angle_step+bmdll_start;
 			}else{
 				bm_angle = bmdll_start+bmdll_max;
-				mt_angle = (motor_stand/angle_step)-bmdll_max+mdlltp_start;
+				mt_angle = (motor_state/angle_step)-bmdll_max+mdlltp_start;
 			}
 			joint_state.header.stamp = ros::Time::now();
 			joint_state.name.resize(2);
