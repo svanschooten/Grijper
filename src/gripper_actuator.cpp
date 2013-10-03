@@ -10,6 +10,7 @@ using namespace std;
 
 void gripperControl(const Grijper::command::ConstPtr&);
 ros::Publisher gripper_state; /*!< Gripper state publisher. */
+ros::Publisher motor_current;
 void shutdown(const std_msgs::Bool::ConstPtr&);
 bool open();
 bool close();
@@ -45,6 +46,7 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber controller = n.subscribe("gripper_controll", 1000, gripperControl);
 	gripper_state = n.advertise<std_msgs::Float32>("gripper_state", 1000);
+	motor_current = n.advertise<std_msgs::Float32>("motor_current", 1);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
 	ros::spin();
 
@@ -75,6 +77,11 @@ void gripperControl(const Grijper::command::ConstPtr& msg){
 	}else{
 		ROS_INFO("Invalid command supplied");
 	}
+}
+
+float getCurrent(){
+	motor_->getState();
+	return motor_->getPresentCurrent();
 }
 
 /*! \brief Small controlling method for opening the gripper.
