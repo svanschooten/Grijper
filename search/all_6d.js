@@ -5,6 +5,5 @@ var searchData=
   ['mainpage_2edox',['mainpage.dox',['../mainpage_8dox.html',1,'']]],
   ['md5sum_3c_20_3a_3agrijper_3a_3acommand_5f_3c_20containerallocator_20_3e_20_3e',['MD5Sum&lt; ::Grijper::command_&lt; ContainerAllocator &gt; &gt;',['../structros_1_1message__traits_1_1MD5Sum_3_01_1_1Grijper_1_1command___3_01ContainerAllocator_01_4_01_4.html',1,'ros::message_traits']]],
   ['mean',['mean',['../phidget__reader_8cpp.html#a478ef96a3ad4032e1f91152178c8809e',1,'phidget_reader.cpp']]],
-  ['motor_5f',['motor_',['../gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc',1,'gripper_actuator.cpp']]],
-  ['motor_5fstand',['motor_stand',['../rviz__gripper_8cpp.html#a4d33c6d3680f82ddfa464ba1739b851a',1,'rviz_gripper.cpp']]]
+  ['motor_5f',['motor_',['../gripper__actuator_8cpp.html#ac1874704ed544a18b8fc45cd2abacecc',1,'gripper_actuator.cpp']]]
 ];

@@ -86,16 +86,21 @@ Include dependency graph for rviz_object.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main method of the rviz_object node. This node evaluates the distance published by phidget_reader.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br/></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82df680c1afd396b56d422518e69df6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a82df680c1afd396b56d422518e69df6d">rvizUpdater</a> (const std_msgs::Float32::ConstPtr &amp;)</td></tr>
-<tr class="separator:a82df680c1afd396b56d422518e69df6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eeee6c84a027eabdd7230329be56bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a9eeee6c84a027eabdd7230329be56bec">shutdown</a> (const std_msgs::Bool::ConstPtr &amp;)</td></tr>
-<tr class="separator:a9eeee6c84a027eabdd7230329be56bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a597a9b78812a52a356d6112ebe8f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#ac3a597a9b78812a52a356d6112ebe8f6">rvizUpdater</a> (const std_msgs::Float32::ConstPtr &amp;msg)</td></tr>
+<tr class="memdesc:ac3a597a9b78812a52a356d6112ebe8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method for publishing a cylinder in rviz.  <a href="#ac3a597a9b78812a52a356d6112ebe8f6">More...</a><br/></td></tr>
+<tr class="separator:ac3a597a9b78812a52a356d6112ebe8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6099bcde46c020c0703be2c28a4432d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">shutdown</a> (const std_msgs::Bool::ConstPtr &amp;b)</td></tr>
+<tr class="memdesc:a6099bcde46c020c0703be2c28a4432d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controll method to shutdown this ROS node when the command is given.  <a href="#a6099bcde46c020c0703be2c28a4432d5">More...</a><br/></td></tr>
+<tr class="separator:a6099bcde46c020c0703be2c28a4432d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a06f14a9abd47b91465f895d5259cdc1b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a></td></tr>
-<tr class="separator:a06f14a9abd47b91465f895d5259cdc1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2a512cd32842742d7f2b87c3ee60cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#a2c2a512cd32842742d7f2b87c3ee60cb">added</a> = false</td></tr>
+<tr class="separator:a2c2a512cd32842742d7f2b87c3ee60cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7df4524fa16966426d5ad7d724175f6"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__object_8cpp.html#af7df4524fa16966426d5ad7d724175f6">cylinder_pub</a></td></tr>
+<tr class="separator:af7df4524fa16966426d5ad7d724175f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
@@ -122,11 +127,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00014">14</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
+<p>Main method of the rviz_object node. This node evaluates the distance published by phidget_reader. </p>
+<p>If there is an object in sight of the sensor this nod publishes a marker at the distance measured by the sensor in rviz. If there is no object in the sight of the sensor the cylinder will be deleted. This node also listens to the shutdown command given by the controller. </p>
+
+<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00024">24</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a82df680c1afd396b56d422518e69df6d"></a>
+<a class="anchor" id="ac3a597a9b78812a52a356d6112ebe8f6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -140,9 +148,12 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Method for publishing a cylinder in rviz. </p>
+<p>This Method creates a marker message to create a cylinder in rviz. The frame where the marker in will be plotted in rviz is the base frame of the gripper. The marker will be deleted if there is no object in the range of the sensor. The type of the marker is a cylinder. Marker will be placed on the y-axis on the measured distance from the origin The size of the marker is determined with the diameter and height variable. The color of the marker is green. </p>
+
 </div>
 </div>
-<a class="anchor" id="a9eeee6c84a027eabdd7230329be56bec"></a>
+<a class="anchor" id="a6099bcde46c020c0703be2c28a4432d5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -156,20 +167,45 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Controll method to shutdown this ROS node when the command is given. </p>
+<p>This method will shutdown this node when the command is given by the console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>The message containing the command. Nothing is done with the command since we know what it will be when this message is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a06f14a9abd47b91465f895d5259cdc1b"></a>
+<a class="anchor" id="a2c2a512cd32842742d7f2b87c3ee60cb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float distance</td>
+          <td class="memname">bool added = false</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Cylinder added value </p>
 
-<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00012">12</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00014">14</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af7df4524fa16966426d5ad7d724175f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ros::Publisher cylinder_pub</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>cylinder publisher. </p>
+
+<p>Definition at line <a class="el" href="rviz__object_8cpp_source.html#l00011">11</a> of file <a class="el" href="rviz__object_8cpp_source.html">rviz_object.cpp</a>.</p>
 
 </div>
 </div>
@@ -179,7 +215,7 @@ Variables</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga,Joris Coenen, Roy Groot</br />
-<small>autogenerated on Wed Oct 2 2013 17:24:50</small>
+<small>autogenerated on Thu Oct 3 2013 22:59:42</small>
 </div>
 </body>
 </html>

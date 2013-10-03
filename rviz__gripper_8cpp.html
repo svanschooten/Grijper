@@ -86,16 +86,21 @@ Include dependency graph for rviz_gripper.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main method reads if the state of the gripper is changing and simulates this in RVIZ.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br/></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82df680c1afd396b56d422518e69df6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a82df680c1afd396b56d422518e69df6d">rvizUpdater</a> (const std_msgs::Float32::ConstPtr &amp;)</td></tr>
-<tr class="separator:a82df680c1afd396b56d422518e69df6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eeee6c84a027eabdd7230329be56bec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a9eeee6c84a027eabdd7230329be56bec">shutdown</a> (const std_msgs::Bool::ConstPtr &amp;)</td></tr>
-<tr class="separator:a9eeee6c84a027eabdd7230329be56bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a597a9b78812a52a356d6112ebe8f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#ac3a597a9b78812a52a356d6112ebe8f6">rvizUpdater</a> (const std_msgs::Float32::ConstPtr &amp;msg)</td></tr>
+<tr class="memdesc:ac3a597a9b78812a52a356d6112ebe8f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">update method the opens variable will be updated  <a href="#ac3a597a9b78812a52a356d6112ebe8f6">More...</a><br/></td></tr>
+<tr class="separator:ac3a597a9b78812a52a356d6112ebe8f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6099bcde46c020c0703be2c28a4432d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a6099bcde46c020c0703be2c28a4432d5">shutdown</a> (const std_msgs::Bool::ConstPtr &amp;b)</td></tr>
+<tr class="memdesc:a6099bcde46c020c0703be2c28a4432d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controll method to shutdown this ROS node when the command is given.  <a href="#a6099bcde46c020c0703be2c28a4432d5">More...</a><br/></td></tr>
+<tr class="separator:a6099bcde46c020c0703be2c28a4432d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a4d33c6d3680f82ddfa464ba1739b851a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a4d33c6d3680f82ddfa464ba1739b851a">motor_stand</a></td></tr>
-<tr class="separator:a4d33c6d3680f82ddfa464ba1739b851a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323a9f2cf2eeae7e0acd9fe48da80fff"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a323a9f2cf2eeae7e0acd9fe48da80fff">freq</a> = 250</td></tr>
+<tr class="separator:a323a9f2cf2eeae7e0acd9fe48da80fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6593a9dfdfff068cc7a30a1f1ff5000a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rviz__gripper_8cpp.html#a6593a9dfdfff068cc7a30a1f1ff5000a">opens</a></td></tr>
+<tr class="separator:a6593a9dfdfff068cc7a30a1f1ff5000a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
@@ -122,11 +127,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rviz__gripper_8cpp_source.html#l00014">14</a> of file <a class="el" href="rviz__gripper_8cpp_source.html">rviz_gripper.cpp</a>.</p>
+<p>Main method reads if the state of the gripper is changing and simulates this in RVIZ. </p>
+<p>This node listens to the gripper_state published by gripper_actuator. motor_state variable has a value between 1 and 0. 1 means completly open 0 means completly closed. bmdll_max angle that the joint between middle and base can make. mlltp_max angle that the joint between middle and finger tip can make. bmdll_start start angle of the joint between middle and base mdlltp_start start angle of the joint between middle and tip bm_angle current angle between base and middle mt_angle current angle between middle and tip step_size the change of motor_state per loop cf corection facter the factor the raid at which the tip moves faster then the middle part angle_step the inverse of the total angle that can be made by the two joints</p>
+<p>The motor_state is only changed if the gripper opens or closes and the motor state is between 1 and 0 The new motor_state is converted to angles for the both joints. The new angles will be published in the jstates topic</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="phidget__reader_8cpp.html#ab3f7db7de2a2af54619cd7ac3517b924" title="Method for shifting the buffer and inserting the newest sensor value.">shiftBuffer(int)</a>, <a class="el" href="phidget__reader_8cpp.html#a478ef96a3ad4032e1f91152178c8809e" title="Method for calulating the mean of the buffer to pass on to the controller.">mean()</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="rviz__gripper_8cpp_source.html#l00036">36</a> of file <a class="el" href="rviz__gripper_8cpp_source.html">rviz_gripper.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a82df680c1afd396b56d422518e69df6d"></a>
+<a class="anchor" id="ac3a597a9b78812a52a356d6112ebe8f6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -140,11 +150,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rviz__gripper_8cpp_source.html#l00076">76</a> of file <a class="el" href="rviz__gripper_8cpp_source.html">rviz_gripper.cpp</a>.</p>
+<p>update method the opens variable will be updated </p>
+<p>Method for publishing a cylinder in rviz.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>contains the value 0,1,0.5 depending if the gripper is openening, closing or relaxing.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This Method creates a marker message to create a cylinder in rviz. The frame where the marker in will be plotted in rviz is the base frame of the gripper. The marker will be deleted if there is no object in the range of the sensor. The type of the marker is a cylinder. Marker will be placed on the y-axis on the measured distance from the origin The size of the marker is determined with the diameter and height variable. The color of the marker is green. </p>
+
+<p>Definition at line <a class="el" href="rviz__gripper_8cpp_source.html#l00097">97</a> of file <a class="el" href="rviz__gripper_8cpp_source.html">rviz_gripper.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9eeee6c84a027eabdd7230329be56bec"></a>
+<a class="anchor" id="a6099bcde46c020c0703be2c28a4432d5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -158,18 +178,43 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Controll method to shutdown this ROS node when the command is given. </p>
+<p>This method will shutdown this node when the command is given by the console. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>The message containing the command. Nothing is done with the command since we know what it will be when this message is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a4d33c6d3680f82ddfa464ba1739b851a"></a>
+<a class="anchor" id="a323a9f2cf2eeae7e0acd9fe48da80fff"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float motor_stand</td>
+          <td class="memname">const int freq = 250</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The frequency at which gripper in rviz is updated. </p>
+
+<p>Definition at line <a class="el" href="rviz__gripper_8cpp_source.html#l00013">13</a> of file <a class="el" href="rviz__gripper_8cpp_source.html">rviz_gripper.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6593a9dfdfff068cc7a30a1f1ff5000a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float opens</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The state of the gripper 0 when gripper closes, 1 when gripper opens, 0.5 in relax mode. </p>
 
 <p>Definition at line <a class="el" href="rviz__gripper_8cpp_source.html#l00012">12</a> of file <a class="el" href="rviz__gripper_8cpp_source.html">rviz_gripper.cpp</a>.</p>
 
@@ -181,7 +226,7 @@ Variables</h2></td></tr>
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga,Joris Coenen, Roy Groot</br />
-<small>autogenerated on Wed Oct 2 2013 17:24:50</small>
+<small>autogenerated on Thu Oct 3 2013 22:59:42</small>
 </div>
 </body>
 </html>

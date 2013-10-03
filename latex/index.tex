@@ -79,69 +79,72 @@ Subscribes to\-:
 {\tt back to top} 
 
 \subsection{gripper\-\_\-actuator}\label{index_gripper_actuator}
-gripper\-\_\-actuator does...\subsubsection{Usage}\label{index_actuator_usage}
+gripper\-\_\-actuator listens to the controller and sends commands to the threemxl to acutuate the gripper and then publishes the state of the gripper\subsubsection{Usage}\label{index_actuator_usage}
 \begin{DoxyVerb}$ rosrun Grijper gripper_actuator [standard ROS args]
 \end{DoxyVerb}
 \subsubsection{R\-O\-S topics}\label{index_actuator_topics}
 Publishes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}gripper\-\_\-state\char`\"{}} [std\-\_\-msgs/\-Float32] The state of the gripper 0 opens, 1 closes, 0.\-5 relax.
 \end{DoxyItemize}
 
 Subscribes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}gripper\-\_\-control\char`\"{}}\-: [Grijper/command] The command to be passed on, contains a 'cmd' string and a 'force' float.
+\item {\bfseries \char`\"{}shutdown\char`\"{}} [std\-\_\-msgs/\-Bool] The shutdown command.
 \end{DoxyItemize}
 
 {\tt back to top} 
 
 \subsection{phidget\-\_\-reader}\label{index_phidget_reader}
-phidget\-\_\-reader does...\subsubsection{Usage}\label{index_reader_usage}
+phidget\-\_\-reader reads the raw value of the sensor and calculates the distance to the object out of this value\subsubsection{Usage}\label{index_reader_usage}
 \begin{DoxyVerb}$ rosrun Grijper phidget_reader [standard ROS args]
 \end{DoxyVerb}
 \subsubsection{R\-O\-S topics}\label{index_reader_topics}
 Publishes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}phidget\-\_\-value\char`\"{}}\-: [std\-\_\-msgs/\-Float32] The calculated distance from the read value.
 \end{DoxyItemize}
 
 Subscribes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}shutdown\char`\"{}} [std\-\_\-msgs/\-Bool] The shutdown command.
 \end{DoxyItemize}
 
 {\tt back to top} 
 
 \subsection{rviz\-\_\-gripper}\label{index_rviz_gripper}
-rviz\-\_\-gripper does...\subsubsection{Usage}\label{index_rviz_gripper_usage}
+rviz\-\_\-gripper does publishes the state of the joints of the gripper to rviz\subsubsection{Usage}\label{index_rviz_gripper_usage}
 \begin{DoxyVerb}$ rosrun Grijper rviz_gripper [standard ROS args]
 \end{DoxyVerb}
 \subsubsection{R\-O\-S topics}\label{index_rviz_gripper_topics}
 Publishes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}jstates\char`\"{}}\-: [sensor\-\_\-msgs\-::\-Joint\-State] The calculated states of the joints.
 \end{DoxyItemize}
 
 Subscribes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}gripper\-\_\-state\char`\"{}} [std\-\_\-msgs/\-Float32] The state of the gripper 0 opens, 1 closes, 0.\-5 relax.
+\item {\bfseries \char`\"{}shutdown\char`\"{}} [std\-\_\-msgs/\-Bool] The shutdown command.
 \end{DoxyItemize}
 
 {\tt back to top} 
 
 \subsection{rviz\-\_\-object}\label{index_rviz_object}
-rviz\-\_\-object does...\subsubsection{Usage}\label{index_rviz_object_usage}
+rviz\-\_\-object listens to the distance of an object and sends a marker message to rviz to show an object at the measured distance\subsubsection{Usage}\label{index_rviz_object_usage}
 \begin{DoxyVerb}$ rosrun Grijper rviz_object [standard ROS args]
 \end{DoxyVerb}
 \subsubsection{R\-O\-S topics}\label{index_rviz_object_topics}
 Publishes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}out\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}visualization\-\_\-marker\char`\"{}}\-: [std\-\_\-msgs/\-Float32] A marker object send to rviz with the measured coordinates.
 \end{DoxyItemize}
 
 Subscribes to\-:
 \begin{DoxyItemize}
-\item {\bfseries \char`\"{}int\char`\"{}}\-: [std\-\_\-msgs/\-Float32] dummy.
+\item {\bfseries \char`\"{}phidget\-\_\-value\char`\"{}}\-: [std\-\_\-msgs/\-Float32] The calculated distance from the read value.
+\item {\bfseries \char`\"{}shutdown\char`\"{}} [std\-\_\-msgs/\-Bool] The shutdown command.
 \end{DoxyItemize}
 
 {\tt back to top} 

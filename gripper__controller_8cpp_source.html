@@ -104,11 +104,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="gripper__controller_8cpp.html#a7ca6c0a0c98d6b50749d4432f9246148">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="gripper__controller_8cpp.html#a7ca6c0a0c98d6b50749d4432f9246148" title="Method that evaluates the phidget sensor values and takes appropriate action.">gripperPhidget</a>(<span class="keyword">const</span> std_msgs::Float32::ConstPtr&amp; msg){</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">float</span> <a class="code" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a> = msg-&gt;data;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">float</span> distance = msg-&gt;data;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        </div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span>(abs(distance - <a class="code" href="gripper__controller_8cpp.html#a12530d2344e545313c0e9596cce33c92">last_distance</a>) &gt; 0.5){</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="gripper__controller_8cpp.html#a12530d2344e545313c0e9596cce33c92">last_distance</a> = <a class="code" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="gripper__controller_8cpp.html#a12530d2344e545313c0e9596cce33c92">last_distance</a> = distance;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                ROS_INFO(<span class="stringliteral">&quot;received distance: %f&quot;</span>, distance);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">if</span>(<a class="code" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d" title="Small evaluation method to see if the gripper should be closed.">close_gripper</a>(distance) &amp;&amp; <a class="code" href="gripper__controller_8cpp.html#a4ad9bb216d160d5273f0ccf07535d003">gripper_open</a> &amp;&amp; !<a class="code" href="gripper__controller_8cpp.html#a21f853fd13f4d5cc95d556086f1a398e">force_open</a>){</div>
@@ -168,11 +168,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d">  149</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d" title="Small evaluation method to see if the gripper should be closed.">close_gripper</a>(<span class="keywordtype">float</span> <a class="code" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a>){</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> distance &lt; 7; <span class="comment">//TODO dit nog bewerken afhankelijk van de sensor.</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="code" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d">  149</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__controller_8cpp.html#a26f539d26cd8707b144b8a8c6486751d" title="Small evaluation method to see if the gripper should be closed.">close_gripper</a>(<span class="keywordtype">float</span> distance){</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> distance &lt; 7 &amp;&amp; distance != 0; <span class="comment">//TODO dit nog bewerken afhankelijk van de sensor.</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="code" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb">  161</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb" title="Small evaluation method to see if the gripper should be opened.">open_gripper</a>(<span class="keywordtype">float</span> <a class="code" href="rviz__object_8cpp.html#a06f14a9abd47b91465f895d5259cdc1b">distance</a>){</div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="code" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb">  161</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="gripper__controller_8cpp.html#ab1772f3f3f41fdbf5f1a875261c527bb" title="Small evaluation method to see if the gripper should be opened.">open_gripper</a>(<span class="keywordtype">float</span> distance){</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">return</span> distance &gt; 10;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
@@ -185,7 +185,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <hr size="1"><div style="align: right;">
 <a href="http://ros.org/wiki/Grijper">Grijper</a><br />
 Author(s): Stijn van Schooten, Wybren ten Cate, Florens Kreuk, Jan Wymenga,Joris Coenen, Roy Groot</br />
-<small>autogenerated on Wed Oct 2 2013 17:24:50</small>
+<small>autogenerated on Thu Oct 3 2013 22:59:42</small>
 </div>
 </body>
 </html>

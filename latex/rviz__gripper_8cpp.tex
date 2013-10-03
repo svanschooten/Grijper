@@ -16,15 +16,17 @@ Include dependency graph for rviz\-\_\-gripper.\-cpp\-:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 int {\bf main} (int argc, char $\ast$$\ast$argv)
-\item 
-void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&)
-\item 
-void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Main method reads if the state of the gripper is changing and simulates this in R\-V\-I\-Z. \end{DoxyCompactList}\item 
+void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em update method the opens variable will be updated \end{DoxyCompactList}\item 
+void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&b)
+\begin{DoxyCompactList}\small\item\em Controll method to shutdown this R\-O\-S node when the command is given. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-float {\bf motor\-\_\-stand}
+const int {\bf freq} = 250
+\item 
+float {\bf opens}
 \end{DoxyCompactItemize}
 
 
@@ -39,7 +41,18 @@ float {\bf motor\-\_\-stand}
 )}\label{rviz__gripper_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
 
-Definition at line 14 of file rviz\-\_\-gripper.\-cpp.
+Main method reads if the state of the gripper is changing and simulates this in R\-V\-I\-Z. 
+
+This node listens to the gripper\-\_\-state published by gripper\-\_\-actuator. motor\-\_\-state variable has a value between 1 and 0. 1 means completly open 0 means completly closed. bmdll\-\_\-max angle that the joint between middle and base can make. mlltp\-\_\-max angle that the joint between middle and finger tip can make. bmdll\-\_\-start start angle of the joint between middle and base mdlltp\-\_\-start start angle of the joint between middle and tip bm\-\_\-angle current angle between base and middle mt\-\_\-angle current angle between middle and tip step\-\_\-size the change of motor\-\_\-state per loop cf corection facter the factor the raid at which the tip moves faster then the middle part angle\-\_\-step the inverse of the total angle that can be made by the two joints
+
+The motor\-\_\-state is only changed if the gripper opens or closes and the motor state is between 1 and 0 The new motor\-\_\-state is converted to angles for the both joints. The new angles will be published in the jstates topic
+
+\begin{DoxySeeAlso}{See Also}
+\doxyref{shift\-Buffer(int)}{p.}{phidget__reader_8cpp_ab3f7db7de2a2af54619cd7ac3517b924}, \doxyref{mean()}{p.}{phidget__reader_8cpp_a478ef96a3ad4032e1f91152178c8809e} 
+\end{DoxySeeAlso}
+
+
+Definition at line 36 of file rviz\-\_\-gripper.\-cpp.
 
 \index{rviz\-\_\-gripper.\-cpp@{rviz\-\_\-gripper.\-cpp}!rviz\-Updater@{rviz\-Updater}}
 \index{rviz\-Updater@{rviz\-Updater}!rviz_gripper.cpp@{rviz\-\_\-gripper.\-cpp}}
@@ -47,10 +60,21 @@ Definition at line 14 of file rviz\-\_\-gripper.\-cpp.
 \begin{DoxyParamCaption}
 \item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
 \end{DoxyParamCaption}
-)}\label{rviz__gripper_8cpp_a82df680c1afd396b56d422518e69df6d}
+)}\label{rviz__gripper_8cpp_ac3a597a9b78812a52a356d6112ebe8f6}
 
 
-Definition at line 76 of file rviz\-\_\-gripper.\-cpp.
+update method the opens variable will be updated 
+
+Method for publishing a cylinder in rviz.
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & contains the value 0,1,0.\-5 depending if the gripper is openening, closing or relaxing.\\
+\hline
+\end{DoxyParams}
+This Method creates a marker message to create a cylinder in rviz. The frame where the marker in will be plotted in rviz is the base frame of the gripper. The marker will be deleted if there is no object in the range of the sensor. The type of the marker is a cylinder. Marker will be placed on the y-\/axis on the measured distance from the origin The size of the marker is determined with the diameter and height variable. The color of the marker is green. 
+
+Definition at line 97 of file rviz\-\_\-gripper.\-cpp.
 
 \index{rviz\-\_\-gripper.\-cpp@{rviz\-\_\-gripper.\-cpp}!shutdown@{shutdown}}
 \index{shutdown@{shutdown}!rviz_gripper.cpp@{rviz\-\_\-gripper.\-cpp}}
@@ -58,14 +82,30 @@ Definition at line 76 of file rviz\-\_\-gripper.\-cpp.
 \begin{DoxyParamCaption}
 \item[{const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&}]{b}
 \end{DoxyParamCaption}
-)}\label{rviz__gripper_8cpp_a9eeee6c84a027eabdd7230329be56bec}
+)}\label{rviz__gripper_8cpp_a6099bcde46c020c0703be2c28a4432d5}
+
+
+Controll method to shutdown this R\-O\-S node when the command is given. 
+
+This method will shutdown this node when the command is given by the console. 
+\begin{DoxyParams}{Parameters}
+{\em b} & The message containing the command. Nothing is done with the command since we know what it will be when this message is received. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Variable Documentation}
-\index{rviz\-\_\-gripper.\-cpp@{rviz\-\_\-gripper.\-cpp}!motor\-\_\-stand@{motor\-\_\-stand}}
-\index{motor\-\_\-stand@{motor\-\_\-stand}!rviz_gripper.cpp@{rviz\-\_\-gripper.\-cpp}}
-\subsubsection[{motor\-\_\-stand}]{\setlength{\rightskip}{0pt plus 5cm}float motor\-\_\-stand}\label{rviz__gripper_8cpp_a4d33c6d3680f82ddfa464ba1739b851a}
+\index{rviz\-\_\-gripper.\-cpp@{rviz\-\_\-gripper.\-cpp}!freq@{freq}}
+\index{freq@{freq}!rviz_gripper.cpp@{rviz\-\_\-gripper.\-cpp}}
+\subsubsection[{freq}]{\setlength{\rightskip}{0pt plus 5cm}const int freq = 250}\label{rviz__gripper_8cpp_a323a9f2cf2eeae7e0acd9fe48da80fff}
+The frequency at which gripper in rviz is updated. 
 
+Definition at line 13 of file rviz\-\_\-gripper.\-cpp.
+
+\index{rviz\-\_\-gripper.\-cpp@{rviz\-\_\-gripper.\-cpp}!opens@{opens}}
+\index{opens@{opens}!rviz_gripper.cpp@{rviz\-\_\-gripper.\-cpp}}
+\subsubsection[{opens}]{\setlength{\rightskip}{0pt plus 5cm}float opens}\label{rviz__gripper_8cpp_a6593a9dfdfff068cc7a30a1f1ff5000a}
+The state of the gripper 0 when gripper closes, 1 when gripper opens, 0.\-5 in relax mode. 
 
 Definition at line 12 of file rviz\-\_\-gripper.\-cpp.
 

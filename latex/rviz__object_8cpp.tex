@@ -16,15 +16,17 @@ Include dependency graph for rviz\-\_\-object.\-cpp\-:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 int {\bf main} (int argc, char $\ast$$\ast$argv)
-\item 
-void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&)
-\item 
-void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Main method of the rviz\-\_\-object node. This node evaluates the distance published by phidget\-\_\-reader. \end{DoxyCompactList}\item 
+void {\bf rviz\-Updater} (const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Method for publishing a cylinder in rviz. \end{DoxyCompactList}\item 
+void {\bf shutdown} (const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&b)
+\begin{DoxyCompactList}\small\item\em Controll method to shutdown this R\-O\-S node when the command is given. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-float {\bf distance}
+bool {\bf added} = false
+\item 
+ros\-::\-Publisher {\bf cylinder\-\_\-pub}
 \end{DoxyCompactItemize}
 
 
@@ -39,7 +41,11 @@ float {\bf distance}
 )}\label{rviz__object_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
 
-Definition at line 14 of file rviz\-\_\-object.\-cpp.
+Main method of the rviz\-\_\-object node. This node evaluates the distance published by phidget\-\_\-reader. 
+
+If there is an object in sight of the sensor this nod publishes a marker at the distance measured by the sensor in rviz. If there is no object in the sight of the sensor the cylinder will be deleted. This node also listens to the shutdown command given by the controller. 
+
+Definition at line 24 of file rviz\-\_\-object.\-cpp.
 
 \index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!rviz\-Updater@{rviz\-Updater}}
 \index{rviz\-Updater@{rviz\-Updater}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
@@ -47,21 +53,41 @@ Definition at line 14 of file rviz\-\_\-object.\-cpp.
 \begin{DoxyParamCaption}
 \item[{const std\-\_\-msgs\-::\-Float32\-::\-Const\-Ptr \&}]{msg}
 \end{DoxyParamCaption}
-)}\label{rviz__object_8cpp_a82df680c1afd396b56d422518e69df6d}
-\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!shutdown@{shutdown}}
+)}\label{rviz__object_8cpp_ac3a597a9b78812a52a356d6112ebe8f6}
+
+
+Method for publishing a cylinder in rviz. 
+
+This Method creates a marker message to create a cylinder in rviz. The frame where the marker in will be plotted in rviz is the base frame of the gripper. The marker will be deleted if there is no object in the range of the sensor. The type of the marker is a cylinder. Marker will be placed on the y-\/axis on the measured distance from the origin The size of the marker is determined with the diameter and height variable. The color of the marker is green. \index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!shutdown@{shutdown}}
 \index{shutdown@{shutdown}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
 \subsubsection[{shutdown}]{\setlength{\rightskip}{0pt plus 5cm}void shutdown (
 \begin{DoxyParamCaption}
 \item[{const std\-\_\-msgs\-::\-Bool\-::\-Const\-Ptr \&}]{b}
 \end{DoxyParamCaption}
-)}\label{rviz__object_8cpp_a9eeee6c84a027eabdd7230329be56bec}
+)}\label{rviz__object_8cpp_a6099bcde46c020c0703be2c28a4432d5}
+
+
+Controll method to shutdown this R\-O\-S node when the command is given. 
+
+This method will shutdown this node when the command is given by the console. 
+\begin{DoxyParams}{Parameters}
+{\em b} & The message containing the command. Nothing is done with the command since we know what it will be when this message is received. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Variable Documentation}
-\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!distance@{distance}}
-\index{distance@{distance}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
-\subsubsection[{distance}]{\setlength{\rightskip}{0pt plus 5cm}float distance}\label{rviz__object_8cpp_a06f14a9abd47b91465f895d5259cdc1b}
+\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!added@{added}}
+\index{added@{added}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
+\subsubsection[{added}]{\setlength{\rightskip}{0pt plus 5cm}bool added = false}\label{rviz__object_8cpp_a2c2a512cd32842742d7f2b87c3ee60cb}
+Cylinder added value 
 
+Definition at line 14 of file rviz\-\_\-object.\-cpp.
 
-Definition at line 12 of file rviz\-\_\-object.\-cpp.
+\index{rviz\-\_\-object.\-cpp@{rviz\-\_\-object.\-cpp}!cylinder\-\_\-pub@{cylinder\-\_\-pub}}
+\index{cylinder\-\_\-pub@{cylinder\-\_\-pub}!rviz_object.cpp@{rviz\-\_\-object.\-cpp}}
+\subsubsection[{cylinder\-\_\-pub}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher cylinder\-\_\-pub}\label{rviz__object_8cpp_af7df4524fa16966426d5ad7d724175f6}
+cylinder publisher. 
+
+Definition at line 11 of file rviz\-\_\-object.\-cpp.
 
