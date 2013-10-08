@@ -12,6 +12,8 @@ float force = 0.5; /*!< Force variable standard set to 0.5. */
 bool exit_cmd = false; /*!< Variable indicating whether the shutdown command has been given. */
 ros::Publisher force_ad; /*!< Force message publisher. */
 
+void printMotorCurrent(const std_msgs::Float32::ConstPtr&);
+
 void init();
 
 /*! \brief The main method of the console. The console listens to input an passes the commands on to the controller
@@ -35,6 +37,8 @@ int main(int argc, char **argv)
   force_ad = n.advertise<std_msgs::Float32>("gripper_force", 1000);  
   ros::Publisher command_ad = n.advertise<std_msgs::String>("command", 1000);
   ros::Publisher shutdown = n.advertise<std_msgs::Bool>("shutdown", 1);
+  //ros::Subscriber motor_current_sub = n.subscribe("motor_current", 1, printMotorCurrent);
+  //ros::spin();
   init();
 
   while(exit_cmd == false){
@@ -87,4 +91,8 @@ void init(){
   std_msgs::Float32 msg;
   msg.data = force;
   force_ad.publish(msg);
+}
+
+void printMotorCurrent(const std_msgs::Float32::ConstPtr& msg){
+	printf("Present motor current: %fA", msg->data);
 }

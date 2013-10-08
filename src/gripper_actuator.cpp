@@ -5,19 +5,23 @@
 #include <std_msgs/Bool.h>
 #include <Grijper/command.h>
 #include <threemxl/C3mxlROS.h>
+#include <Grijper/MotorInfo.h>
 
 using namespace std;
 
 void gripperControl(const Grijper::command::ConstPtr&);
 ros::Publisher gripper_state; /*!< Gripper state publisher. */
-ros::Publisher motor_current;
+ros::Publisher motor_info;
 void shutdown(const std_msgs::Bool::ConstPtr&);
+void getMotorInfo(Grijper::MotorInfo&);
 bool open();
 bool close();
 bool relax();
 float calc_current(float);
-float current = 0.04;  /*!< Target current variable, default is set to 0.04. */
+float current = 0.08;  /*!< Target current variable, default is set to 0.04. */
 CDxlGeneric *motor_;  /*!< Threemxl generic motor controller pointer. */
+
+const int freq = 100;
 
 /*! \brief Main method of this node. All commands are evaluated here, and motor actuation is controlled from here.
 
@@ -46,9 +50,22 @@ int main(int argc, char **argv){
 	ros::NodeHandle n;
 	ros::Subscriber controller = n.subscribe("gripper_control", 1000, gripperControl);
 	gripper_state = n.advertise<std_msgs::Float32>("gripper_state", 1000);
-	motor_current = n.advertise<std_msgs::Float32>("motor_current", 1);
+	motor_info = n.advertise<Grijper::MotorInfo>("motor_info", 1);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
-	ros::spin();
+	//ros::spin();
+	ros::Rate loop_rate(freq);
+
+
+	while(ros::ok()){
+		Grijper::MotorInfo msg;
+		
+		getMotorInfo(msg);
+		motor_info.publish(msg);
+
+		ros::spinOnce();
+		loop_rate.sleep();
+	}
+
 
 	return 0;
 }
@@ -79,9 +96,11 @@ void gripperControl(const Grijper::command::ConstPtr& msg){
 	}
 }
 
-float getCurrent(){
+void getMotorInfo(Grijper::MotorInfo& msg){
 	motor_->getState();
-	return motor_->getPresentCurrent();
+	msg.present_current  = motor_->presentCurrent();
+	msg.present_voltage = motor_->presentVoltage();
+	msg.goal_current = current;
 }
 
 /*! \brief Small controlling method for opening the gripper.

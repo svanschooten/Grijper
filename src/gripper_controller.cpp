@@ -5,20 +5,27 @@
 #include <std_msgs/Bool.h>
 #include <std_msgs/String.h>
 #include <Grijper/command.h>
+#include <Grijper/MotorInfo.h>
 
 using namespace std;
 
+enum GripperState {OPEN, CLOSED, OPENING1, OPENING2, CLOSING, CLOSING2};
+
 void setForce(const std_msgs::Float32::ConstPtr&);
 void gripperPhidget(const std_msgs::Float32::ConstPtr&);
+void gripperMotorInfo(const Grijper::MotorInfo&);
 void gripperCommand(const std_msgs::String::ConstPtr&);
 void shutdown(const std_msgs::Bool::ConstPtr&);
 ros::Publisher control;  /*!< Controller message publisher. */
 bool close_gripper(float);
 bool open_gripper(float);
-bool gripper_open = true;  /*!< Gripper state variable. */
+//bool gripper_open = true;  /*!< Gripper state variable. */
+GripperState state = OPEN;
 bool force_open = false;  /*!< Force open state variable. */
 float last_distance = 0;  /*!< Last sensor value, used for filtering and smoothing. */
-float force = 0.35;  /*!< Force variable, is set by default to 0.35 and listens to the console. */
+float force = 0.08;  /*!< Force variable, is set by default to 0.35 and listens to the console. */
+
+
 
 /*! \brief Main method of the controller node. All incoming messages are analysed and commands are sent from this node.
 
@@ -37,6 +44,7 @@ int main(int argc, char **argv){
 	ros::Subscriber force_sub = n.subscribe("gripper_force", 1, setForce);
 	ros::Subscriber command_sub = n.subscribe("command", 1000, gripperCommand);
 	ros::Subscriber phidget_sub = n.subscribe("phidget_value", 1, gripperPhidget);
+	ros::Subscriber motor_info_sub = n.subscribe("motor_info", 1, gripperMotorInfo);
 	ros::Subscriber sd = n.subscribe("shutdown", 1, shutdown);
 	control = n.advertise<Grijper::command>("gripper_control", 1);
 	ros::spin();
@@ -62,21 +70,23 @@ void gripperPhidget(const std_msgs::Float32::ConstPtr& msg){
 
 		last_distance = distance;
 
-		ROS_INFO("received distance: %f", distance);
-		if(close_gripper(distance) && gripper_open && !force_open){
+		//ROS_INFO("received distance: %f", distance);
+		if(close_gripper(distance) && state == OPEN && !force_open){
 			ROS_INFO("Closing gripper");
 			Grijper::command msg;
 			msg.cmd = "close";
 			msg.force = force;
-			gripper_open = false;
+			//gripper_open = false;
+			state = CLOSING;
 			control.publish(msg);
 		}
-		if(open_gripper(distance) && !gripper_open){
+		if(open_gripper(distance) && state == CLOSED){
 			ROS_INFO("Opening gripper");
 			Grijper::command msg;
 			msg.cmd = "open";
-			msg.force = force;
-			gripper_open = true;
+			msg.force = 0.3;
+			//gripper_open = true;
+			state = OPENING1;
 			control.publish(msg);
 		}
 
@@ -85,6 +95,56 @@ void gripperPhidget(const std_msgs::Float32::ConstPtr& msg){
 			force_open = false;
 		}
 	}
+}
+
+void gripperMotorInfo(const Grijper::MotorInfo& msg){
+	
+	float current = msg.present_current;
+	float voltage = msg.present_voltage;
+	float goal_current = msg.goal_current;
+	
+	//ROS_INFO("Present voltage: %fV. Present current: %fA. Goal current: %fA", voltage, current, goal_current);
+	
+	if(voltage < 13 && state == OPENING2){
+		state = OPEN;
+		ROS_INFO("State = open");
+
+		Grijper::command msg;
+		msg.cmd = "relax";
+		msg.force = force;
+		control.publish(msg);
+	}
+
+	if(state == OPENING1 || state == OPENING2 || state == OPEN)
+		ROS_INFO("Present voltage: %fV. Present current: %fA. Goal current: %fA", voltage, current, goal_current);
+
+	if(state == OPENING1 && voltage > 13)
+		state = OPENING2;
+
+	if(state == CLOSING || state == CLOSING2){
+		ROS_INFO("Present voltage: %fV. Present current: %fA. Goal current: %fA", voltage, current, goal_current);
+	}
+
+	if(voltage > 0 && state == CLOSING){
+		state = CLOSING2;
+		ROS_INFO("State = closing2");
+	}
+
+	if(voltage < 0 && state == CLOSING2){
+		state = CLOSED;
+		ROS_INFO("State = closed");
+	}
+
+	if(state == CLOSED && voltage > 2 && current > -0.97*goal_current){
+		ROS_INFO("Opening gripper because of current");
+		Grijper::command msg;
+		msg.cmd = "open";
+		msg.force = force;
+		//gripper_open = true;
+		state = OPENING1;
+		control.publish(msg);
+	}
+		
 }
 
 /*! \brief Method for setting the force on message receiving
@@ -117,8 +177,9 @@ void gripperCommand(const std_msgs::String::ConstPtr& msg){
 		ROS_INFO("Opening gripper");
 		force_open = true;
 		ctl.cmd = "open";
-		ctl.force = force;
-		gripper_open = true;
+		ctl.force = 0.3;
+		//gripper_open = true;
+		state = OPENING1;
 		control.publish(ctl);
 	}else if(cmd.compare("relax") == 0){
 		ROS_INFO("Relaxing gripper");
@@ -131,7 +192,8 @@ void gripperCommand(const std_msgs::String::ConstPtr& msg){
 		force_open = false;
 		ctl.cmd = "close";
 		ctl.force = force;
-		gripper_open = false;
+		//gripper_open = false;
+		state = CLOSING;
 		control.publish(ctl);
 	}else{
 		ROS_INFO("Received invalid command: %s\n", cmd.c_str());
@@ -159,7 +221,7 @@ Compares the distance value to a threshold value to see if the gripper should be
 
 */
 bool open_gripper(float distance){
-	return distance > 10;
+	return distance > 10 || distance == 0;
 }
 
 /*! \brief Controll method to shutdown this ROS node when the command is given.
