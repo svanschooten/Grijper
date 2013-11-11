@@ -8,7 +8,7 @@
 
 using namespace std;
 
-float force = 0.5; /*!< Force variable standard set to 0.5. */
+float force = 0.35; /*!< Force variable standard set to 0.35. */
 bool exit_cmd = false; /*!< Variable indicating whether the shutdown command has been given. */
 ros::Publisher force_ad; /*!< Force message publisher. */
 
