@@ -14,23 +14,23 @@ const int freq = 250; /*!< The frequency at which gripper in rviz is updated. */
 
 /*! \brief Main method reads if the state of the gripper is changing and simulates this in RVIZ.
 
-This node listens to the gripper_state published by gripper_actuator. 
-motor_state variable has a value between 1 and 0. 1 means completly open 0 means completly closed.
-bmdll_max angle that the joint between middle and base can make.
-mlltp_max angle that the joint between middle and finger tip can make.
-bmdll_start start angle of the joint between middle and base
-mdlltp_start start angle of the joint between middle and tip
-bm_angle current angle between base and middle
-mt_angle current angle between middle and tip
-step_size the change of motor_state per loop
-cf corection facter the factor the raid at which the tip moves faster then the middle part
-angle_step the inverse of the total angle that can be made by the two joints
+This node listens to the gripper_state published by gripper_actuator.
 
 The motor_state is only changed if the gripper opens or closes and the motor state is between 1 and 0
 The new motor_state is converted to angles for the both joints.
 The new angles will be published in the jstates topic
+ 
+\param motor_state variable has a value between 1 and 0. 1 means completly open 0 means completly closed.
+\param bmdll_max angle that the joint between middle and base can make.
+\paramm lltp_max angle that the joint between middle and finger tip can make.
+\param bmdll_start start angle of the joint between middle and base
+\param mdlltp_start start angle of the joint between middle and tip
+\param bm_angle current angle between base and middle
+\param mt_angle current angle between middle and tip
+\param step_size the change of motor_state per loop
+\param cf corection facter the factor the raid at which the tip moves faster then the middle part
+\param angle_step the inverse of the total angle that can be made by the two joints
 
-\sa shiftBuffer(int), mean()
 */
 
 int main(int argc, char **argv){
